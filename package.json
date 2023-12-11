@@ -9,9 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@next/font": "^14.0.4",
+    "framer-motion": "^10.16.16",
+    "new-component": "^5.0.2",
+    "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.0.4"
+    "react-feather": "^2.0.10",
+    "sass": "^1.69.5",
+    "the-new-css-reset": "^1.11.2"
   },
   "devDependencies": {
     "eslint": "^8",

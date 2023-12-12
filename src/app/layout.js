@@ -4,6 +4,7 @@ import { LIGHT_TOKENS, DARK_TOKENS } from '@/constants'
 import Header from '@/components/Header'
 import Sidebar from '@/components/Sidebar'
 import "the-new-css-reset/css/reset.css"
+import styles from './page.module.css'
 
 import localFont from 'next/font/local'
 
@@ -41,8 +42,11 @@ export default function RootLayout({ children }) {
         <html lang="en" style={theme == 'light' ? LIGHT_TOKENS : DARK_TOKENS}>
             <body className={Roobert.className}>
                 <Header theme={theme} />
-                <Sidebar />
-                <main>{children}</main>
+                <div className={styles.contentWrap}>
+                    <Sidebar />
+                    <main>{children}</main>
+                </div>
+
             </body>
         </html>
     )

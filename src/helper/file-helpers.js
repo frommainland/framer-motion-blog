@@ -39,7 +39,7 @@ export async function getBlogPostList(subFolderName) {
 // }
 
 
-export const loadBlogPost = React.cache(async function loadBlogPost(slug) {
+export const loadBlogPost = React.cache(async function loadBlogPost(folder, slug) {
     // const rawContent = await readFile(
     //     `/content/${slug}.mdx`
     // );
@@ -47,7 +47,7 @@ export const loadBlogPost = React.cache(async function loadBlogPost(slug) {
     let rawContent
 
     try {
-        rawContent = await readFile(`/content/${slug}.mdx`)
+        rawContent = await readFile(`/content/${folder}/${slug}.mdx`)
     } catch (error) {
         return null
     }

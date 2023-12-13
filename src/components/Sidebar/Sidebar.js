@@ -3,8 +3,11 @@ import styles from './Sidebar.module.scss'
 import { getBlogPostList } from '@/helper/file-helpers';
 import { ChevronDown } from 'react-feather';
 
+import Link from 'next/link';
+
 
 function SidebarList({ title, content }) {
+
     return (
         <div className={styles.sidebarCatergory}>
             <div className={styles.sidebarTitle}>
@@ -13,8 +16,17 @@ function SidebarList({ title, content }) {
             </div>
 
             <ul>
-                {content?.map((item) =>
-                    <li key={item.slug}>{item.title}</li>
+                {content?.map((item) => {
+                    const href = `/${item.slug}`
+                    return (
+                        <li key={item.slug}>
+                            <Link href={{
+                                pathname: href,
+                                query: { catergory: title }
+                            }}>{item.title}</Link>
+                        </li>
+                    )
+                }
                 )}
             </ul>
         </div>
@@ -22,8 +34,8 @@ function SidebarList({ title, content }) {
 }
 
 async function Sidebar() {
-// sidebar list order as follows: 
-//  'TheMainProperties', 'Animations', 'LayoutAnimations', 'MotionValues', 'ManualControls', 'SVGAnimations', 'Dragging', 'APIOverview', 'SomeExamples'
+    // sidebar list order as follows: 
+    //  'TheMainProperties', 'Animations', 'LayoutAnimations', 'MotionValues', 'ManualControls', 'SVGAnimations', 'Dragging', 'APIOverview', 'SomeExamples'
 
 
     const TheMainProperties = await getBlogPostList('TheMainProperties')
@@ -43,13 +55,13 @@ async function Sidebar() {
         <div className={styles.sidebarWrap}>
             <SidebarList title='The Main Properties' content={TheMainProperties} />
             <SidebarList title='Animations' content={Animations} />
-            <SidebarList title='LayoutAnimations' content={LayoutAnimations} />
-            <SidebarList title='MotionValues' content={MotionValues} />
-            <SidebarList title='ManualControls' content={ManualControls} />
-            <SidebarList title='SVGAnimations' content={SVGAnimations} />
+            <SidebarList title='Layout Animations' content={LayoutAnimations} />
+            <SidebarList title='Motion Values' content={MotionValues} />
+            <SidebarList title='Manual Controls' content={ManualControls} />
+            <SidebarList title='SVG Animations' content={SVGAnimations} />
             <SidebarList title='Dragging' content={Dragging} />
-            <SidebarList title='APIOverview' content={APIOverview} />
-            <SidebarList title='SomeExamples' content={SomeExamples} />
+            <SidebarList title='API Overview' content={APIOverview} />
+            <SidebarList title='Some Examples' content={SomeExamples} />
         </div>
 
     )

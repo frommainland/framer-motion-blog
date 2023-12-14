@@ -44,13 +44,13 @@ export const loadBlogPost = React.cache(async function loadBlogPost(folder, slug
     //     `/content/${slug}.mdx`
     // );
 
-    let rawContent
+    let rawContent = await readFile(`/content/${folder}/${slug}.mdx`)
 
-    try {
-        rawContent = await readFile(`/content/${folder}/${slug}.mdx`)
-    } catch (error) {
-        return null
-    }
+    // try {
+    //     rawContent = await readFile(`/content/${folder}/${slug}.mdx`)
+    // } catch (error) {
+    //     return null
+    // }
 
     const { data: frontmatter, content } = matter(rawContent);
 

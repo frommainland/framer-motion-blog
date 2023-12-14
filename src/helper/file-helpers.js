@@ -48,14 +48,14 @@ export const loadBlogPost = React.cache(async function loadBlogPost(folder, slug
 
     try {
         rawContent = await readFile(`/content/${folder}/${slug}.mdx`)
-    } catch (error) {
-        return 'from main'
+    } catch (err) {
+        return null
     }
 
     const { data: frontmatter, content } = matter(rawContent);
 
     // return { frontmatter, content };
-    return { content };
+    return { frontmatter, content };
 })
 
 function readFile(localPath) {

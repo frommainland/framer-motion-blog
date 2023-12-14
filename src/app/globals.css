@@ -14,3 +14,7 @@ html {
 	height: 100svh;
 	background-color: var(--color-surface-100);
 }
+
+body {
+	font-family: var(--font-roobert);
+}

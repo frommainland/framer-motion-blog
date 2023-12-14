@@ -1,8 +1,6 @@
 .contentWrap {
 	display: flex;
 	margin: 0 80px;
+	gap: 2.75rem;
 }
 
-.content {
-	color: var(--color-text-100);
-}

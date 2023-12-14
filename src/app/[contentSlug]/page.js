@@ -16,8 +16,6 @@ const page = async ({ params, searchParams }) => {
 
     const contentData = await loadBlogPost(folderName, params.contentSlug)
 
-    console.log(contentData)
-
     const { frontmatter, content } = contentData
 
     return (

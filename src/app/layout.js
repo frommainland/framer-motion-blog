@@ -11,6 +11,7 @@ import localFont from 'next/font/local'
 
 const newKansas = localFont({
     src: './font/newKansas/NewKansasTRIAL-SemiBold.otf',
+    variable: '--font-kansas'
 })
 
 
@@ -27,6 +28,7 @@ const Roobert = localFont({
             style: 'normal',
         },
     ],
+    variable: '--font-roobert'
 })
 
 export const metadata = {
@@ -40,7 +42,7 @@ export default function RootLayout({ children }) {
 
     return (
         <html lang="en" style={theme == 'light' ? LIGHT_TOKENS : DARK_TOKENS}>
-            <body className={Roobert.className}>
+            <body className={`${Roobert.variable} ${newKansas.variable} `}>
                 <Header theme={theme} />
                 <div className={styles.contentWrap}>
                     <Sidebar />

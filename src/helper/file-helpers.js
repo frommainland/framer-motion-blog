@@ -52,10 +52,10 @@ export const loadBlogPost = React.cache(async function loadBlogPost(folder, slug
         return null
     }
 
-    const { data: frontmatter, content } =
-        matter(rawContent);
+    const { data: frontmatter, content } = matter(rawContent);
 
-    return { frontmatter, content };
+    // return { frontmatter, content };
+    return { content };
 })
 
 function readFile(localPath) {

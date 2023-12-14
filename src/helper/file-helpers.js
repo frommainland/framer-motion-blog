@@ -48,7 +48,7 @@ export const loadBlogPost = React.cache(async function loadBlogPost(folder, slug
 
     try {
         rawContent = await readFile(`/content/${folder}/${slug}.mdx`)
-    } catch (err) {
+    } catch (error) {
         return null
     }
 

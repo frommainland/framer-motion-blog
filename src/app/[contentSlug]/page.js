@@ -13,7 +13,7 @@ function formatName(name) {
     return stringWithoutSpaces
 }
 
-const page = async ({ params, searchParams }) => {
+const ContentPage = async ({ params, searchParams }) => {
 
     let folderName = formatName(searchParams.catergory)
     const contentData = await loadBlogPost(folderName, params.contentSlug)
@@ -33,4 +33,4 @@ const page = async ({ params, searchParams }) => {
     )
 }
 
-export default page
+export default ContentPage

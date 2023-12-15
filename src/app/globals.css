@@ -9,6 +9,7 @@
 	--fontSize-h2: clamp(2.0738rem, 1.815rem + 0.575vw, 2.3325rem);
 	--fontSize-5: clamp(2.4881rem, 2.1769rem + 0.6917vw, 2.7994rem);
 	--fontSize-h1: clamp(2.9863rem, 2.6131rem + 0.8292vw, 3.3594rem);
+	--nav-height: 120px;
 }
 html {
 	height: 100svh;
@@ -18,3 +19,4 @@ html {
 body {
 	font-family: var(--font-roobert);
 }
+

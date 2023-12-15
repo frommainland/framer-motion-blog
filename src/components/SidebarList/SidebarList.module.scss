@@ -1,0 +1,42 @@
+.sidebarCatergory {
+	display: flex;
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+	flex-direction: column;
+	align-items: flex-start;
+	.sidebarTitle {
+		display: flex;
+		width: 100%;
+		padding: 0.375rem 0.5rem;
+		justify-content: space-between;
+		align-items: center;
+		h3 {
+			font-size: var(--fontSize-p);
+			font-style: normal;
+			font-weight: 650;
+			line-height: 150%; /* 1.6875rem */
+		}
+	}
+	ul {
+		display: flex;
+		padding: 0.375rem 0rem 1.2rem 0rem;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.25rem;
+        width: 100%;
+		li {
+			padding: 0.625rem 0rem 0.625rem 0.5rem;
+			font-size: var(--fontSize-p);
+			line-height: 1.2;
+			color: var(--color-text-200);
+			cursor: pointer;
+			width: 100%;
+		}
+		li:hover {
+			color: var(--color-text-100);
+		}
+		li.isActive {
+			color: var(--color-accent);
+		}
+	}
+}

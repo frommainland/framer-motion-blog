@@ -1,5 +1,6 @@
 .header {
-	background-color: var(--color-surface-100);
+	background-color: var(--nav-bg);
+	backdrop-filter: blur(8px);
 	display: flex;
 	height: 7.5rem;
 	padding: 0rem 5rem;
@@ -36,7 +37,6 @@
 				font-size: var(--fontSize-p);
 				font-style: normal;
 				font-weight: 400;
-				
 			}
 		}
 	}

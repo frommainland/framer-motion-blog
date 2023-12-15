@@ -8,6 +8,7 @@ export const DARK_COLORS = {
     '--color-surface-200': '#2C2D29',
     '--color-surface-300': '#42433D',
     '--color-accent': '#F100CB',
+    '--nav-bg': 'rgba(14, 16, 15, 0.8)'
 };
 
 export const LIGHT_COLORS = {
@@ -18,6 +19,7 @@ export const LIGHT_COLORS = {
     '--color-surface-200': '#D5D5D3',
     '--color-surface-300': '#C0C1BD',
     '--color-accent': '#F100CB',
+    '--nav-bg': 'rgba(248, 246, 245, 0.8)'
 };
 
 // Add in semantic / special colors

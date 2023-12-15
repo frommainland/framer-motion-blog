@@ -4,7 +4,6 @@ import { loadBlogPost } from '@/helper/file-helpers';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import mdxMapper from '@/helper/mdxMapper';
 import CodeSnippet from '@/components/CodeSnippet';
-import NotFound from './not-found';
 import { notFound } from 'next/navigation';
 
 function formatName(name) {
@@ -19,16 +18,14 @@ const ContentPage = async ({ params, searchParams }) => {
     const contentData = await loadBlogPost(folderName, params.contentSlug)
 
     if (!contentData) {
-        notFound()
+        return <p style={{ color: `red` }}>no article here</p>
     }
 
     const { content } = contentData
 
     return (
         <div className={styles.layoutWrap}>
-            <MDXRemote source={content} components={{
-                pre: CodeSnippet
-            }} />
+            <MDXRemote source={content} components={mdxMapper} />
         </div>
     )
 }

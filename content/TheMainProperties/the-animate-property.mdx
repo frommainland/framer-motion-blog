@@ -12,26 +12,26 @@ The easiest way to animate an element, is to set some values on `animate`.
 
 ```js
 export function Example() {
-    return (
-        <Center>
-            <motion.div
-                style={{
-                    width: 150,
-                    height: 150,
-                    borderRadius: 30,
-                    backgroundColor: "#fff",
-                    position: "absolute"
-                }}
-                animate={{
-                    left: 10,
-                    top: 10,
-                    scale: 0.5,
-                    rotate: 45,
-                    backgroundColor: "#ffd700"
-                }}
-            />
-        </Center>
-    );
+	return (
+		<Center>
+			<motion.div
+				style={{
+					width: 150,
+					height: 150,
+					borderRadius: 30,
+					backgroundColor: '#fff',
+					position: 'absolute',
+				}}
+				animate={{
+					left: 10,
+					top: 10,
+					scale: 0.5,
+					rotate: 45,
+					backgroundColor: '#ffd700',
+				}}
+			/>
+		</Center>
+	)
 }
 ```
 
@@ -45,19 +45,19 @@ Obviously, there’s more code here because I’ve also had so set visual and po
 
 ```js
 export function Example() {
-    return (
-        <Center>
-            <motion.div
-                animate={{
-                    left: 10,
-                    top: 10,
-                    scale: 0.5,
-                    rotate: 45,
-                    backgroundColor: "#ffd700"
-                }}
-            />
-        </Center>
-    );
+	return (
+		<Center>
+			<motion.div
+				animate={{
+					left: 10,
+					top: 10,
+					scale: 0.5,
+					rotate: 45,
+					backgroundColor: '#ffd700',
+				}}
+			/>
+		</Center>
+	)
 }
 ```
 
@@ -71,11 +71,9 @@ They also have the advantage of starting from zero, so moving an element 10 poin
 
 ```js
 export function Example() {
-    return (
-        <motion.div
-            animate={{ scaleY: 0.5, scaleX: 2, skewX: -6, y: -120 }}
-        />
-    );
+	return (
+		<motion.div animate={{ scaleY: 0.5, scaleX: 2, skewX: -6, y: -120 }} />
+	)
 }
 ```
 
@@ -89,20 +87,20 @@ Here I placed the `originY` at the top of the div so that the (x-axis) rotation 
 
 ```js
 export function Example() {
-    return (
-        <div>
-            <motion.div
-                style={{
-                    width: 150,
-                    height: 150,
-                    borderRadius: 30,
-                    backgroundColor: "#fff",
-                    originY: 0
-                }}
-                animate={{ rotateX: 360 }}
-            />
-        </div>
-    );
+	return (
+		<div>
+			<motion.div
+				style={{
+					width: 150,
+					height: 150,
+					borderRadius: 30,
+					backgroundColor: '#fff',
+					originY: 0,
+				}}
+				animate={{ rotateX: 360 }}
+			/>
+		</div>
+	)
 }
 ```
 
@@ -110,29 +108,29 @@ By the way, I applied some `perspective` to its parent div to make the animation
 
 ```js
 export function Example() {
-    return (
-        <div
-            style={{
-                width: "100%",
-                height: "100%",
-                display: "flex",
-                placeItems: "center",
-                placeContent: "center",
-                perspective: 600
-            }}
-        >
-            <motion.div
-                style={{
-                    width: 150,
-                    height: 150,
-                    borderRadius: 30,
-                    backgroundColor: "#fff",
-                    originY: 0
-                }}
-                animate={{ rotateX: 360 }}
-            />
-        </div>
-    );
+	return (
+		<div
+			style={{
+				width: '100%',
+				height: '100%',
+				display: 'flex',
+				placeItems: 'center',
+				placeContent: 'center',
+				perspective: 600,
+			}}
+		>
+			<motion.div
+				style={{
+					width: 150,
+					height: 150,
+					borderRadius: 30,
+					backgroundColor: '#fff',
+					originY: 0,
+				}}
+				animate={{ rotateX: 360 }}
+			/>
+		</div>
+	)
 }
 ```
 
@@ -140,28 +138,24 @@ export function Example() {
 
 Just like you can change a div’s `backgroundColor`, you can also animate it. As always, you write the color as a text string, in any of these [CSS color formats](https://developer.mozilla.org/docs/Web/CSS/background-color):
 
-- Hex Code — <mark>“#00ff00”</mark>
-- Websafe Hex Code — <mark>“#0f0”</mark>
-- RGB Decimal — <mark>“rgb(0, 255, 0)”</mark>
-- RGBA Decimal — <mark>“rgba(0, 255, 0, 1)”</mark> (the last value is ‘alpha’)
-- Hue Saturation Lightness — <mark>“hsl(120, 100%, 50%)”</mark>
-- Hue Saturation Lightness Alpha — <mark>“hsla(120, 100%, 50%, 1)”</mark>
+-   Hex Code — <mark>“#00ff00”</mark>
+-   Websafe Hex Code — <mark>“#0f0”</mark>
+-   RGB Decimal — <mark>“rgb(0, 255, 0)”</mark>
+-   RGBA Decimal — <mark>“rgba(0, 255, 0, 1)”</mark> (the last value is ‘alpha’)
+-   Hue Saturation Lightness — <mark>“hsl(120, 100%, 50%)”</mark>
+-   Hue Saturation Lightness Alpha — <mark>“hsla(120, 100%, 50%, 1)”</mark>
 
 ```js
 export function Example() {
-    return (
-        <div>
-            <motion.div
-                animate={{ backgroundColor: "#ff6347" }}
-            />
-            <motion.div
-                animate={{ backgroundColor: "hsl(290, 50%, 60%)" }}
-            />
-            <motion.div
-                animate={{ backgroundColor: "rgba(153, 204, 102, 0.8)" }}
-            />
-        </div>
-    );
+	return (
+		<div>
+			<motion.div animate={{ backgroundColor: '#ff6347' }} />
+			<motion.div animate={{ backgroundColor: 'hsl(290, 50%, 60%)' }} />
+			<motion.div
+				animate={{ backgroundColor: 'rgba(153, 204, 102, 0.8)' }}
+			/>
+		</div>
+	)
 }
 ```
 
@@ -179,24 +173,24 @@ You can animate all these values simultaneously if you stick to one kind of nota
 
 ```js
 export function Example() {
-    return (
-        <motion.div
-            style={{
-                width: 150,
-                height: 150,
-                borderRadius: 30,
-                backgroundColor: "#fff",
-                // Initial shadow
-                boxShadow: "0px -300px 80px 100px rgba(255, 255, 255, .3)"
-            }}
-            initial={{ backgroundColor: "#fff" }}
-            animate={{
-                backgroundColor: "#08f",
-                // Animation
-                boxShadow: "0px 0px 80px 30px #fff"
-            }}
-        />
-    );
+	return (
+		<motion.div
+			style={{
+				width: 150,
+				height: 150,
+				borderRadius: 30,
+				backgroundColor: '#fff',
+				// Initial shadow
+				boxShadow: '0px -300px 80px 100px rgba(255, 255, 255, .3)',
+			}}
+			initial={{ backgroundColor: '#fff' }}
+			animate={{
+				backgroundColor: '#08f',
+				// Animation
+				boxShadow: '0px 0px 80px 30px #fff',
+			}}
+		/>
+	)
 }
 ```
 
@@ -223,7 +217,7 @@ and `rgba(255, 255, 255, .3)` as the color.
 Animating to a shadow written in the shorter ‘just x- and y-offset and color’ form (also [possible in CSS](https://developer.mozilla.org/docs/Web/CSS/box-shadow#Syntax) would not work.
 
 ```
-"0px 0px #fff"
+"0px 0px #ffffff"
 ```
 
 ## Adding state
@@ -236,18 +230,13 @@ Here’s an additive animation. `45` is added to the `degrees` state every time 
 
 ```js
 export function Example() {
-    const [degrees, setDegrees] = useState(0);
+	const [degrees, setDegrees] = useState(0)
 
-    function add45() {
-        setDegrees(degrees + 45);
-    }
+	function add45() {
+		setDegrees(degrees + 45)
+	}
 
-    return (
-        <motion.div
-            animate={{ rotate: degrees }}
-            onTap={add45}
-        />
-    );
+	return <motion.div animate={{ rotate: degrees }} onTap={add45} />
 }
 ```
 
@@ -263,16 +252,16 @@ I named that second object info, so the distance traveled since the last time `o
 
 ```js
 export function Example() {
-    const [degrees, setDegrees] = useState(0);
+	const [degrees, setDegrees] = useState(0)
 
-    return (
-        <motion.div
-            animate={{ rotate: degrees }}
-            onPan={(_, info) => setDegrees(degrees + info.delta.x)}
-        >
-            {Math.round(degrees)}
-        </motion.div>
-    );
+	return (
+		<motion.div
+			animate={{ rotate: degrees }}
+			onPan={(_, info) => setDegrees(degrees + info.delta.x)}
+		>
+			{Math.round(degrees)}
+		</motion.div>
+	)
 }
 ```
 
@@ -280,22 +269,21 @@ This `onPan()` event is called continuously, so `delta.x` will contain small val
 
 (JavaScript’s `Math.round()` function converts the decimal value of `degrees` to an integer.)
 
-
 ## Multiple properties
 
 You don’t have to create an useState() for every property you want to animate, you can also put a set of properties in an object (here, it contains values for both scale and rotate).
 
 ```js
 export function Example() {
-    const [animate, setAnimate] = useState({ scale: 1, rotate: 0 });
+	const [animate, setAnimate] = useState({ scale: 1, rotate: 0 })
 
-    return (
-        <motion.div
-            animate={animate}
-            onTapStart={() => setAnimate({ scale: 1.25, rotate: 90 })}
-            onTap={() => setAnimate({ scale: 1, rotate: 0 })}
-        />
-    );
+	return (
+		<motion.div
+			animate={animate}
+			onTapStart={() => setAnimate({ scale: 1.25, rotate: 90 })}
+			onTap={() => setAnimate({ scale: 1, rotate: 0 })}
+		/>
+	)
 }
 ```
 
@@ -309,29 +297,32 @@ But you can use `useState()` to keep track of just the state. Meaning something 
 
 Here we’re switching between two states: dragging or not, yes or no, so we can use a simple Boolean for this.
 
-````js
+```js
 export function Example() {
-    const [dragging, setDragging] = useState(false);
+	const [dragging, setDragging] = useState(false)
 
-    return (
-        <motion.div
-            animate={{ backgroundColor: dragging ? "#a0f" : "#04f" }}
-            transition={{ duration: 0.5 }}
-        >
-            <motion.div
-                drag
-                dragConstraints={{ top: -140, right: 140, bottom: 140, left: -140 }}
-                animate={{ scale: dragging ? 1 : 0.8 }}
-                onDragStart={() => setDragging(true)}
-                onDragEnd={() => setDragging(false)}
-            />
-        </motion.div>
-    );
+	return (
+		<motion.div
+			animate={{ backgroundColor: dragging ? '#a0f' : '#04f' }}
+			transition={{ duration: 0.5 }}
+		>
+			<motion.div
+				drag
+				dragConstraints={{
+					top: -140,
+					right: 140,
+					bottom: 140,
+					left: -140,
+				}}
+				animate={{ scale: dragging ? 1 : 0.8 }}
+				onDragStart={() => setDragging(true)}
+				onDragEnd={() => setDragging(false)}
+			/>
+		</motion.div>
+	)
 }
-````
+```
 
 The parent’s `backgroundColor` is now set inline, with a ternary operator (a concise way of writing an `if…else` conditional). When `dragging` is true, it will animate to the first color (`“#a0f”`), and when not, it animates to the second color (`“#04f”`).
 
 And the same happens with the draggable div’s `scale`: when `dragging` is `true`, it will be `1`, and when `false`, it’ll be the smaller `0.8`.
-
-

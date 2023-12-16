@@ -1,10 +1,19 @@
 .wrapper {
+	padding-top: 1em;
+    padding-bottom: 1em;
 	pre {
-		.code {
+		border-radius: 1.5em;
+		code {
+			// all: unset;
+			padding: 1rem;
+			background-color: initial;
 			font-family: var(--font-input);
-		}
-		div {
-			font-size: var(--fontSize--1);
+			div {
+				font-size: var(--fontSize--1);
+				span {
+					tab-size: 2;
+				}
+			}
 		}
 	}
 }

@@ -3,8 +3,6 @@ import styles from './page.module.scss'
 import { loadBlogPost } from '@/helper/file-helpers';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import mdxMapper from '@/helper/mdxMapper';
-import CodeSnippet from '@/components/CodeSnippet';
-import { notFound } from 'next/navigation';
 
 function formatName(name) {
     let trimmedString = name.trim();

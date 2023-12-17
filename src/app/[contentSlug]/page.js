@@ -1,3 +1,4 @@
+
 import React from 'react'
 import styles from './page.module.scss'
 import { loadBlogPost } from '@/helper/file-helpers';
@@ -15,11 +16,13 @@ const ContentPage = async ({ params, searchParams }) => {
     let folderName = formatName(searchParams.catergory)
     const contentData = await loadBlogPost(folderName, params.contentSlug)
 
+    console.log(contentData)
     if (!contentData) {
         return <p style={{ color: `red` }}>no article here</p>
     }
 
     const { content } = contentData
+   
 
     return (
         <div className={styles.layoutWrap}>

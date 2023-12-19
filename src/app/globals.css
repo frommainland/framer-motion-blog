@@ -10,7 +10,9 @@
 	--fontSize-5: clamp(2.4881rem, 2.1769rem + 0.6917vw, 2.7994rem);
 	--fontSize-h1: clamp(2.9863rem, 2.6131rem + 0.8292vw, 3.3594rem);
 	--nav-height: 120px;
+	--sidebar-width: 16.5rem;
 }
+
 html {
 	height: 100svh;
 	background-color: var(--color-surface-100);

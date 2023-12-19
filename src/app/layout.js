@@ -1,11 +1,9 @@
-import { Inter } from 'next/font/google'
 import './globals.css'
 import { LIGHT_TOKENS, DARK_TOKENS } from '@/constants'
 import Header from '@/components/Header'
 import Sidebar from '@/components/Sidebar'
-import "the-new-css-reset/css/reset.css"
-import styles from './page.module.css'
-
+import styles from './page.module.scss'
+import "the-new-css-reset/css/reset.css";
 import localFont from 'next/font/local'
 
 
@@ -52,10 +50,10 @@ export default function RootLayout({ children }) {
                 <Header theme={theme} />
                 <div className={styles.contentWrap}>
                     <Sidebar />
-                    <main>{children}</main>
+                    {children}
                 </div>
-
             </body>
         </html>
     )
 }
+

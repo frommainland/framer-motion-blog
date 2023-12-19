@@ -1,8 +1,8 @@
 .layoutWrap {
-	max-width: 1200px;
-	// width: 100%;
 	color: var(--color-text-100);
 	font-family: var(--font-kansas);
+    max-width: 80ch;
+	margin: 0 auto;
 	h1 {
 		font-size: var(--fontSize-h1);
 		text-transform: capitalize;

@@ -1,3 +1,4 @@
+
 .sidebarCatergory {
 	display: flex;
 	padding-top: 0.5rem;
@@ -11,7 +12,7 @@
 		justify-content: space-between;
 		align-items: center;
 		h3 {
-			font-size: var(--fontSize-p);
+			font-size: var(--fontSize-0);
 			font-style: normal;
 			font-weight: 650;
 			line-height: 150%; /* 1.6875rem */
@@ -23,10 +24,10 @@
 		flex-direction: column;
 		align-items: flex-start;
 		gap: 0.25rem;
-        width: 100%;
+		width: 100%;
 		li {
 			padding: 0.625rem 0rem 0.625rem 0.5rem;
-			font-size: var(--fontSize-p);
+			font-size: var(--fontSize-0);
 			line-height: 1.2;
 			color: var(--color-text-200);
 			cursor: pointer;

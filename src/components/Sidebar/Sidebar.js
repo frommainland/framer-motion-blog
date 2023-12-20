@@ -3,12 +3,13 @@ import styles from './Sidebar.module.scss'
 import { getBlogPostList } from '@/helper/file-helpers';
 import { SidebarList } from '../SidebarList/SidebarList';
 import SidebarListWrap from '../SidebarListWrap';
-
+import SidebarListOnlyTitle from '../SidebarListOnlyTitle';
 
 async function Sidebar() {
     // sidebar list order as follows: 
     //  'TheMainProperties', 'Animations', 'LayoutAnimations', 'MotionValues', 'ManualControls', 'SVGAnimations', 'Dragging', 'APIOverview', 'SomeExamples'
 
+    const Introduction = await getBlogPostList('Introduction')
     const TheMainProperties = await getBlogPostList('TheMainProperties')
     // console.log(TheMainProperties)
     const Animations = await getBlogPostList('Animations')
@@ -24,6 +25,8 @@ async function Sidebar() {
     return (
         <div className={styles.sidebarWrap}>
             <SidebarListWrap>
+                {/* <SidebarListOnlyTitle title='Introduction' content={Introduction} /> */}
+                <SidebarList title='Introduction' content={Introduction} />
                 <SidebarList title='The Main Properties' content={TheMainProperties} />
                 <SidebarList title='Animations' content={Animations} />
                 <SidebarList title='Layout Animations' content={LayoutAnimations} />

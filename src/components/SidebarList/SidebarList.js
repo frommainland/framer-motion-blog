@@ -30,12 +30,19 @@ export function SidebarList({ title, content, isActive, setIsActive }) {
                     return (
                         <motion.li
                             key={item.slug}
-                            onClick={() => setIsActive(item.slug)}
+                            onClick={() => {
+                                setIsActive(item.slug)
+                                console.log(item.slug)
+                            }}
                             className={isActive === item.slug ? styles.isActive : undefined}>
-                            <Link href={{
-                                pathname: href,
-                                query: { catergory: title }
-                            }}>{titledCase}</Link>
+                            <Link
+                                href={{
+                                    pathname: href,
+                                    query: { catergory: title }
+                                }}
+                                prefetch={true}
+                            >{titledCase}
+                            </Link>
                         </motion.li>
                     );
                 }

@@ -40,14 +40,16 @@ const ContentPage = async ({ params, searchParams }) => {
         return <p style={{ color: `red` }}>no article here</p>
     }
 
-    const { content } = contentData
+    const { frontmatter, content } = contentData
 
+    console.log(frontmatter)
+
+    const preLink = frontmatter.order - 100
+    const nextLink = frontmatter.order + 100
 
     return (
         <div className={styles.layoutWrap}>
             <MDXRemote source={content} components={mdxMapper} />
-            <h1>next</h1>
-            <h1>previous</h1>
         </div>
     )
 }

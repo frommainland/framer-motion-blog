@@ -6,40 +6,34 @@ order: 100
 
 # Introduction
 
-## Motion elements
-
-With Framer Motion, you can animate any HTML or SVG element. You turn an element into a motion element by adding motion before it (`<motion.p>`, `<motion.h1>`, `<motion.div>`, etc.).
-
-The motion object you import contains components for every possible HTML and SVG element. So you’ll often use `<motion.div>`… to animate a `<div>`, but there’s also: `<motion.h1>`, `<motion.svg>`, `<motion.path>`, etc.
-
-## The `<motion>` component
-
-These motion elements (actually components) are all inside the `motion` component you import from Framer Motion.
-
-```js
-import { motion } from 'framer-motion'
-```
-
-The Framer Motion library also contains:
-
--   some extra components, like `<AnimatePresence>` and `<LayoutGroup>`,
--   utilities, like `useCycle()` and `useAnimate()`,
--   and hooks you can use with Motion values, like `useMotionValue()` and `useTransform()`.
-
-```js
-import { motion, AnimatePresence, useCycle, useTransform } from 'framer-motion'
-```
-
 ## Installation
 
-As mentioned in the Framer Motion docs and on its NPM page, you add Framer Motion to a React project by typing:
+Add framer motion to react project by this:
 
 ```js
 npm install framer-motion
 ```
 
-And then you can import motion and animate, well, everything.
+Then you can import this on the top of your react component file, and start to animate elements.
 
 ```js
 import { motion } from 'framer-motion'
+```
+
+---
+
+## The `<motion>` component
+
+Adding motion before html element to make to framer motion work, like `motion.div`, `motion.h1`, `motion.svg`, you got the idea.
+
+Other tools in the Framer Motion library includes:
+
+-   some components for more elements or page transitions, like `<AnimatePresence>`
+-   some hooks for Motion values, so you can tranform some css values to their mapping values, like `useTransform`
+-   some hooks for conditions, like `useInview`
+
+All you need to do is including these along with motion and good to go.
+
+```js
+import { motion, AnimatePresence, useTransform, useInview } from 'framer-motion'
 ```

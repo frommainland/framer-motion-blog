@@ -30,10 +30,7 @@ export function SidebarList({ title, content, isActive, setIsActive }) {
                     return (
                         <motion.li
                             key={item.slug}
-                            onClick={() => {
-                                setIsActive(item.slug)
-                                console.log(item.slug)
-                            }}
+                            onClick={() => setIsActive(item.slug)}
                             className={isActive === item.slug ? styles.isActive : undefined}>
                             <Link
                                 href={{

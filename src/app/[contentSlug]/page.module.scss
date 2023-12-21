@@ -1,25 +1,38 @@
 .layoutWrap {
 	color: var(--color-text-100);
 	font-family: var(--font-kansas);
-    max-width: 80ch;
+	max-width: 80ch;
 	margin: 0 auto;
+	margin-bottom: 6em;
 	h1 {
 		font-size: var(--fontSize-h1);
 		text-transform: capitalize;
 		margin-bottom: 0.5em;
 		line-height: 1.11;
+		code {
+			font-size: var(--fontSize-h1);
+			font-family: var(--font-kansas);
+		}
 	}
 	h2 {
 		font-size: var(--fontSize-h2);
 		margin-top: 1.25em;
 		margin-bottom: 1em;
 		line-height: 1.33;
+		code {
+			font-size: var(--fontSize-h2);
+			font-family: var(--font-kansas);
+		}
 	}
 	h3 {
 		font-size: var(--fontSize-h3);
 		margin-top: 1.6em;
 		margin-bottom: 0.6em;
 		line-height: 1.6;
+		code {
+			font-size: var(--fontSize-h3);
+			font-family: var(--font-kansas);
+		}
 	}
 	h4 {
 		font-size: var(--fontSize-p);
@@ -29,7 +42,7 @@
 	p {
 		font-size: var(--fontSize-p);
 		font-weight: 300;
-		line-height: 1.5;
+		line-height: 1.6;
 		margin-bottom: 1.25em;
 		font-family: var(--font-roobert);
 	}
@@ -42,16 +55,29 @@
 		font-family: var(--font-input);
 		font-size: var(--fontSize--1);
 	}
+
+	hr {
+		display: block;
+		margin-top: 3em;
+		margin-bottom: 3em;
+		height: 1px;
+		background-color: var(--color-surface-300);
+	}
 	ul {
-		margin-top: 1.25em;
-		margin-bottom: 1.25em;
-		padding-left: 1.625em;
+		margin-top: 1.5em;
+		margin-bottom: 1.5em;
+		padding-left: 3em;
+		list-style-type: disc;
+		// list-style-type: '→';
 		li {
 			padding-left: 0.375em;
 			margin-top: 0.5em;
 			margin-bottom: 0.5em;
 			font-family: var(--font-roobert);
 			font-size: var(--fontSize-p);
+		}
+		li::marker {
+			color: var(--color-surface-300);
 		}
 	}
 }

@@ -63,6 +63,8 @@ export function Example() {
 
 But you can always find the complete code in the CodeSandbox.
 
+---
+
 ## Transform properties
 
 Above I used the `left` and `top` properties to animate the div’s position, but it’s actually better to use `x` and `y` for this. With these, what they call, [transform](https://motion.mighty.guide/animatable-properties/#transform) properties, animations will run [smoother](https://motion.mighty.guide/animatable-properties/#the-smoothest-animations) (GPU accelerated).
@@ -78,6 +80,8 @@ export function Example() {
 ```
 
 > customized code example
+
+---
 
 ## Transform origin
 
@@ -134,6 +138,8 @@ export function Example() {
 }
 ```
 
+---
+
 ## color
 
 Just like you can change a div’s `backgroundColor`, you can also animate it. As always, you write the color as a text string, in any of these [CSS color formats](https://developer.mozilla.org/docs/Web/CSS/background-color):
@@ -164,6 +170,9 @@ export function Example() {
 You can also animate between different color formats, like from a HEX to an RGB value.
 
 > **Pro tip**: You can’t animate with [CSS named colors](https://www.w3schools.com/colors/colors_names.asp) like, e.g., ==“Tomato”==.
+
+
+---
 
 ## Complex values
 
@@ -196,7 +205,7 @@ export function Example() {
 
 Its initial shadow (set on style) is:
 
-```
+```css
 "0px -300px 80px 100px rgba(255, 255, 255, .3)"
 ```
 
@@ -219,6 +228,8 @@ Animating to a shadow written in the shorter ‘just x- and y-offset and color�
 ```
 "0px 0px #ffffff"
 ```
+
+---
 
 ## Adding state
 
@@ -269,6 +280,9 @@ This `onPan()` event is called continuously, so `delta.x` will contain small val
 
 (JavaScript’s `Math.round()` function converts the decimal value of `degrees` to an integer.)
 
+
+---
+
 ## Multiple properties
 
 You don’t have to create an useState() for every property you want to animate, you can also put a set of properties in an object (here, it contains values for both scale and rotate).
@@ -286,6 +300,8 @@ export function Example() {
 	)
 }
 ```
+
+---
 
 ## Using `useState()` purely for… state
 

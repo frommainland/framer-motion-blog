@@ -6,80 +6,73 @@ order: 100
 
 # The Animate Property
 
-## Basic animation
+## How to animate
 
-The easiest way to animate an element, is to set some values on `animate`.
-
-```js
-export function Example() {
-	return (
-		<Center>
-			<motion.div
-				style={{
-					width: 150,
-					height: 150,
-					borderRadius: 30,
-					backgroundColor: '#fff',
-					position: 'absolute',
-				}}
-				animate={{
-					left: 10,
-					top: 10,
-					scale: 0.5,
-					rotate: 45,
-					backgroundColor: '#ffd700',
-				}}
-			/>
-		</Center>
-	)
-}
-```
-
-> customized code example
-
-Whenever you give `animate` new values, the `motion.div` will animate to those values.
-
-Now, this animation happens immediately, the moment the element becomes visible. But we’ll look at how you can trigger it with an event.
-
-Obviously, there’s more code here because I’ve also had so set visual and positioning properties. So in upcoming examples, I’ll often only show the animation code, like this:
+Set `animate` keyword in the html element with **double curly brackets** around the value you want to animate:
 
 ```js
 export function Example() {
 	return (
-		<Center>
-			<motion.div
-				animate={{
-					left: 10,
-					top: 10,
-					scale: 0.5,
-					rotate: 45,
-					backgroundColor: '#ffd700',
-				}}
-			/>
-		</Center>
+		<motion.div
+			animate={{
+				backgroundColor: `var(--color-accent-yellow)`,
+				left: 'calc(90% - 15%)',
+				borderRadius: '100%',
+			}}
+		/>
 	)
 }
 ```
 
-But you can always find the complete code in the CodeSandbox.
+<BasicAnimation />
+
+The updated value assigned to `animate` will smoothly transition the element from its initial style to the specified value.
+
+This will happen instantly when the element is rendered, regardless whether it is within the visible area of page. _If you don't see the animation, check if it is already animated._
 
 ---
 
-## Transform properties
+## What can and cannot be animated
 
-Above I used the `left` and `top` properties to animate the div’s position, but it’s actually better to use `x` and `y` for this. With these, what they call, [transform](https://motion.mighty.guide/animatable-properties/#transform) properties, animations will run [smoother](https://motion.mighty.guide/animatable-properties/#the-smoothest-animations) (GPU accelerated).
+| Dimensions and position          | status |
+| -------------------------------- | ------ |
+| `width`, `height`                | ✅     |
+| `top`, `right`, `bottom`, `left` | ✅     |
+| `position`                       | ❌     |
 
-They also have the advantage of starting from zero, so moving an element 10 points to the right is as simple as `x: 10`. Other GPU-accelerated transform properties are: `scale`, `scaleX`, `scaleY`, `rotate`, `rotateX`, `rotateY`, `skewX`, and `skewY`.
+| Transform                                                  | status |
+| ---------------------------------------------------------- | ------ |
+| `x`, `y`, `z`                                              | ✅     |
+| `rotate`, `rotateX`, `rotateY`                             | ✅     |
+| `scale`, `scaleX`, `scaleY`                                | ✅     |
+| `skew`, `skewX`, `skewY`                                   | ✅     |
+| `originX`, `originY`, `originZ`                            | ✅     |
+| `perspective`, `perspectiveOrigin`, `transformPerspective` | ✅     |
 
-```js
-export function Example() {
-	return (
-		<motion.div animate={{ scaleY: 0.5, scaleX: 2, skewX: -6, y: -120 }} />
-	)
-}
-```
+| Background                                                                | status |
+| ------------------------------------------------------------------------- | ------ |
+| `background`, `backgroundColor`, `radial-gradient()`, `linear-gradient()` | ✅     |
 
-> customized code example
+| Border                                                                                                             | status |
+| ------------------------------------------------------------------------------------------------------------------ | ------ |
+| `border`, `borderWidth`, `borderColor`, `borderInline`                                                             | ✅     |
+| `borderRadius`, `borderTopLeftRadius`, `borderTopRightRadius`, `borderBottomLeftRadius`, `borderBottomRightRadius` | ✅     |
+| `borderStyle`                                                                                                      | ❌     |
+
+| Shadow      | status |
+| ----------- | ------ |
+| `boxShadow` | ✅     |
+
+| Text                     | status |
+| ------------------------ | ------ |
+| `textShadow`, `color`    | ✅     |
+| `fontSize`, `fontWeight` | ✅     |
+
+| Background                                                                                                                                                           | status |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
+| `filter`, `backdropFilter`, `drop-shadow()`, `opacity()`, `brightness()`, `contrast()`, `grayscale()`, `hue-rotate()`,` blur()`, `invert()`, `saturate()`, `sepia()` | ✅     |
+
+<AnimateExamples />
 
 ---
 
@@ -170,7 +163,6 @@ export function Example() {
 You can also animate between different color formats, like from a HEX to an RGB value.
 
 > **Pro tip**: You can’t animate with [CSS named colors](https://www.w3schools.com/colors/colors_names.asp) like, e.g., ==“Tomato”==.
-
 
 ---
 
@@ -279,7 +271,6 @@ export function Example() {
 This `onPan()` event is called continuously, so `delta.x` will contain small values, like `1` point, another point, `-1` point when panning to the left, or often: `0` points. Every time `onPan()` is called, that delta is added to the current number of `degrees` with `setDegrees()`. Thus, when you pan to the right, the div rotates clockwise, and when panning left, counterclockwise.
 
 (JavaScript’s `Math.round()` function converts the decimal value of `degrees` to an integer.)
-
 
 ---
 

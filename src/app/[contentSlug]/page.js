@@ -5,6 +5,15 @@ import { loadBlogPost } from '@/helper/file-helpers';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import mdxMapper from '@/helper/mdxMapper';
 import { BLOG_TITLE } from '@/constants';
+import remarkGfm from 'remark-gfm'
+
+const options = {
+    mdxOptions: {
+        remarkPlugins: [remarkGfm],
+        rehypePlugins: []
+    }
+}
+
 
 function formatName(name) {
     let trimmedString = name.trim();
@@ -42,14 +51,10 @@ const ContentPage = async ({ params, searchParams }) => {
 
     const { frontmatter, content } = contentData
 
-    console.log(frontmatter)
-
-    const preLink = frontmatter.order - 100
-    const nextLink = frontmatter.order + 100
 
     return (
         <div className={styles.layoutWrap}>
-            <MDXRemote source={content} components={mdxMapper} />
+            <MDXRemote source={content} components={mdxMapper} options={options} />
         </div>
     )
 }

@@ -7,7 +7,11 @@ export const DARK_COLORS = {
     '--color-surface-100': '#0E100F',
     '--color-surface-200': '#2C2D29',
     '--color-surface-300': '#42433D',
-    '--color-accent': '#F100CB',
+    '--color-accent-red': '#E74627',
+    '--color-accent-yellow': '#F3B53F',
+    '--color-accent-purple': '#8874E3',
+    '--color-accent-blue': '#3600DF',
+    '--color-accent-green': '#1C6F59',
     '--nav-bg': 'rgba(14, 16, 15, 0.8)'
 };
 
@@ -18,7 +22,11 @@ export const LIGHT_COLORS = {
     '--color-surface-100': '#F8F6F5',
     '--color-surface-200': '#D5D5D3',
     '--color-surface-300': '#C0C1BD',
-    '--color-accent': '#F100CB',
+    '--color-accent-red': '#E74627',
+    '--color-accent-yellow': '#F3B53F',
+    '--color-accent-purple': '#8874E3',
+    '--color-accent-blue': '#3600DF',
+    '--color-accent-green': '#1C6F59',
     '--nav-bg': 'rgba(248, 246, 245, 0.8)'
 };
 

@@ -3,6 +3,16 @@ import path from 'path';
 import matter from 'gray-matter';
 import React from 'react';
 
+import { serialize } from 'next-mdx-remote/serialize'
+import { unified } from 'unified'
+import { remark } from "remark";
+import remarkMdx from "remark-mdx";
+import remarkGfm from "remark-gfm";
+import remarkFrontmatter from "remark-frontmatter";
+import remarkRehype from "remark-rehype";
+import rehypeStringify from "rehype-stringify";
+import { compile } from '@mdx-js/mdx'
+
 export async function getBlogPostList(subFolderName) {
     // const fileNames = await readDirectory('/content');
     const fileNames = await readDirectory(`/content/${subFolderName}`);
@@ -54,7 +64,6 @@ export const loadBlogPost = React.cache(async function loadBlogPost(folder, slug
 
     const { data: frontmatter, content } = matter(rawContent);
 
-    // return { frontmatter, content };
     return { frontmatter, content };
 })
 

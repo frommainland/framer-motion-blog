@@ -21,6 +21,11 @@ const Roobert = localFont({
             style: 'normal',
         },
         {
+            path: './font/roobert/RoobertTRIAL-Light.otf',
+            weight: '100',
+            style: 'normal',
+        },
+        {
             path: './font/roobert/RoobertTRIAL-Bold.otf',
             weight: '500',
             style: 'normal',

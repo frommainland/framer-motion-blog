@@ -39,6 +39,11 @@ const input = localFont({
     variable: '--font-input'
 })
 
+const inter = localFont({
+    src: './font/Inter-VariableFont_slnt,wght.ttf',
+    variable: '--font-inter'
+})
+
 
 export const metadata = {
     title: 'Create Next App',
@@ -51,7 +56,7 @@ export default function RootLayout({ children }) {
 
     return (
         <html lang="en" style={theme == 'light' ? LIGHT_TOKENS : DARK_TOKENS}>
-            <body className={`${Roobert.variable} ${newKansas.variable} ${input.variable}`}>
+            <body className={`${Roobert.variable} ${newKansas.variable} ${input.variable} ${inter.variable}`}>
                 <GlobalContextProvider>
                     <Header theme={theme} />
                     <div className={styles.contentWrap}>

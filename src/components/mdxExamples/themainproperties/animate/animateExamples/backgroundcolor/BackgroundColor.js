@@ -1,5 +1,5 @@
 'use client'
-import { motion, motionValue, useTransform } from 'framer-motion'
+import { motionValue, useTransform } from 'framer-motion'
 import ExampleWrapper from '../exampleWrapper/ExampleWrapper'
 import styles from './BackgroundColor.module.scss'
 

@@ -1,0 +1,14 @@
+.wrapper {
+	width: 100%;
+	aspect-ratio: 1;
+	background-color: var(--color-surface-200);
+	border-radius: 2em;
+	overflow: hidden;
+	display: grid;
+	place-items: center;
+	cursor: pointer;
+	span {
+		font-family: var(--font-inter);
+		font-size: var(--fontSize-h1);
+	}
+}

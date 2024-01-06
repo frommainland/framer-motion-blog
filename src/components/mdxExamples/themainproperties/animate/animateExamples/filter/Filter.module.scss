@@ -1,0 +1,18 @@
+.wrapper {
+	width: 100%;
+	aspect-ratio: 1;
+	background-color: var(--color-surface-200);
+	border-radius: 2em;
+	overflow: hidden;
+	display: grid;
+	place-items: center;
+	clip-path: inset(0 round 2em);
+	cursor: pointer;
+	.circle {
+		aspect-ratio: 1;
+		width: 4vw;
+		max-width: 100px;
+		background-color: var(--color-text-100);
+		border-radius: 50%;
+	}
+}

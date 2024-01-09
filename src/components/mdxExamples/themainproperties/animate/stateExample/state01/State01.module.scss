@@ -1,0 +1,76 @@
+.outerFlex {
+	position: relative;
+	width: 100%;
+	height: 400px;
+	border: 1px solid var(--color-surface-200);
+	cursor: none;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 2fr auto;
+	grid-column-gap: 0px;
+	grid-row-gap: 0px;
+
+	.hand {
+		position: absolute;
+		background-color: var(--color-accent-red);
+		border-radius: 2em;
+		width: 2px;
+		height: 16px;
+	}
+	.boxFlex {
+		display: grid;
+		place-items: center;
+		.box {
+			max-width: 400px;
+			max-height: 400px;
+			width: 20%;
+			height: 20%;
+			border: 10px solid var(--color-surface-300);
+			border-radius: 2em;
+		}
+	}
+	.gaugeFlex {
+		display: grid;
+		place-items: center;
+		width: 80%;
+		margin: 0 auto;
+		position: relative;
+		.gauge {
+			display: flex;
+			justify-content: space-between;
+			gap: 4em;
+			width: 100%;
+			height: 80px;
+			p {
+				font-weight: 500;
+				color: var(--color-text-200);
+			}
+		}
+	}
+	.gaugeFlex::before {
+		left: 0;
+		background: linear-gradient(
+			90deg,
+			var(--color-surface-100),
+			hsla(150, 7%, 6%, 0)
+		);
+		position: absolute;
+		z-index: 10;
+		width: 10%;
+		height: 100%;
+		content: '';
+	}
+	.gaugeFlex::after {
+		right: 0;
+		background: linear-gradient(
+			90deg,
+			hsla(150, 7%, 6%, 0),
+			var(--color-surface-100)
+		);
+		position: absolute;
+		z-index: 10;
+		width: 10%;
+		height: 100%;
+		content: '';
+	}
+}

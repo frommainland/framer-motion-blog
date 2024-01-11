@@ -1,0 +1,140 @@
+.outerFlex {
+	position: relative;
+	width: 100%;
+	height: 400px;
+	border: 1px solid var(--color-surface-200);
+	cursor: none;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 2fr auto;
+	grid-column-gap: 0px;
+	grid-row-gap: 0px;
+	clip-path: inset(0);
+	.hand {
+		position: absolute;
+		background-color: var(--color-accent-red);
+		border-radius: 2em;
+		width: 2px;
+		height: 16px;
+	}
+	.boxFlex {
+		display: grid;
+		place-items: center;
+		width: 100%;
+		.box {
+			max-width: 400px;
+			width: 20%;
+			height: 100px;
+			border: 10px solid var(--color-surface-300);
+			border-radius: 2em;
+			display: grid;
+			place-items: center;
+		}
+	}
+	.gaugeFlex {
+		width: 100%;
+		margin: 0 auto;
+		position: relative;
+		.handGradientMask {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 10;
+			background: linear-gradient(
+				90deg,
+				#0e100f 0%,
+				rgba(14, 16, 15, 0.33) 50%,
+				#0e100f 100%
+			);
+		}
+		.gauge {
+			position: relative;
+			width: 200%;
+			height: 14px;
+			padding-bottom: 5em;
+			.cm,
+			.mm {
+				position: absolute;
+				border-left: 3px solid var(--color-text-300);
+				height: 14px;
+				width: 12.5%;
+			}
+
+			.cm:before {
+				position: absolute;
+				bottom: -15px;
+				font-size: var(--fontSize--2);
+			}
+
+			.cm:after {
+				position: absolute;
+				bottom: -15px;
+				right: -12px;
+				font-size: var(--fontSize--2);
+			}
+			.mm {
+				height: 5px;
+			}
+			.mm:nth-of-type(5) {
+				height: 10px;
+			}
+
+			$offset: 90;
+			$offset2: 3;
+			$values: -12, -12, -12, -12, -3, -6, -9, -9;
+			@for $i from 1 through 9 {
+				.cm:nth-of-type(#{$i}) {
+					left: 12.5% * ($i - 1);
+				}
+				.cm:nth-of-type(#{$i}):before {
+					content: '#{$offset * ($i - 5)}';
+				}
+				.mm:nth-of-type(#{$i}) {
+					left: 10% * $i;
+				}
+			}
+
+			@for $i from 1 through length($values) {
+				.cm:nth-of-type(#{$i}):before {
+					left: nth($values, $i) * 1px;
+				}
+			}
+
+			.cm:last-of-type::after {
+				content: '360';
+			}
+			.cm:last-of-type {
+				border-right: 1px var(--color-text-100) solid;
+			}
+		}
+	}
+	// .gaugeFlex::before {
+	// 	left: -12px;
+	// 	background: linear-gradient(
+	// 		90deg,
+	// 		var(--color-surface-100),
+	// 		hsla(150, 7%, 6%, 0)
+	// 	);
+	// 	position: absolute;
+	// 	z-index: 10;
+	// 	width: 65%;
+	// 	height: 200%;
+	// 	content: '';
+	// }
+	// .gaugeFlex::after {
+	// 	top: 0;
+	// 	right: -12px;
+	// 	background: linear-gradient(
+	// 		90deg,
+	// 		hsla(150, 7%, 6%, 0),
+	// 		var(--color-surface-100)
+	// 	);
+	// 	position: absolute;
+	// 	z-index: 10;
+	// 	width: 65%;
+	// 	height: 200%;
+	// 	content: '';
+	// }
+}

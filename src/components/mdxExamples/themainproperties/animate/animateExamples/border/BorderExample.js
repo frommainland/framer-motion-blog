@@ -9,7 +9,7 @@ export default function BorderExample() {
     const [isHover, setIsHover] = React.useState(false)
 
     return (
-        <ExampleWrapper caption='border'>
+        <ExampleWrapper caption='border & drop-shadow'>
             <div className={styles.wrapper} onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)}>
                 <motion.div className={styles.ring}
                     animate={{

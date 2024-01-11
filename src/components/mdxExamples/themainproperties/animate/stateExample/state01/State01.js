@@ -20,7 +20,8 @@ export default function State01() {
     const ref = React.useRef(null)
 
     //long press, div box stuff
-    const [boxRef, { width, height }] = useMeasure();
+    const [boxRef, { boxwidth, height }] = useMeasure();
+
     const [isLongPress, setIsLongPress] = React.useState(false)
     // when long pressed, get mouse position relative left postion percentage by container's width
     const [divScaleX, setDivScaleX] = React.useState(1)
@@ -55,7 +56,8 @@ export default function State01() {
         const childElement = gauge.current;
         const parentTop = parentElement.offsetTop;
         const childTop = childElement.offsetTop;
-        setToGaugeDis(childTop)
+        const childLeft = childElement.offsetLeft;
+        setToGaugeDis({ top: childTop, left: childLeft })
         // const topDistance = childTop - parentTop;
         // console.log('Top Distance:', topDistance);
     }, [])
@@ -102,11 +104,12 @@ export default function State01() {
                         // height: `${circleSize}px`,
                     }}
                     animate={{
-                        top: isLongPress ? toGaugeDis - 8 : mPos.top,
+                        top: isLongPress ? toGaugeDis.top + 2 : mPos.top,
+                        left: isLongPress ? mPos.left + circleSize / 2 : toGaugeDis.left,
                         width: isLongPress ? 2 : 0,
-                        height: isLongPress ? 16 : 0,
+                        height: isLongPress ? 32 : 0,
                     }}
-                    exit={{ top: mPos.top }}
+                    exit={{ top: mPos.top, opacity: 0 }}
                     className={styles.hand} />
                 }
             </AnimatePresence>

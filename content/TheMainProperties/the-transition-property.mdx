@@ -4,4 +4,50 @@ chapter: 'The Main Properties'
 order: 200
 ---
 
-The Transition Property
+# The Transition Property
+
+## Transition options
+
+The options you can play with `transition` are: `duration`, `type`, `ease`, `repeat`, `deplay`, `repeatDelay`. When you `animate` element, the default `duration` is `0.3`, the `type` is `'spring'`.
+
+If you want this default animation, you don't have to specified these options in `transition`, just write down the effect like `animate={{scale: 2}}`.
+
+## duration
+
+You can put only **positive** number for the duration. The rule of thumb for the length of duration is:
+
+-   for hover, fading and so on, `duration` should be `0.1` ~ `0.2`.
+-   for page move, grabbing user attention and so on, `duration` should be `0.3` ~ `0.5`.
+-   for small element animating small changes should be faster.
+-   for large element animating complex changes should be slower.
+-   small element travels more than large element in the same animation duration.
+
+## ease
+
+### spring
+
+The default ease is `'spring'`, which is good for stimulation of physical world. It is like a ball attached to spring and drop it. The animation is bouncy, it will swing back and forth before reach stop position.
+
+### tween
+
+`'tween'` is the same as CSS transitions,
+
+
+<div id='easeTween' >
+| Syntax      | Description |
+| ----------- | ----------- |
+| `ease: "linear"`      | The animation will move at a constant speed.       |
+| `ease: "easeIn"` | Starts slowly and picks up speed. Like a car driving off. |
+|`ease: "easeOut"` | Slows down before stopping, as if the car ran out of gas. |
+| `ease: "easeInOut"` | Picks up speed at the start and slows down at the end. |
+| `ease: "circIn"` | An ease-in with a circular curve. |
+| `ease: "circOut"` | An ease-out with a circular curve. |
+| `ease: "circInOut"` | An ease-in-out with a circular curve. |
+| `ease: "backIn"` | An ease-in that pulls back a bit before moving forward. |
+| `ease: "backOut"` | An ease-out that overshoots a bit. |
+| `ease: "backInOut"` | An ease-in-out pulls back at the start and also overshoots its endpoint. |
+| `ease: "anticipate"` | Just like a back-in-out but without the overshoot at the end. |
+| `ease: [1,-0.65, 0, 1.25]` | A custom Bézier curve. |
+</div>
+
+### inertia

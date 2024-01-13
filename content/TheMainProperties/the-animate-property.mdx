@@ -30,9 +30,11 @@ The updated value assigned to `animate` will smoothly transition the element fro
 
 This will happen instantly when the element is rendered, regardless whether it is within the visible area of page. _If you don't see the animation, check if it is already animated._
 
----
-
 ## What can and cannot be animated
+
+Here is a list of what can and cannot be animated html elements.
+
+Also the SVG attributes can be animated, and it is in another section here.
 
 | Dimensions and position          | status |
 | -------------------------------- | ------ |
@@ -72,264 +74,139 @@ This will happen instantly when the element is rendered, regardless whether it i
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
 | `filter`, `backdropFilter`, `drop-shadow()`, `opacity()`, `brightness()`, `contrast()`, `grayscale()`, `hue-rotate()`,` blur()`, `invert()`, `saturate()`, `sepia()` | ✅     |
 
+Here are more example of animating combined properties together. There are probably more elements you can animate when you work on projects, so give it a go and see the result.
+
 <AnimateExamples />
 
----
+Some CSS values contain more than one value other than `px`, `%` or `#FFF`.
 
-## Transform origin
+For example:
 
-These transforms (scaling, rotating, and skewing) will happen from the element’s transformation origin. By default, this is the center, but you can change that.
+-   `mask-position: 100% 100%`
+-   `border: 1px solid var(--color-surface-300)`
+-   `transform: perspective(750px) translate3d(0px, 0px, -250px) rotateX(27deg) scale(0.9);`
 
-Here I placed the `originY` at the top of the div so that the (x-axis) rotation happens with that edge as the center point.
+So when animate these values, one rule of thumb is keep the initial and animated value the same format.
+If you want to animate the `mask-postion` to `0 0`, you have write it down as `0% 0%`, since the initial value is written in percentage `100% 100%`.
 
-```js
-export function Example() {
-	return (
-		<div>
-			<motion.div
-				style={{
-					width: 150,
-					height: 150,
-					borderRadius: 30,
-					backgroundColor: '#fff',
-					originY: 0,
-				}}
-				animate={{ rotateX: 360 }}
-			/>
-		</div>
-	)
-}
-```
+If you set the intial border with shorthand format `border: 1px solid var(--color-surface-300)`, and only animate border color, it could be either shorthand format `borderColor: 'var(--color-text-300)'`, or in specific format `borderColor: 'var(--color-text-300)'`. Color in framer motion in any formats could be animated, it is amazing easy to convert one to another instead of in the same format.
 
-By the way, I applied some `perspective` to its parent div to make the animation look three-dimensional:
+-   Hex - `#DF1515`
+-   RGB — `rgb(223, 21, 21)`
+-   RGB Alpha— `rgb(223, 21, 21, 1)`
+-   HSL - `hsl(0, 82%, 48%)`
+-   HSB Alpha - `hsl(0, 82%, 48%, 1)`
 
-```js
-export function Example() {
-	return (
-		<div
-			style={{
-				width: '100%',
-				height: '100%',
-				display: 'flex',
-				placeItems: 'center',
-				placeContent: 'center',
-				perspective: 600,
-			}}
-		>
-			<motion.div
-				style={{
-					width: 150,
-					height: 150,
-					borderRadius: 30,
-					backgroundColor: '#fff',
-					originY: 0,
-				}}
-				animate={{ rotateX: 360 }}
-			/>
-		</div>
-	)
-}
-```
+If you want to animate transform properties, you have to follow a specific order. For convenience, transform values are applied in a specific order: translate, scale, rotate, skew. [Framer Motion ↗](https://www.framer.com/motion/component/)
 
----
+Here is an code example of how to animate complex values.
 
-## color
+<ComplexProps />
 
-Just like you can change a div’s `backgroundColor`, you can also animate it. As always, you write the color as a text string, in any of these [CSS color formats](https://developer.mozilla.org/docs/Web/CSS/background-color):
+<Sandbox />
 
--   Hex Code — `#00ff00`
--   Websafe Hex Code — `“#0f0”`
--   RGB Decimal — `“rgb(0, 255, 0)”`
--   RGBA Decimal — `“rgba(0, 255, 0, 1)”` (the last value is ‘alpha’)
--   Hue Saturation Lightness — `“hsl(120, 100%, 50%)”`
--   Hue Saturation Lightness Alpha — `“hsla(120, 100%, 50%, 1)”`
+## Animate dynamic values
+
+Sometimes the animate values you want are dynamic, not like `x: 20`, instead you want it value that can be changed, `mousePosition`, `scrollYPosition` and so on.
+
+So you can listen to these events and register them in a `React.useState()`, and pass the `stateValue` into `animate`.
+
+Of course, you don’t always have to animate an element when it appears. Whatever you pass to `animate` can be saved in a `useState()` so that you can change it.
+
+### Example - long press
+
+Here’s an tracking animation. Everytime you move your mouse, the div will animate `top` and `left` based on you mouse position.
 
 ```js
 export function Example() {
-	return (
-		<div>
-			<motion.div animate={{ backgroundColor: '#ff6347' }} />
-			<motion.div animate={{ backgroundColor: 'hsl(290, 50%, 60%)' }} />
-			<motion.div
-				animate={{ backgroundColor: 'rgba(153, 204, 102, 0.8)' }}
-			/>
-		</div>
-	)
-}
-```
+	// track mousePosition in useState
+	const [mPos, setMPos] = React.useState({ top: 0, left: 0 })
 
-> customized code example
+	function handleMouseMove() {
+		// //
+		//codes that track mouse position change everytime mouse moves
+		// //
+	}
 
-You can also animate between different color formats, like from a HEX to an RGB value.
-
-> **Pro tip**: You can’t animate with [CSS named colors](https://www.w3schools.com/colors/colors_names.asp) like, e.g., ==“Tomato”==.
-
----
-
-## Complex values
-
-Some CSS values are more complex. For example, a CSS `boxShadow` is also written as a string, but this string can contain the shadow’s x- and y-offset, blur, spread, and color.
-
-You can animate all these values simultaneously if you stick to one kind of notation. Take this example:
-
-```js
-export function Example() {
 	return (
 		<motion.div
-			style={{
-				width: 150,
-				height: 150,
-				borderRadius: 30,
-				backgroundColor: '#fff',
-				// Initial shadow
-				boxShadow: '0px -300px 80px 100px rgba(255, 255, 255, .3)',
-			}}
-			initial={{ backgroundColor: '#fff' }}
-			animate={{
-				backgroundColor: '#08f',
-				// Animation
-				boxShadow: '0px 0px 80px 30px #fff',
-			}}
+			animate={{ top: mPos.top, left: mPos.left }}
+			onMouseMove={handleMouseMove}
 		/>
 	)
 }
 ```
 
-Its initial shadow (set on style) is:
+I am looking into animation based on `mousePosition`, then I end up into this animation rabbit hole and add more elements.
 
-```css
-"0px -300px 80px 100px rgba(255, 255, 255, .3)"
-```
+Anyway here it is. Long press on the example below, you can animate the gray box'width by dragging mouse around.
 
-Which stands for:
+<State01 />
 
-`0px` — x-offset
-`-300px` — y-offset
-`80px` — blur radius
-`100px` — spread,
-and `rgba(255, 255, 255, .3)` as the color.
+### Example - pan
 
-… so I had to animate to a shadow defined with the same five values:
+In this pan example, I pass the pan geture to `div`, so it rotates based on the `info.delta.x`.
 
-```
-"0px 0px 80px 30px #fff"
-```
+Framer motion has the definition of an pan gesture, a detailed info is [here ↗](https://www.framer.com/motion/gestures/#pan)
 
-Animating to a shadow written in the shorter ‘just x- and y-offset and color’ form (also [possible in CSS](https://developer.mozilla.org/docs/Web/CSS/box-shadow#Syntax) would not work.
-
-```
-"0px 0px #ffffff"
-```
-
----
-
-## Adding state
-
-Of course, you don’t always have to animate an element when it appears. Whatever you pass to `animate` can be saved in a `useState()` so that you can change it.
-
-### example 1
-
-Here’s an additive animation. `45` is added to the `degrees` state every time you tap, making the div rotate.
+> The pan gesture recognises when a pointer presses down on a component and moves further than 3 pixels. The pan gesture is ended when the pointer is released.
 
 ```js
 export function Example() {
-	const [degrees, setDegrees] = useState(0)
-
-	function add45() {
-		setDegrees(degrees + 45)
-	}
-
-	return <motion.div animate={{ rotate: degrees }} onTap={add45} />
-}
-```
-
-> code example
-
-### example 2
-
-n this second example, the motion div will rotate when you pan it (panning is like dragging, but without the div going anywhere 😉).
-
-Framer Motion’s `onPan()` event returns two things: a common MouseEvent (or TouchEvent) object and a special `PanInfo` object that contains (among other things) a `delta` of points that the pointer moved since the last event.
-
-I named that second object info, so the distance traveled since the last time `onPan()` was called will be in `info.delta.x`.
-
-```js
-export function Example() {
+	// set rotate degrees
 	const [degrees, setDegrees] = useState(0)
 
 	return (
 		<motion.div
 			animate={{ rotate: degrees }}
 			onPan={(_, info) => setDegrees(degrees + info.delta.x)}
-		>
-			{Math.round(degrees)}
-		</motion.div>
+		></motion.div>
 	)
 }
 ```
 
-This `onPan()` event is called continuously, so `delta.x` will contain small values, like `1` point, another point, `-1` point when panning to the left, or often: `0` points. Every time `onPan()` is called, that delta is added to the current number of `degrees` with `setDegrees()`. Thus, when you pan to the right, the div rotates clockwise, and when panning left, counterclockwise.
+The values from `onPan` is continuous, so the `setDegrees` function is always updating the lastest value to the `degrees` variable. you can try `console.log(info.delta.x)` to see the value. When it's position, it means rotate clockwise. When it's negative, it means rotate counter-clockwise.
 
-(JavaScript’s `Math.round()` function converts the decimal value of `degrees` to an integer.)
+The rest of the elements in the example are derivatives from the `degrees` value, such as the distant moving from the bottom `<Rulers>`.
 
----
+Pan on the box below, you can rotate the gray box and red hand will indicate the degees of the rotation. If the rotation is `> 360degrees || < -360degrees`, the value will be mapped back within `[-360degrees, 360degrees]`.
 
-## Multiple properties
+<State02 />
 
-You don’t have to create an useState() for every property you want to animate, you can also put a set of properties in an object (here, it contains values for both scale and rotate).
+## Animate with conditions
 
-```js
-export function Example() {
-	const [animate, setAnimate] = useState({ scale: 1, rotate: 0 })
+Sometimes the animate values you want are conditional, instead of animating the new value at once, it will wait until it meet a condition.
 
-	return (
-		<motion.div
-			animate={animate}
-			onTapStart={() => setAnimate({ scale: 1.25, rotate: 90 })}
-			onTap={() => setAnimate({ scale: 1, rotate: 0 })}
-		/>
-	)
-}
-```
+In the example, the box will `scale` and change `backgroundColor` only it is getting dragged with [ternary operator ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_operator).
 
----
+When dragging is `true`, the `backgroundColor` and `scale` will be 'var(--color-surface-300)' and `0.9`.
 
-## Using `useState()` purely for… state
-
-In the previous examples, we’ve used `useState()` to animate just one property (`scale`) or an object that contains multiple properties (`scale` and `rotate`).
-
-But you can use `useState()` to keep track of just the state. Meaning something like ”Is the switch on or off?” or, in the following example, “Is the box dragged right now?”
-
-> code example
-
-Here we’re switching between two states: dragging or not, yes or no, so we can use a simple Boolean for this.
+When dragging is `false`, the `backgroundColor` and `scale` will be 'var(--color-surface-100)' and `1`.
 
 ```js
 export function Example() {
 	const [dragging, setDragging] = useState(false)
-
 	return (
-		<motion.div
-			animate={{ backgroundColor: dragging ? '#a0f' : '#04f' }}
-			transition={{ duration: 0.5 }}
-		>
 			<motion.div
 				drag
-				dragConstraints={{
-					top: -140,
-					right: 140,
-					bottom: 140,
-					left: -140,
+				dragConstraints={constraintsRef}}
+				animate={{
+					backgroundColor: dragging
+						? 'var(--color-surface-300)'
+						: 'var(--color-surface-100)',
+					scale: dragging ? 0.9 : 1,
 				}}
-				animate={{ scale: dragging ? 1 : 0.8 }}
 				onDragStart={() => setDragging(true)}
 				onDragEnd={() => setDragging(false)}
 			/>
-		</motion.div>
 	)
 }
 ```
 
-The parent’s `backgroundColor` is now set inline, with a ternary operator (a concise way of writing an `if…else` conditional). When `dragging` is true, it will animate to the first color (`“#a0f”`), and when not, it animates to the second color (`“#04f”`).
+<ConditionalAnim />
 
-And the same happens with the draggable div’s `scale`: when `dragging` is `true`, it will be `1`, and when `false`, it’ll be the smaller `0.8`.
+## Trouble Shooting
+
+-   check if the element has `display:inline`, CSS transform such as `scale` won't work on inline elements if its parent is a block element. We could set it to `inline-block`.
+-   check if the element is below the fold. The animation may already finished when you can see it.
+-   check if the syntas is right, most of the properties are the same syntax as css, but few of them is slightly different, in css `transform: 'rotate(45deg)'`, but in animate `rotate: 75`

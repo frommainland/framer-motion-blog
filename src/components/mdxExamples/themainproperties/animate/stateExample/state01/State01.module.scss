@@ -9,7 +9,10 @@
 	grid-template-rows: 2fr auto;
 	grid-column-gap: 0px;
 	grid-row-gap: 0px;
-
+	border-radius: 2em;
+	clip-path: inset(0 round 2em);
+	margin-top: 2em;
+	margin-bottom: 2em;
 	.hand {
 		position: absolute;
 		background-color: var(--color-accent-red);
@@ -35,6 +38,7 @@
 		width: 80%;
 		margin: 0 auto;
 		position: relative;
+		user-select: none;
 		.gauge {
 			display: flex;
 			justify-content: space-between;

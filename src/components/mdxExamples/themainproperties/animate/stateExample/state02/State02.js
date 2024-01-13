@@ -1,11 +1,10 @@
 'use client'
 import React from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { flow } from '@/helper/easing'
 import styles from './State02.module.scss'
 import { useMeasure } from "@uidotdev/usehooks";
 import { range } from '@/utils'
-import { RefreshCcw, ArrowUpCircle } from 'react-feather'
+import { RefreshCcw } from 'react-feather'
 
 
 function mapRange(input, rangeA, rangeB) {
@@ -57,7 +56,6 @@ export default function State02() {
     }
 
     // get gauge width
-
     const gauge = React.useRef(null)
     const [toGaugeDis, setToGaugeDis] = React.useState(null)
     React.useEffect(() => {
@@ -73,10 +71,10 @@ export default function State02() {
     const [isPan, setIsPan] = React.useState(false)
     const [degrees, setDegrees] = React.useState(0)
 
-    function handlePanStart(e) {
+    function handlePanStart() {
         setIsPan(true)
     }
-    function handlePanEnd(e) {
+    function handlePanEnd() {
         setIsPan(false)
     }
 
@@ -103,7 +101,9 @@ export default function State02() {
                     onPanStart={handlePanStart}
                     onPanEnd={handlePanEnd}
                     animate={{ rotate: degrees, scale: isPan ? 0.9 : 1 }}
-                    onPan={(_, info) => setDegrees(degrees + info.delta.x)}
+                    onPan={(_, info) => {
+                        setDegrees(degrees + info.delta.x)
+                    }}
                 >
                     <motion.div animate={{ scale: isPan ? 1 : 0 }} initial={{ scale: 0 }}>
                         <RefreshCcw color="var(--color-surface-300)" size={32} strokeWidth={2} />
@@ -142,8 +142,6 @@ export default function State02() {
                     }}
                     animate={{
                         top: isPan ? toGaugeDis.top - 6 : mPos.top,
-                        // left: isPan ? mPos.left : toGaugeDis.left,
-                        // left: isPan ? handleMoveDis + toGaugeDis.left : toGaugeDis.left,
                         width: isPan ? 2 : 0,
                         height: isPan ? 32 : 0,
                     }}
@@ -168,7 +166,6 @@ export default function State02() {
                     backgroundColor: isPan ? 'var(--color-text-100)' : 'var(--color-surface-200)'
                 }}
             />
-
         </div >
     )
 }

@@ -1,12 +1,14 @@
 'use client'
 import React from 'react'
 import { motion } from 'framer-motion'
-import styles from './DelayExample.module.scss'
+import styles from './Stripes.module.scss'
 import { useMeasure } from '@uidotdev/usehooks'
 import { range } from '@/utils'
 import bezier from 'bezier-easing'
 
-export default function Stripes({ values, wrapRefWidth, isPlay }) {
+export default function Stripes({ values, wrapRefWidth, isPlay, ...rest }) {
+	const { backgroundImage, repeat } = rest
+
 	const EASINGS = {
 		easeIn: [0.42, 0, 1, 1],
 		easeOut: [0, 0, 0.58, 1.0],
@@ -17,6 +19,8 @@ export default function Stripes({ values, wrapRefWidth, isPlay }) {
 		// backIn: [0.6, -0.28, 0.735, 0.045],
 		// backOut: [0.175, 0.885, 0.32, 1.275],
 		// backInOut: [0.68, -0.55, 0.265, 1.55],
+        'custom01':[0.65, 0, 0.35, 1],
+        'custom02':[0.45, 0.1, 0.45, .8],
 		linear: [0, 0, 1, 1],
 	}
 
@@ -105,6 +109,8 @@ export default function Stripes({ values, wrapRefWidth, isPlay }) {
 					transition={{
 						duration: totalTime,
 						ease: curve,
+						repeat: repeat ? Infinity : null,
+                        repeatDelay: singleTime
 					}}
 				/>
 			)}
@@ -112,7 +118,10 @@ export default function Stripes({ values, wrapRefWidth, isPlay }) {
 			<div
 				className={styles.stripeWrap}
 				ref={stripeRef}
-				style={{ backgroundSize: `${gridXPencent}% 100%` }}
+				style={{
+					backgroundSize: `${gridXPencent}% 100%`,
+					backgroundImage,
+				}}
 			>
 				{range(stripeNum).map((_, i) => {
 					const widthPercent = (1 / stripeNum).toFixed(2) * 100
@@ -126,10 +135,14 @@ export default function Stripes({ values, wrapRefWidth, isPlay }) {
 								backgroundColor: values.color,
 							}}
 							initial={{ rotateY: 90 }}
-							animate={{ rotateY: wrapRefWidth ? 90 + 180 : 90 }}
+							animate={{
+								rotateY: wrapRefWidth ? 90 + 180 : 90,
+							}}
 							transition={{
 								duration: singleTime,
 								delay: delayArray[i],
+								repeat: repeat ? Infinity : null,
+								repeatDelay: totalTime,
 							}}
 						></motion.div>
 					)

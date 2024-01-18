@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './DelayExample.module.scss'
+import styles from './Control.module.scss'
 import { Play, RotateCcw } from 'react-feather'
 import { motion } from 'framer-motion'
 
@@ -70,6 +70,7 @@ export default function Control({ values, setValues, ...rest }) {
 
 	return (
 		<form
+			className={styles.delayConfigWrap}
 			onSubmit={(e) => {
 				e.preventDefault()
 			}}

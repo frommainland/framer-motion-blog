@@ -1,0 +1,17 @@
+.wrap {
+	position: relative;
+	width: 100%;
+	aspect-ratio: 1.6;
+	border: 1px solid var(--color-surface-200);
+	border-radius: 2em;
+	margin-top: 2em;
+	margin-bottom: 2em;
+	.positionWrap {
+		width: 100%;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		left: 0;
+        mix-blend-mode: difference;
+	}
+}

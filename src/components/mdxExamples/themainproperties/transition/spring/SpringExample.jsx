@@ -2,7 +2,7 @@
 import React from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import styles from './SpringExample.module.scss'
-import { Heart, Repeat } from 'react-feather'
+import { Heart } from 'react-feather'
 import Field from '@/components/Field'
 import { useDebounce } from '@uidotdev/usehooks'
 

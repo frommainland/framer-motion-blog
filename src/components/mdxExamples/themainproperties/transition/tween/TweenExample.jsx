@@ -96,10 +96,21 @@ function Ball2({ width, curve }) {
 function Tweentype({ curve, index }) {
 	const [ballRef, { width }] = useMeasure()
 	const [parentRef, { width: parentWidth }] = useMeasure()
-	console.log(width)
 	return (
 		<div className={styles.container} ref={parentRef}>
-			<p className={styles.name}>{curve}</p>
+			<motion.p
+				className={styles.name}
+				// some curve will cauese error, because it generates negative blur pixel value
+				animate={{
+					filter: ['blur(0px)', 'blur(5px)', 'blur(0px)'],
+				}}
+				transition={{
+					ease: curve,
+					duration: 1,
+				}}
+			>
+				{curve}
+			</motion.p>
 			<motion.div
 				animate={{ x: parentWidth - width }}
 				transition={{

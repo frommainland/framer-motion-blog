@@ -15,11 +15,15 @@ export default function Gauge({ repeatType, animOptions }) {
 			<div className={styles.meter} ref={ref}>
 				<div className={styles.middleMeterWrap}>
 					<div className={styles.middleMeter}></div>
-					<p>t/2</p>
+					<p>t</p>
+				</div>
+				<div className={styles.endMeterWrap}>
+					<div className={styles.endMeter}></div>
+					<p>2t</p>
 				</div>
 				<motion.div
 					className={styles.meterHand}
-					animate={{ x: [0, width / 2, width] }}
+					animate={{ x: [0, width / 2, width], scale: [1, 1.5, 1] }}
 					transition={{
 						duration: duration * 2,
 						ease: ease,

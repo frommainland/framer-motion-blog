@@ -28,26 +28,137 @@ You can put only **positive** number for the duration. The rule of thumb for the
 
 The default ease is `'spring'`, which is good for stimulation of physical world. It is like a ball attached to spring and drop it. The animation is bouncy, it will swing back and forth before reach stop position.
 
+Here are the default values:
+
+```js
+export function Example() {
+	return (
+		<motion.div
+			animate={{ scale: 200 }}
+			transition={{
+				type: 'spring',
+				stiffness: 100,
+				damping: 10,
+				mass: 1,
+				velocity: 0,
+				restDelta: 0.01,
+				restSpeed: 0.01,
+			}}
+		/>
+	)
+}
+```
+
+You can also use duration-based spring animation, instead of twicking all the settings above, you can simply play with `duration` and `bounce` to achieve similar effect.
+
+```js
+export function Example() {
+	return (
+		<motion.divz
+			animate={{ scale: 200 }}
+			transition={{
+				type: 'spring',
+				duration: 0.8,
+				bounce: 0.25,
+			}}
+		/>
+	)
+}
+```
+
+Here is quick view of how this config values works on the element, change the sliders to see how bouncy it will be, and click the heart to restart the animation.
+
+<SpringExample />
+
 ### tween
 
-`'tween'` is the same as CSS transitions,
+`'tween'` is the same as CSS transitions, the build-in easing curves are:
 
+| Syntax                   | Description                                                              |
+| ------------------------ | ------------------------------------------------------------------------ |
+| `ease: "linear"`         | The animation will move at a constant speed.                             |
+| `ease: "easeIn"`         | Starts slowly and picks up speed. Like a car driving off.                |
+| `ease: "easeOut"`        | Slows down before stopping, as if the car ran out of gas.                |
+| `ease: "easeInOut"`      | Picks up speed at the start and slows down at the end.                   |
+| `ease: "circIn"`         | An ease-in with a circular curve.                                        |
+| `ease: "circOut"`        | An ease-out with a circular curve.                                       |
+| `ease: "circInOut"`      | An ease-in-out with a circular curve.                                    |
+| `ease: "backIn"`         | An ease-in that pulls back a bit before moving forward.                  |
+| `ease: "backOut"`        | An ease-out that overshoots a bit.                                       |
+| `ease: "backInOut"`      | An ease-in-out pulls back at the start and also overshoots its endpoint. |
+| `ease: "anticipate"`     | Just like a back-in-out but without the overshoot at the end.            |
+| `ease: [1,-0.65,0,1.25]` | A custom Bézier curve.                                                   |
 
-<div id='easeTween' >
-| Syntax      | Description |
-| ----------- | ----------- |
-| `ease: "linear"`      | The animation will move at a constant speed.       |
-| `ease: "easeIn"` | Starts slowly and picks up speed. Like a car driving off. |
-|`ease: "easeOut"` | Slows down before stopping, as if the car ran out of gas. |
-| `ease: "easeInOut"` | Picks up speed at the start and slows down at the end. |
-| `ease: "circIn"` | An ease-in with a circular curve. |
-| `ease: "circOut"` | An ease-out with a circular curve. |
-| `ease: "circInOut"` | An ease-in-out with a circular curve. |
-| `ease: "backIn"` | An ease-in that pulls back a bit before moving forward. |
-| `ease: "backOut"` | An ease-out that overshoots a bit. |
-| `ease: "backInOut"` | An ease-in-out pulls back at the start and also overshoots its endpoint. |
-| `ease: "anticipate"` | Just like a back-in-out but without the overshoot at the end. |
-| `ease: [1,-0.65, 0, 1.25]` | A custom Bézier curve. |
-</div>
+<TweenExample />
 
 ### inertia
+
+The inertia behavior type applies physics such as friction or gravity to specified elements. It only decelerates the element's speed like sport curling. There is only setting: `velocity`. The higher `velocity` is, the more the output is. You can't set the `duration` for `inertia` animation, unlike `spring` animation.
+
+Note, even I just animate the `y` to `1`, it will ignore it, the animate distance(output) is only decided by `velocity`.
+
+```js
+export function Example() {
+	return (
+		<motion.div
+			animate={{
+				y: 1,
+			}}
+			transition={{
+				type: 'inertia',
+				velocity: 100,
+			}}
+		></motion.div>
+	)
+}
+```
+
+<InertiaPower />
+
+## repeat
+
+Add a `repeat` value to make an animation run more than once. For instance, with a repeat of `2`, the animation will run thrice (two extra after the initial one).
+
+Or you set it to `Infinity` and have it repeat till the end of time.
+
+## delay
+
+With `delay`, you add a pause before the start of the animation (also in seconds). It will only delay the beginning of the initial animation and not insert pauses between the repetitions.
+
+`delay` also can be dynamic value, you can use `map` function to have more control about the `delay` value. Something like:
+
+```js
+transition={{
+	delay: 1 * index,
+    duration: 0.5,
+}}
+```
+
+In the example below, you can use cubic-bezier curve to make the `delay` more organic, by caculating the `y` position to get `x` value, see more details [bezier-easing ↗](https://github.com/gre/bezier-easing)
+
+<DelayExample />
+
+<DelayMix />
+
+## repeatDelay
+
+You can also add a pause between the repetitions of a repeat, with another setting: `repeatDelay`. It will NOT work if you conside moving element from point A to B and use `repeatType: reverse` to move element from point B to A as a whole. It will see the example as two seperate animation, so it will delay twice.
+
+## repeatType
+
+Your animation can repeat in a few different ways. The default repeatType (in the former examples) is "loop": the animation will just start over. The other two, "mirror" and "reverse", make it go back and forth.
+| Syntax | Description |
+| ------------------------ | ------------------------------------------------------------------------ |
+| `loop` | The default type. The animation simply runs again. |
+| `mirror` | Flips the from and to values. The animation runs forward, backward, then forward again, etc. (This was called flip in earlier versions.) |
+| `reverse` | Does the same but also reverses the animation curve. So when the animation starts slowly, the reverse animation will end slowly. |
+
+The example below using `ease: easeIn`, so when the `repeatType:reverse`, the second half animation: shrinking all element back, will use `ease: easeOut`. Interesting article about[ Reversing an Easing Curve ↗](https://css-tricks.com/reversing-an-easing-curve/)
+
+<RepeatMix />
+
+## transition per properties
+
+The transition property defines how all the properties will animate. However, you can override that global setting and provide distinct values for one or more properties,
+
+<TransitionPerProp />

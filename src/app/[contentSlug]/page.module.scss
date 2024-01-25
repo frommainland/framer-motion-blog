@@ -4,6 +4,9 @@
 	max-width: 80ch;
 	margin: 0 auto;
 	margin-bottom: 6em;
+	*::selection {
+		background: var(--color-accent-green);
+	}
 	h1 {
 		font-size: var(--fontSize-h1);
 		text-transform: capitalize;
@@ -16,17 +19,20 @@
 	}
 	h2 {
 		font-size: var(--fontSize-h2);
-		margin-top: 1.25em;
-		margin-bottom: 1em;
+		margin-top: 1.875em;
+		margin-bottom: 0.5em;
 		line-height: 1.33;
 		code {
 			font-size: var(--fontSize-h2);
 			font-family: var(--font-kansas);
 		}
 	}
+	h2 + h3 {
+		margin-top: 0.6em;
+	}
 	h3 {
 		font-size: var(--fontSize-h3);
-		margin-top: 1.6em;
+		margin-top: 2.5em;
 		margin-bottom: 0.6em;
 		line-height: 1.6;
 		code {
@@ -89,6 +95,7 @@
 		width: 100%;
 		margin-bottom: 2em;
 		border-collapse: collapse;
+		// table-layout: auto;
 		thead {
 			border-bottom: 1px solid var(--color-surface-300);
 			tr {
@@ -102,18 +109,44 @@
 		tbody {
 			tr {
 				border-bottom: 1px solid var(--color-surface-200);
-				td:first-child {
-					width: 90%;
-				}
+				// td:first-child {
+				// 	width: 33%;
+				// }
 				td {
-					padding: 0.5em 0.5em 0.5em 0px;
+					padding: 1em 1em 1em 0px;
 					font-size: var(--fontSize-0);
-					line-height: 2.25;
+					// line-height: 2.25;
+					line-height: 1.75;
 				}
-				td:last-child {
-					text-align: center;
-				}
+				// td:last-child {
+				// 	text-align: center;
+				// }
 			}
 		}
+	}
+
+	blockquote {
+		border-left: 0.25em solid var(--color-text-300);
+		margin: 1.5em 1em;
+		padding: 0.5em 1em;
+	}
+	blockquote p {
+		display: inline;
+	}
+	a {
+		color: var(--color-accent-red);
+	}
+	a {
+		background: linear-gradient(
+				0deg,
+				var(--color-accent-blue),
+				var(--color-accent-blue),
+			)
+			no-repeat right bottom / 0 100%;
+		transition: background-size 250ms;
+	}
+	a:where(:hover, :focus-visible) {
+		background-size: 100% 100%;
+		background-position-x: left;
 	}
 }

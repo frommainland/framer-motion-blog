@@ -4,25 +4,50 @@ chapter: 'The Main Properties'
 order: 300
 ---
 
-Just like you can change a div’s `backgroundColor`, you can also animate it. As always, you write the color as a text string, in any of these [CSS color formats](https://developer.mozilla.org/docs/Web/CSS/background-color):
+# Initial
 
--   Hex Code — `#00ff00`
--   Websafe Hex Code — `“#0f0”`
--   RGB Decimal — `“rgb(0, 255, 0)”`
--   RGBA Decimal — `“rgba(0, 255, 0, 1)”` (the last value is ‘alpha’)
--   Hue Saturation Lightness — `“hsl(120, 100%, 50%)”`
--   Hue Saturation Lightness Alpha — `“hsla(120, 100%, 50%, 1)”`
+## Another way of setting the starting state
+
+Sometimes, setting `initial` is a quick way of animating elements. For the example on the left, if I want to animating an element from bottom to center, I need its `y` position as start point, and have to figure out the distance to center. While if I use flex to position the div in the `animate` config, then I only need to assign `y` value for the start point.
+
+Consider `initial` is another way of writing css for element's original state, and it will override the css, so `animate` is always the end state of initial instead of css.
+
+On the right, the example use `intial` to shrink the div to `0` first, so I don't have to calculate the layout change of scale animation.
 
 ```js
-export function Example() {
-	return (
-		<div>
-			<motion.div animate={{ backgroundColor: '#ff6347' }} />
-			<motion.div animate={{ backgroundColor: 'hsl(290, 50%, 60%)' }} />
+// left example with inital y
+;<motion.div
+	className={styles.item}
+	initial={{ y: 200, scale: 0.5 }}
+	animate={{ y: 0, scale: 1 }}
+	transition={{
+		duration: 1,
+	}}
+></motion.div>
+
+// right example with inital scaleY
+{
+	range(3).map((item) => {
+		return (
 			<motion.div
-				animate={{ backgroundColor: 'rgba(153, 204, 102, 0.8)' }}
-			/>
-		</div>
-	)
+				className={styles.singleStripe}
+				key={item}
+				initial={{ scaleY: 0, originY: 1 }}
+				animate={{ scaleY: 1 }}
+				transition={{
+					delay: 0.4 * item,
+					duration: 0.4,
+				}}
+			></motion.div>
+		)
+	})
 }
 ```
+
+<Initial />
+
+### Suppressing initial animations
+
+> If a motion component is set to `initial={false}`, it'll start in the state defined in animate. But sometimes, for instance a chatbox or a slideshow, we only want to animate in new components, that are added after the initial render. By setting `initial={false}` on `AnimatePresence`, components present when `AnimatePresence` first loads will start in their animate state. Only components that enter after this initial render will animate in.
+
+This is official doc explanation from framer motion, and the `inital={false}` is mostly used in `AnimatePresence`, so I will show example in there.

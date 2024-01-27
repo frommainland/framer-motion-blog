@@ -14,8 +14,7 @@ import TweenExample from "@/components/mdxExamples/themainproperties/transition/
 import InertiaPower from "@/components/mdxExamples/themainproperties/transition/inertia/inertiaPower/index";
 import RepeatMix from "@/components/mdxExamples/themainproperties/transition/repeatMix/index";
 import TransitionPerProp from "@/components/mdxExamples/themainproperties/transition/transitionPerProp/index";
-
-
+import TransitionReset from "@/components/mdxExamples/themainproperties/transition/transitionReset";
 
 const mdxMapper = {
     pre: CodeSnippet,
@@ -35,6 +34,7 @@ const mdxMapper = {
     InertiaPower,
     RepeatMix,
     TransitionPerProp,
+    TransitionReset,
 }
 
 export default mdxMapper

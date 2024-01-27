@@ -159,6 +159,80 @@ The example below using `ease: easeIn`, so when the `repeatType:reverse`, the se
 
 ## transition per properties
 
-The transition property defines how all the properties will animate. However, you can override that global setting and provide distinct values for one or more properties,
+The transition property defines how all the properties will animate. However, you can assign distinct values for one or more properties by assigning new values inside the `transition` like this:
+
+```js
+export function Example() {
+	return (
+		<motion.div
+			animate={{
+				x: 100,
+				y: 200,
+			}}
+			transition={{
+				duration: 1,
+				repeat: Infinity,
+				ease: easeIn,
+				repeatType: 'reverse',
+				y: {
+					delay: 1,
+					duration: 2,
+					ease: easeOut,
+				},
+			}}
+		/>
+	)
+}
+```
+
+It turns out when you apply diffrent easing curves on `x` and `y` value, the element will go straight to the end point, instead the path will bend. Try the example below to see how easings effect the path.
 
 <TransitionPerProp />
+
+## transition reset
+
+Go try hover the two rotate divs, you will see without transition reset, the `whileHover` animation will carry over to `rotate` animation, because the transition is shared between `animate` and `whileHover`.
+
+<TransitionReset />
+
+To solve this, you have to specify `transition` for `animate`, so the 'globale' transition is always be default transition. I don't specify `transition` for `whileHover`, so `transition` for `whileHover` is default, not null.
+
+```js
+// without reset transition
+export function Example() {
+	return (
+		<motion.div
+			animate={{
+				rotate: 360,
+			}}
+			transition={{
+				duration: 2,
+				repeat: Infinity,
+			}}
+			whileHover={{
+				backgroundColor: 'var(--color-accent-yellow)',
+				scale: 1.2,
+			}}
+		/>
+	)
+}
+
+// with reset transition
+export function Example() {
+	return (
+		<motion.div
+			animate={{
+				rotate: 360,
+				transition: {
+					duration: 2,
+					repeat: Infinity,
+				},
+			}}
+			whileHover={{
+				backgroundColor: 'var(--color-accent-yellow)',
+				scale: 1.2,
+			}}
+		/>
+	)
+}
+```

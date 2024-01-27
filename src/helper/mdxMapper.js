@@ -12,7 +12,7 @@ import DelayMix from "@/components/mdxExamples/themainproperties/transition/dela
 import SpringExample from "@/components/mdxExamples/themainproperties/transition/spring/index";
 import TweenExample from "@/components/mdxExamples/themainproperties/transition/tween/index";
 import InertiaPower from "@/components/mdxExamples/themainproperties/transition/inertia/inertiaPower/index";
-import RepeatMix from "@/components/mdxExamples/themainproperties/transition/transitionPerProp/repeatMix/index";
+import RepeatMix from "@/components/mdxExamples/themainproperties/transition/repeatMix/index";
 import TransitionPerProp from "@/components/mdxExamples/themainproperties/transition/transitionPerProp/index";
 import TransitionReset from "@/components/mdxExamples/themainproperties/transition/transitionReset";
 import Initial from "@/components/mdxExamples/themainproperties/initial";

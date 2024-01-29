@@ -16,6 +16,7 @@ import RepeatMix from "@/components/mdxExamples/themainproperties/transition/rep
 import TransitionPerProp from "@/components/mdxExamples/themainproperties/transition/transitionPerProp/index";
 import TransitionReset from "@/components/mdxExamples/themainproperties/transition/transitionReset";
 import Initial from "@/components/mdxExamples/themainproperties/initial";
+
 const mdxMapper = {
     pre: CodeSnippet,
     // animation mdx components

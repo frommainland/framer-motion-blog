@@ -3,9 +3,11 @@ import React from 'react'
 import styles from './page.module.scss'
 import { loadBlogPost } from '@/helper/file-helpers';
 import { MDXRemote } from 'next-mdx-remote/rsc';
-import mdxMapper from '@/helper/mdxMapper';
 import { BLOG_TITLE } from '@/constants';
 import remarkGfm from 'remark-gfm'
+
+import mdxMapper from '@/helper/mdxMapper';
+import motionValueExampleMapper from '@/helper/motionValueExampleMapper';
 
 const options = {
     mdxOptions: {
@@ -14,6 +16,7 @@ const options = {
     }
 }
 
+const combinedMdxMapper = { ...mdxMapper, ...motionValueExampleMapper }
 
 function formatName(name) {
     let trimmedString = name.trim();
@@ -54,7 +57,7 @@ const ContentPage = async ({ params, searchParams }) => {
 
     return (
         <div className={styles.layoutWrap}>
-            <MDXRemote source={content} components={mdxMapper} options={options} />
+            <MDXRemote source={content} components={combinedMdxMapper} options={options} />
         </div>
     )
 }

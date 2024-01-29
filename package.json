@@ -33,6 +33,7 @@
     "the-new-css-reset": "^1.11.2"
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.5.3",
     "eslint": "^8.55.0",
     "eslint-config-next": "14.0.4"
   }

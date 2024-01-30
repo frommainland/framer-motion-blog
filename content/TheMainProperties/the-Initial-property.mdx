@@ -16,14 +16,14 @@ On the right, the example use `intial` to shrink the div to `0` first, so I don'
 
 ```js
 // left example with inital y
-;<motion.div
+<motion.div
 	className={styles.item}
 	initial={{ y: 200, scale: 0.5 }}
 	animate={{ y: 0, scale: 1 }}
 	transition={{
 		duration: 1,
 	}}
-></motion.div>
+/>
 
 // right example with inital scaleY
 {
@@ -38,7 +38,7 @@ On the right, the example use `intial` to shrink the div to `0` first, so I don'
 					delay: 0.4 * item,
 					duration: 0.4,
 				}}
-			></motion.div>
+			/>
 		)
 	})
 }

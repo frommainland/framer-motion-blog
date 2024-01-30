@@ -5,7 +5,6 @@ import styles from './CodeSnippet.module.scss'
 Code.theme = "dark-plus"
 
 function CodeSnippet(props) {
-    // return <Code {...props} className={styles.wrapper}/>;
     return <Code {...props} className={styles.wrapper} />;
 }
 

@@ -1,18 +1,19 @@
-"use client";
-import React from "react";
-import styles from "./MotionValueSlider.module.scss";
-import { ChevronLeft, ChevronRight } from "react-feather";
-import { motion, useMotionValue, useTransform } from "framer-motion";
-import { useMeasure } from "@uidotdev/usehooks";
+'use client'
+import React from 'react'
+import styles from './MotionValueSlider.module.scss'
+import { ChevronLeft, ChevronRight } from 'react-feather'
+import { motion, useMotionValue, useTransform } from 'framer-motion'
+import { useMeasure } from '@uidotdev/usehooks'
 
 export default function MotionValueSlider() {
-	const [ref, { width, height }] = useMeasure();
-	const handleSize = 60;
-	const x = useMotionValue(0);
-	const leftPanelWidth = useTransform(() => width / 2 + x.get());
-	const rightPanelWidth = useTransform(() => width / 2 - x.get());
-	const leftScale = useTransform(x, [-width / 2, 0, width / 2], [0.5, 1, 2]);
-	const rightScale = useTransform(x, [-width / 2, 0, width / 2], [2, 1, 0.5]);
+	const [ref, { width, height }] = useMeasure()
+	const handleSize = 60
+	const x = useMotionValue(0)
+	const leftPanelWidth = useTransform(() => width / 2 + x.get())
+	const rightPanelWidth = useTransform(() => width / 2 - x.get())
+	const leftScale = useTransform(x, [-width / 2, 0, width / 2], [0.5, 1, 2])
+	const rightScale = useTransform(x, [-width / 2, 0, width / 2], [2, 1, 0.5])
+
 	return (
 		<div className={styles.wrap}>
 			<div className={styles.sliderWrap} ref={ref}>
@@ -59,5 +60,5 @@ export default function MotionValueSlider() {
 				</motion.div>
 			</div>
 		</div>
-	);
+	)
 }

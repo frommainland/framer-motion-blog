@@ -1,0 +1,95 @@
+.wrap {
+    position: relative;
+    width: 100%;
+    // aspect-ratio: 1;
+    border: 1px solid var(--color-surface-200);
+    border-radius: 2em;
+    margin-top: 2em;
+    padding: 2em;
+
+    .containner {
+        display: flex;
+        gap: 3.75em;
+        justify-content: center;
+
+        .itemsWrap {
+            display: flex;
+            flex-direction: column;
+            gap: 2em;
+
+            .item {
+                display: flex;
+                gap: .5em;
+                flex-direction: column;
+                align-items: center;
+
+                .number {
+                    width: 100px;
+                    aspect-ratio: 1;
+                    border: 1px solid var(--color-surface-200);
+                    display: grid;
+                    place-items: center;
+                    border-radius: 22px;
+                    font-size: var(--fontSize-h2);
+                    color: var(--color-text-100);
+                }
+
+                .variant1 {
+                    background-image: linear-gradient(var(--color-surface-200) 1px, transparent 1px), linear-gradient(to right, var(--color-surface-200) 1px, var(--color-surface-100) 1px);
+                    background-size: 20px 20px;
+                }
+
+                .variant2 {
+                    background-image: repeating-linear-gradient(45deg, var(--color-surface-200) 25%, transparent 25%, transparent 75%, var(--color-surface-200) 75%, var(--color-surface-200)), repeating-linear-gradient(45deg, var(--color-surface-200) 25%, var(--color-surface-100) 25%, var(--color-surface-100) 75%, var(--color-surface-200) 75%, var(--color-surface-200));
+                    background-position: 0 0, 10px 10px;
+                    background-size: 20px 20px;
+                }
+
+                .variant3 {
+                    background-color: var(--color-surface-100);
+                    background-size: 10px 10px;
+                    background-image: repeating-linear-gradient(45deg, var(--color-surface-200) 0, var(--color-surface-200) 1px, var(--color-surface-100) 0, var(--color-surface-100) 50%);
+                }
+
+                p {
+                    color: var(--color-text-300);
+                    margin-bottom: 0;
+                    font-weight: 500;
+                    font-size: var(--fontSize-0);
+                }
+            }
+        }
+
+        .handleWrap {
+            height: auto;
+            width: 60px;
+            // border: 1px dashed var(--color-surface-300);
+            border-radius: .5em;
+            position: relative;
+
+            .handle {
+                width: 100%;
+                background-color: var(--color-surface-300);
+                border-radius: .5em;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                z-index: 3;
+            }
+
+            .line {
+                width: 2px;
+                height: 100%;
+                background-color: var(--color-surface-300);
+                position: absolute;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 2;
+            }
+        }
+    }
+
+}

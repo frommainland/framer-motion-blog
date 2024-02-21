@@ -3,6 +3,11 @@ import SetMotionValue from "@/components/mdxExamples/motionValue/motionValueBasi
 import ShowMotionValue from "@/components/mdxExamples/motionValue/motionValueBasic/ShowMotionValue/";
 import MotionValueInState from "@/components/mdxExamples/motionValue/motionValueBasic/MotionValueInState";
 import MotionValueSlider from "@/components/mdxExamples/motionValue/motionValueBasic/MotionValueSlider";
+import UseStateSlider from "@/components/mdxExamples/motionValue/motionValueBasic/UseStateSlider/";
+import BasicUseTransform from "@/components/mdxExamples/motionValue/useTransform/basicUseTransform";
+import OutputFormat from "@/components/mdxExamples/motionValue/useTransform/OutputFormat";
+import AppleWatchDock from "@/components/mdxExamples/motionValue/useTransform/AppleWatchDock";
+import CursorTrack from "@/components/mdxExamples/motionValue/useTransform/CursorTrack";
 
 const motionValueExampleMapper = {
     InjectMotionValue,
@@ -10,6 +15,11 @@ const motionValueExampleMapper = {
     ShowMotionValue,
     MotionValueInState,
     MotionValueSlider,
+    UseStateSlider,
+    BasicUseTransform,
+    OutputFormat,
+    AppleWatchDock,
+    CursorTrack,
 }
 
 export default motionValueExampleMapper

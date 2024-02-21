@@ -1,3 +1,4 @@
 {
-    "workbench.tree.enableStickyScroll": true
+    "workbench.tree.enableStickyScroll": true,
+    "typescript.tsdk": "node_modules/typescript/lib"
 }

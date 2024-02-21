@@ -1,0 +1,22 @@
+.wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 2;
+    border: 1px solid var(--color-surface-200);
+    border-radius: 2em;
+    margin-top: 2em;
+    padding: 2em;
+    background-image: radial-gradient(#42433D 1px, #0E100F 1px);
+    background-size: 20px 20px;
+    display: grid;
+    place-content: center;
+
+    .pad {
+        width: 150px;
+        aspect-ratio: 1;
+        border: .25em solid var(--color-surface-200);
+        border-radius: 2em;
+        background-position: 0 0, 40px 40px;
+        background-size: 80px 80px;
+    }
+}

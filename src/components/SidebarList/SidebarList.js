@@ -6,6 +6,7 @@ import styles from "./SidebarList.module.scss";
 import { motion } from 'framer-motion'
 
 // turn mdx file 'title: an-example-here' to 'An Example Here'
+// deprecated, like 'title: useTransform hook' isnt suitable for this func. 
 function titleCase(str) {
     const words = str.split(/[-_]/);
     const titleCasedWords = words.map(word => {
@@ -26,7 +27,8 @@ export function SidebarList({ title, content, isActive, setIsActive }) {
             <ul>
                 {content?.map((item) => {
                     const href = `/${item.slug}`;
-                    const titledCase = titleCase(item.title)
+                    {/* const titledCase = titleCase(item.title) */ }
+                    const titledCase = item.title
                     return (
                         <motion.li
                             key={item.slug}

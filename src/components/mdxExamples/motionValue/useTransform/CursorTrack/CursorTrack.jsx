@@ -14,7 +14,6 @@ export default function CursorTrack() {
 		const rect = e.currentTarget.getBoundingClientRect()
 		x.set(e.clientX - rect.left)
 		y.set(e.clientY - rect.top)
-		console.log(x.current)
 	}
 
 	const handleOut = () => {

@@ -39,7 +39,7 @@ export default function CursorTrack() {
 		[0, calcHypotenuse(width / 2, height / 2)],
 		[
 			'repeating-linear-gradient(45deg, #42433D 25%, transparent 25%, transparent 75%, #42433D 75%, #42433D), repeating-linear-gradient(45deg, #42433D 25%, #0E100F 25%, #0E100F 75%, #42433D 75%, #42433D)',
-			'repeating-linear-gradient(45deg, #0e100f 25%, transparent 25%, transparent 75%, #0e100f 75%, #0e100f), repeating-linear-gradient(45deg, #0e100f 25%, #0E100F 25%, #0E100F 75%, #0e100f 75%, #0e100f)',
+			'repeating-linear-gradient(45deg, #52EFCC 25%, transparent 25%, transparent 75%, #52EFCC 75%, #52EFCC), repeating-linear-gradient(45deg, #52EFCC 25%, #0E100F 25%, #0E100F 75%, #52EFCC 75%, #52EFCC)',
 		]
 	)
 

@@ -1,0 +1,70 @@
+.wrap {
+    position: relative;
+    width: 100%;
+    border: 1px solid var(--color-surface-200);
+    margin-top: 2em;
+    margin-bottom: 2em;
+    background-image: radial-gradient(#42433D 1px, #0E100F 1px);
+    background-size: 20px 20px;
+    overflow-y: auto;
+
+    .box {
+        width: 100px;
+        aspect-ratio: 1;
+        border: 1px solid var(--color-surface-200);
+        background-image: linear-gradient(#2C2D29 2px, transparent 2px), linear-gradient(to right, #2C2D29 2px, #0E100F 2px);
+        background-size: 20px 20px;
+        position: absolute;
+        top: 400px;
+        display: grid;
+        place-content: center;
+
+        .startEle {
+            color: var(--color-accent-purple);
+            position: absolute;
+            right: -100px;
+            font-size: var(--fontSize--1);
+            font-family: var(--font-roobert);
+            width: 100%;
+            height: 1px;
+            background-color: var(--color-text-300);
+        }
+
+        .endEle {
+            color: var(--color-accent-yellow);
+            position: absolute;
+            right: -100px;
+            font-size: var(--fontSize--1);
+            font-family: var(--font-roobert);
+            width: 100%;
+            height: 1px;
+            background-color: var(--color-text-300);
+        }
+    }
+
+
+
+    .sliderWrap {
+        position: sticky;
+        top: 100px;
+        width: 15%;
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        margin-left: 2em;
+    }
+
+}
+
+.wrap::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+.wrap::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px var(--color-surface-100);
+}
+
+.wrap::-webkit-scrollbar-thumb {
+    background-color: var(--color-surface-200);
+    border-radius: 100rem;
+}

@@ -33,6 +33,7 @@ function Box({
 			`${startElement} ${startViewport}`,
 			`${endElement} ${endViewport}`,
 		],
+		layoutEffect: false,
 	})
 
 	const [scrollV, setScrollV] = React.useState(0)

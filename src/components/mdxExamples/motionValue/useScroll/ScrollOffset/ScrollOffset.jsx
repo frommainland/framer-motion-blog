@@ -33,6 +33,7 @@ function Box({
 			`${endElement} ${endViewport}`,
 		],
 		// offset: ['end end', 'start start'],
+        layoutEffect: false
 	})
 
 	const [progress, setProgress] = React.useState(0)
@@ -74,6 +75,7 @@ function Box2({
 			`${startElement} ${startViewport}`,
 			`${endElement} ${endViewport}`,
 		],
+        layoutEffect: false
 	})
 
 	const [progress, setProgress] = React.useState(0)

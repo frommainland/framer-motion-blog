@@ -8,6 +8,10 @@ import BasicUseTransform from "@/components/mdxExamples/motionValue/useTransform
 import OutputFormat from "@/components/mdxExamples/motionValue/useTransform/OutputFormat";
 import AppleWatchDock from "@/components/mdxExamples/motionValue/useTransform/AppleWatchDock";
 import CursorTrack from "@/components/mdxExamples/motionValue/useTransform/CursorTrack";
+import UseScrollBasic from "@/components/mdxExamples/motionValue/useScroll/useScrollBasic";
+import ScrollOffset from "@/components/mdxExamples/motionValue/useScroll/ScrollOffset";
+import OffsetConfig from "@/components/mdxExamples/motionValue/useScroll/OffsetConfig";
+import TextRepeateScroll from "@/components/mdxExamples/motionValue/useScroll/TextRepeateScroll";
 
 const motionValueExampleMapper = {
     InjectMotionValue,
@@ -20,6 +24,10 @@ const motionValueExampleMapper = {
     OutputFormat,
     AppleWatchDock,
     CursorTrack,
+    UseScrollBasic,
+    ScrollOffset,
+    OffsetConfig,
+    TextRepeateScroll,
 }
 
 export default motionValueExampleMapper

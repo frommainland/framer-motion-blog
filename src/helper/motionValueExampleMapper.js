@@ -12,6 +12,9 @@ import UseScrollBasic from "@/components/mdxExamples/motionValue/useScroll/useSc
 import ScrollOffset from "@/components/mdxExamples/motionValue/useScroll/ScrollOffset";
 import OffsetConfig from "@/components/mdxExamples/motionValue/useScroll/OffsetConfig";
 import TextRepeateScroll from "@/components/mdxExamples/motionValue/useScroll/TextRepeateScroll";
+import AnimateMotionValueBasic from "@/components/mdxExamples/motionValue/AnimateMotionValue/AnimateMotionValueBasic";
+import AnimateMotionValueOptions from "@/components/mdxExamples/motionValue/AnimateMotionValue/AnimateMotionValueOptions";
+import SpringySlider from "@/components/mdxExamples/motionValue/AnimateMotionValue/SpringySlider";
 
 const motionValueExampleMapper = {
     InjectMotionValue,
@@ -28,6 +31,9 @@ const motionValueExampleMapper = {
     ScrollOffset,
     OffsetConfig,
     TextRepeateScroll,
+    AnimateMotionValueBasic,
+    AnimateMotionValueOptions,
+    SpringySlider,
 }
 
 export default motionValueExampleMapper

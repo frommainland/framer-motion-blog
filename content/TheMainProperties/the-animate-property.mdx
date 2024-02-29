@@ -105,6 +105,28 @@ Here is an code example of how to animate complex values.
 
 <Sandbox />
 
+### Animate css variable?
+<AnimateCSSVariable />
+
+There is quite interesting example from [codesandbox ↗](https://codesandbox.io/p/sandbox/framer-motion-usespring-example-0ctgom?file=/src/index.tsx:57,47)
+
+You can animate something like this:
+```js
+<motion.div
+    className={styles.boxesWrap}
+    initial={{ '--rotate': '25%' }}
+    animate={{ '--rotate': ['25%', '-54%', '25%'] }}
+    transition={{ duration: 6, repeat: 'Infinity', repeatDelay: 1 }}>
+</motion.div>                
+```
+Now the `--rotate` because `var(--rotate)`, you can use it in your styles. 
+
+```js
+const diagnalDirection = (row + column) * 6
+<div style={{ backgroundColor: `hsl(70, 5%, calc(var(--rotate) + ${diagnalDirection}%))` }}/>
+``
+
+
 ## Animate dynamic values
 
 Sometimes the animate values you want are dynamic, not like `x: 20`, instead you want it value that can be changed, `mousePosition`, `scrollYPosition` and so on.

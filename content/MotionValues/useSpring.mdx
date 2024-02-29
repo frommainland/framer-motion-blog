@@ -1,0 +1,49 @@
+---
+title: 'The useSpring Hook'
+chapter: 'Motion Values'
+order: 120
+---
+
+# Transform motion value by useSpring
+Similiar as `useTransform()`, `useSpring()` also creates motion values with a spring animation.
+
+You can create it like:
+
+```js
+const x = useSpring(0)
+```
+
+Or you can convert values from `useTransform()` like
+
+```js
+const x = useTransform(0)
+const xSpring = useSpring(x)
+```
+
+Know that `useSpring()` only accepts default spring settings (so no duration-based spring settings like duration and bounce).
+
+```js
+const x = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+})
+```
+
+## Draggable Item
+This example is originally from [codesandbox ↗](https://codesandbox.io/p/sandbox/framer-motion-usespring-example-0ctgom?file=/src/index.tsx), and I made some tweaks.
+
+The solution is manage each div's spring config based on the distance to the dragged div. So does the scale. I have not figured out using motion value as scale to manipulate the animation and calculate the right mouse positon after `onDragEnd`.
+```js
+const rowDif = (activeItem.x - row) ** 2
+const columnDif = (activeItem.y - column) ** 2
+const dis = Math.sqrt(rowDif + columnDif)
+
+const springConfig = {
+    stiffness: Math.max(1000 - dis * 120, 0),
+    damping: 20 + dis * 5,
+}
+```
+
+
+<DraggableItem />

@@ -28,14 +28,15 @@ async function Sidebar() {
                 {/* <SidebarListOnlyTitle title='Introduction' content={Introduction} /> */}
                 <SidebarList title='Introduction' content={Introduction} />
                 <SidebarList title='The Main Properties' content={TheMainProperties} />
-                <SidebarList title='Animations' content={Animations} />
-                <SidebarList title='Layout Animations' content={LayoutAnimations} />
                 <SidebarList title='Motion Values' content={MotionValues} />
-                <SidebarList title='Manual Controls' content={ManualControls} />
-                <SidebarList title='SVG Animations' content={SVGAnimations} />
-                <SidebarList title='Dragging' content={Dragging} />
-                <SidebarList title='API Overview' content={APIOverview} />
-                <SidebarList title='Some Examples' content={SomeExamples} />
+                <SidebarList title='Animations' content={Animations} />
+                {/* <SidebarList title='Layout Animations' content={LayoutAnimations} /> */}
+
+                {/* <SidebarList title='Manual Controls' content={ManualControls} /> */}
+                {/* <SidebarList title='SVG Animations' content={SVGAnimations} /> */}
+                {/* <SidebarList title='Dragging' content={Dragging} /> */}
+                {/* <SidebarList title='API Overview' content={APIOverview} /> */}
+                {/* <SidebarList title='Some Examples' content={SomeExamples} /> */}
             </SidebarListWrap>
         </div>
 

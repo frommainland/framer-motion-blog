@@ -15,7 +15,7 @@ import TextRepeateScroll from "@/components/mdxExamples/motionValue/useScroll/Te
 import AnimateMotionValueBasic from "@/components/mdxExamples/motionValue/AnimateMotionValue/AnimateMotionValueBasic";
 import AnimateMotionValueOptions from "@/components/mdxExamples/motionValue/AnimateMotionValue/AnimateMotionValueOptions";
 import SpringySlider from "@/components/mdxExamples/motionValue/AnimateMotionValue/SpringySlider";
-
+import DraggableItem from "@/components/mdxExamples/motionValue/useSpring/DraggableItem";
 const motionValueExampleMapper = {
     InjectMotionValue,
     SetMotionValue,
@@ -34,6 +34,7 @@ const motionValueExampleMapper = {
     AnimateMotionValueBasic,
     AnimateMotionValueOptions,
     SpringySlider,
+    DraggableItem,
 }
 
 export default motionValueExampleMapper

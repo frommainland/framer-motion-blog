@@ -16,6 +16,7 @@ import RepeatMix from "@/components/mdxExamples/themainproperties/transition/rep
 import TransitionPerProp from "@/components/mdxExamples/themainproperties/transition/transitionPerProp/index";
 import TransitionReset from "@/components/mdxExamples/themainproperties/transition/transitionReset";
 import Initial from "@/components/mdxExamples/themainproperties/initial";
+import AnimateCSSVariable from "@/components/mdxExamples/themainproperties/animate/animateCSSVariable/AnimateCSSVariable";
 
 const mdxMapper = {
     pre: CodeSnippet,
@@ -27,6 +28,7 @@ const mdxMapper = {
     State01,
     State02,
     ConditionalAnim,
+    AnimateCSSVariable,
     // transition mdx components
     DelayExample,
     DelayMix,

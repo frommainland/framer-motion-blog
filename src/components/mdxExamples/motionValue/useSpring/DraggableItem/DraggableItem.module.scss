@@ -1,0 +1,32 @@
+.wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 2em;
+    border: 1px solid var(--color-surface-200);
+    margin-top: 2em;
+    margin-bottom: 2em;
+    background-image: radial-gradient(#42433D 1px, #0E100F 1px);
+    background-size: 20px 20px;
+    display: grid;
+    place-content: center;
+    overflow: hidden;
+
+    .itemsWrap {
+        width: 250px;
+        aspect-ratio: 1;
+        line-height: 0;
+        // position: relative;
+
+        .item {
+            width: 50px;
+            aspect-ratio: 1;
+            background-color: var(--color-surface-200);
+            display: inline-flex;
+            border-radius: .5em;
+            justify-content: center;
+            align-items: center;
+            // position: absolute;
+        }
+    }
+}

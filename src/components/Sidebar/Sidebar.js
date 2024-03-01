@@ -19,7 +19,6 @@ async function Sidebar() {
     const SVGAnimations = await getBlogPostList('SVGAnimations')
     const Dragging = await getBlogPostList('Dragging')
     const APIOverview = await getBlogPostList('APIOverview')
-    const SomeExamples = await getBlogPostList('SomeExamples')
 
 
     return (

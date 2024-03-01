@@ -1,0 +1,24 @@
+.wrap {
+    position: relative;
+    width: 100%;
+    // aspect-ratio: 1;
+    border: 1px solid var(--color-surface-200);
+    border-radius: 2em;
+    margin-top: 2em;
+    padding: 2em;
+    display: flex;
+    justify-content: center;
+
+    .textWrap {
+        font-family: var(--font-roobert);
+        font-weight: 500;
+        line-height: 1;
+        overflow: hidden;
+        color: var(--color-text-100);
+        // background-color: red;
+
+        span {
+            display: inline-block;
+        }
+    }
+}

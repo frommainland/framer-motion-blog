@@ -1,0 +1,23 @@
+.wrap {
+    position: relative;
+    width: 100%;
+    // aspect-ratio: 1;
+    border: 1px solid var(--color-surface-200);
+    border-radius: 2em;
+    margin-top: 2em;
+    padding: 2em;
+    display: flex;
+    justify-content: center;
+
+    div {
+        line-height: 0;
+
+        .item {
+            aspect-ratio: 1;
+            display: inline-block;
+            border-radius: .5em;
+            background-size: 50px 50px;
+            background-image: repeating-linear-gradient(45deg, var(--color-surface-300) 0, var(--color-surface-200) 4px, var(--color-surface-100) 0, var(--color-surface-100) 50%);
+        }
+    }
+}

@@ -1,0 +1,21 @@
+.wrap {
+    position: relative;
+    width: 100%;
+    border: 1px solid var(--color-surface-200);
+    border-radius: 2em;
+    margin-top: 2em;
+    padding: 2em;
+    display: flex;
+    justify-content: center;
+
+    div {
+
+        .item {
+            aspect-ratio: 1;
+            display: inline-block;
+            border-radius: 100%;
+            background-color: var(--color-accent-green);
+        }
+    }
+
+}

@@ -8,6 +8,7 @@ import remarkGfm from 'remark-gfm'
 
 import mdxMapper from '@/helper/mdxMapper';
 import motionValueExampleMapper from '@/helper/motionValueExampleMapper';
+import animationExampleMapper from '@/helper/animationsExampleMapper';
 
 const options = {
     mdxOptions: {
@@ -16,7 +17,7 @@ const options = {
     }
 }
 
-const combinedMdxMapper = { ...mdxMapper, ...motionValueExampleMapper }
+const combinedMdxMapper = { ...mdxMapper, ...motionValueExampleMapper, ...animationExampleMapper }
 
 function formatName(name) {
     let trimmedString = name.trim();

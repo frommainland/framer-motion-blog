@@ -1,0 +1,52 @@
+.wrap {
+    position: relative;
+    width: 100%;
+    border: 1px solid var(--color-surface-200);
+    border-radius: 2em;
+    margin-top: 2em;
+    padding: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+
+    .exampleWrap {
+        display: flex;
+        gap: 1em;
+        padding: 1em;
+        background-color: var(--color-surface-300);
+        border-radius: 1em;
+
+        .buttonsWrap {
+            display: flex;
+            flex-direction: column;
+            gap: .5em;
+
+            .button {
+                width: 50px;
+                height: 112px;
+                background-color: var(--color-surface-200);
+                border-radius: .5em;
+                display: grid;
+                place-content: center;
+                cursor: pointer;
+            }
+        }
+
+        .itemsWrap {
+            display: flex;
+            gap: .5em;
+            flex-direction: column-reverse;
+            align-items: flex-start;
+            width: 40px;
+
+            .item {
+                width: 100%;
+                height: 16px;
+                background-color: var(--color-accent-green);
+                border-radius: .125em;
+            }
+        }
+    }
+
+}

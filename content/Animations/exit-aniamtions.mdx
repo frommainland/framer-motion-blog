@@ -159,6 +159,18 @@ In the example above, the secret sauce of animating surounding element into plac
 ```
 
 ## `onExitComplete`
+This callback event will run when an exit animation has finished. You can use it to make something happen when an element finished animating out.
 
+The button will be `setOpacity(0)` when cliked and when `<AnimatePresence>` is finished, it will be `setOpacity(1)`. 
+
+```js
+<AnimatePresence
+    onExitComplete={() => {
+        setOpacity(1)
+        setDisabled(false)
+    }}
+>
+```
 <OnExitComplete />
-import { optimizeFonts } from "../../next.config"
+
+

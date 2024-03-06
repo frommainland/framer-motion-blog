@@ -1,0 +1,54 @@
+.wrap {
+    position: relative;
+    width: 100%;
+    border: 1px solid var(--color-surface-200);
+    border-radius: 2em;
+    margin-top: 2em;
+    padding: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+
+    .exampleWrap {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1em;
+
+        button {
+            width: 3.75em;
+            aspect-ratio: 1;
+            background-color: var(--color-surface-200);
+            border-radius: 100%;
+            display: grid;
+            place-content: center;
+            cursor: pointer;
+        }
+
+        .itemRelative {
+            width: 120px;
+            aspect-ratio: 1;
+            border-radius: 1.5em;
+            background-color: var(--color-surface-200);
+            position: relative;
+
+            p {
+                color: var(--color-text-100);
+                margin-bottom: 0;
+                font-size: var(--fontSize-h1);
+                font-weight: 500;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+            }
+        }
+
+        p {
+            color: var(--color-text-100);
+            margin-bottom: 0;
+            font-size: var(--fontSize-h1);
+            font-weight: 500;
+        }
+    }
+}

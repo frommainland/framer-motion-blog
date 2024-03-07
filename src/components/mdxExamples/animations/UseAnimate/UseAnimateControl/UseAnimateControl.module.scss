@@ -1,0 +1,59 @@
+.wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 2;
+    border: 1px solid var(--color-surface-200);
+    border-radius: 2em;
+    margin-top: 2em;
+    padding: 32px;
+    gap: 2em;
+    overflow: hidden;
+    background-color: #e5e5f7;
+    opacity: 1;
+    background-image: radial-gradient(var(--color-surface-200) 1px, var(--color-surface-100) 1px);
+    background-size: 14px 14px;
+
+    .item {
+        width: 120px;
+        aspect-ratio: 1;
+        border-radius: 1.5em;
+        background-color: var(--color-surface-200);
+        cursor: pointer;
+        margin-bottom: 2em;
+    }
+
+    .controlWrap {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2em;
+
+        .control[data-clicked='true'] {
+            background-color: var(--color-accent-purple);
+        }
+
+        .control {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--color-surface-200);
+            border-radius: 100em;
+            color: var(--color-text-100);
+            cursor: pointer;
+
+            svg {
+                margin: .5em 0.5em .5em 1em;
+            }
+
+            p {
+                margin: .5em 1em .5em .5em;
+            }
+        }
+
+        .control.stop[data-clicked='true'] {
+            background-color: var(--color-accent-red);
+        }
+    }
+
+
+}

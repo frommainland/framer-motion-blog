@@ -14,6 +14,11 @@ import MountEleInCloseUp from "@/components/mdxExamples/animations/exitAnimation
 import ModeWait from "@/components/mdxExamples/animations/exitAnimations/ModeOptions/ModeWait";
 import ModeCompare from "@/components/mdxExamples/animations/exitAnimations/ModeOptions/ModeCompare";
 import OnExitComplete from "@/components/mdxExamples/animations/exitAnimations/OnExitComplete";
+// useanimate section
+import UseAnimateBasic from "@/components/mdxExamples/animations/UseAnimate/UseAnimateBasic";
+import SubElementUseAnimate from "@/components/mdxExamples/animations/UseAnimate/SubElementUseAnimate";
+import UseAnimateControl from "@/components/mdxExamples/animations/UseAnimate/UseAnimateControl";
+import WhyuseAnimate from "@/components/mdxExamples/animations/UseAnimate/WhyuseAnimate";
 
 const animationExampleMapper = {
     StaggerChildAndDelayChildren,
@@ -32,6 +37,11 @@ const animationExampleMapper = {
     ModeWait,
     ModeCompare,
     OnExitComplete,
+    // useanimate section
+    UseAnimateBasic,
+    SubElementUseAnimate,
+    UseAnimateControl,
+    WhyuseAnimate,
 }
 
 export default animationExampleMapper

@@ -1,0 +1,70 @@
+.restartDemoWrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2em;
+
+    .wrap {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 2;
+        border: 1px solid var(--color-surface-200);
+        border-radius: 2em;
+        margin-top: 2em;
+        padding: 2em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2em;
+        overflow: hidden;
+        background-color: #e5e5f7;
+        opacity: 1;
+        background-image: radial-gradient(var(--color-surface-200) 1px, var(--color-surface-100) 1px);
+        background-size: 14px 14px;
+
+        .item {
+            --outer-radius: 1.625em;
+            --shrink: 20px;
+            --outer-width: 120px;
+            width: var(--outer-width);
+            aspect-ratio: 1;
+            border-radius: var(--outer-radius);
+            background-color: var(--color-surface-200);
+            cursor: pointer;
+            display: grid;
+            place-content: center;
+
+            #ring {
+                width: calc(var(--outer-width) - var(--shrink));
+                aspect-ratio: 1;
+                border: 1px solid var(--color-accent-yellow);
+                border-radius: calc(var(--outer-radius) - var(--shrink)/2);
+                display: grid;
+                place-content: center;
+
+                .bg {
+                    width: calc(var(--outer-width) - var(--shrink) * 2);
+                    aspect-ratio: 1;
+                    background-color: var(--color-surface-100);
+                    border-radius: calc(var(--outer-radius) - var(--shrink));
+                    display: grid;
+                    place-content: center;
+                }
+            }
+        }
+    }
+
+    button {
+        color: var(--color-text-300);
+        font-size: var(--fontSize-p);
+        font-family: var(--font-roobert);
+        display: flex;
+        gap: 0.5em;
+        border: 1px solid var(--color-surface-100);
+        padding: 0.75em 1em;
+        border-radius: 100em;
+        margin-top: 1em;
+        cursor: pointer;
+    }
+
+}

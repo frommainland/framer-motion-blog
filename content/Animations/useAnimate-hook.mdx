@@ -1,0 +1,165 @@
+---
+title: 'useAnimate Hook'
+chapter: 'Animations'
+order: 400
+---
+
+# `useAnimate`
+ 
+## Basic
+With `useAnimate()`, you can manually start and stop animations and create a sequence of different animations. This new hook will soon replace `useAnimationControls()` because this one works with all HTML and SVG elements, not only Motion elements.
+
+
+### Return after drag
+Here’s an example of a draggable div that will always return to its initial state. It animates back to its start position of `{ x: 0, y: 0 }` two seconds after you stop dragging.
+<UseAnimateBasic />
+
+```js
+export function Example() {
+    const [scope, animate] = useAnimate()
+
+    let timer = React.useRef(null)
+
+    return (
+        <motion.div
+            ref={scope}
+            className={styles.item}
+            whileTap={{ scale: 0.9 }}
+            drag
+            dragConstraints={dragConstaintRef}
+            onDragEnd={() => {
+                timer = setTimeout(
+                    () =>
+                        animate(
+                            scope.current,
+                            { x: 0, y: 0 },
+                            { type: 'spring', duration: 0.8, bounce: 0.5 }
+                        ),
+                    600
+                )
+            }}
+            onDragStart={() => clearTimeout(timer)}
+        ></motion.div>
+    )
+} 
+```
+
+### How to use useAnimate
+This `useAnimate()` hook is actually a wrapper around the `animate()` function we also use to animate Motion values. It’s a hook, so you call it at the beginning of your component, and it returns two things:
+
+- A scope, a reference (as those created by `useRef()`) that you pass to the element you want to animate,
+- animate() function to start animations with.
+
+The animate() function takes three arguments:
+
+- The element you want to animate, either as:
+    - A direct link to the element itself — Here, it is scope.current (with current because this is a reference).
+    - Sub-elements inside the element.
+- The values you want to animate in the same type of `{object}` that you would pass to an animate property.
+- And an optional `{object}` with transition settings, as you would pass them to the transition property.
+
+### Animate sub-elements
+You can animate the element you attached the reference (scope) to, but you can also animate elements it contains.
+
+<SubElementUseAnimate />
+
+```js 
+// animate yellow border
+animate(
+    'section',
+    { borderColor: 'var(--color-surface-200)' },
+    transition
+)
+
+//animate dark background
+animate(
+    bgRef.current,
+    { backgroundColor: 'var(--color-surface-200)' },
+    transition
+)
+animate(
+    `div.${styles.bg}`,
+    { backgroundColor: 'var(--color-surface-200)' },
+    transition
+)
+
+//animate svg path
+animate('path', { pathLength: 0 }, transition)
+```
+
+There are 3 ways of selecting the child element inside the reference (scope)
+
+- for html tags, `'div'` `'section'`
+- for  css class names, `'div.myClass'`. I use css module, so it would be `div.${styles.myClass}` You have to write the html tag at the beginning.
+- create a new ref, similar like `scope`
+
+### Animate when appearing
+When you want to animate something the moment it appears, you’ll have to put it in a `useEffect()` because the reference (scope) to the element will otherwise be empty.
+
+```js
+useEffect(() => {
+    animate1(
+        scope1.current,
+        { x: [0, 200, 200, 0, 0], rotate: [0, 0, 360, 360, 0] },
+        { duration: 4 }
+    );
+}, []);
+```
+
+## Controls
+To control an animation, you save what’s returned by animate() in a variable and then call commands like `play()`,` pause()`, `cancel()`, `complete()`, and `stop()` on that variable.
+
+- `pause()` — Pauses an animation.
+- `play()` — Resumes it from the point where you left it.
+- `cancel()` — Stops the animation and returns the element to its initial state.
+- `complete()` — Immediately completes the animation.
+- `stop()` — <span style={{color: 'var(--color-accent-red)'}}>Stops the animation completely; without the option to play() it again.</span>
+- `speed` — set animation speed 
+
+```
+// Normal speed
+animation.speed = 1
+
+// Half speed
+animation.speed = 0.5
+
+// Double speed
+animation.speed = 2
+
+// Reverse
+animation.speed = -1
+```
+
+<UseAnimateControl />
+
+## Why useAnimate
+Check the example below, this looks like a keyframe animation. It is imperative and if you use keyframe to do it, it will be messy and hard to read.
+<WhyuseAnimate />
+```js 
+React.useEffect(() => {
+    const animateEle = async () => {
+        await animate(
+            scope.current,
+            { x: width - 120 - 32 - 32 },
+            { duration: 2 }
+        )
+        await animate(scope.current, { y: 50 })
+        await animate(scope.current, {
+            backgroundColor: 'var(--color-accent-blue)',
+            borderRadius: 0,
+            scale: 0.45,
+        })
+        // insert a delay
+        await animate(scope.current, { y: 50.1 }, { duration: 1 })
+        await animate(scope.current, { x: 0, rotate: 360 })
+        await animate(scope.current, {
+            y: 0,
+            backgroundColor: 'var(--color-surface-200)',
+            borderRadius: '2em',
+            scale: 1,
+        })
+    }
+    animateEle()
+}, [])
+```
+Instead of using keyframe, you can control the flow in a readable manner in useAnimate, with all capability of keyframes.

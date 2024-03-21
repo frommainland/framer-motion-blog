@@ -1,0 +1,47 @@
+.wrap {
+    position: relative;
+    width: 100%;
+    border: 1px solid var(--color-surface-200);
+    border-radius: 2em;
+    margin-top: 2em;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4em;
+
+    .exampleWrap {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: .5em;
+        user-select: none;
+
+        .item {
+            width: 160px;
+            height: 80px;
+            border-radius: 10em;
+            background-color: var(--color-surface-200);
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: .625em;
+            cursor: pointer;
+
+            .handle {
+                width: 60px;
+                aspect-ratio: 1;
+                border-radius: 100%;
+                background-color: var(--color-surface-300);
+            }
+        }
+
+        p {
+            color: var(--color-text-300);
+            margin-bottom: 0;
+            font-weight: 400;
+        }
+    }
+}

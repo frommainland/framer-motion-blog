@@ -1,12 +1,11 @@
 'use client'
 import React from 'react'
 import styles from './WhileFocus01.module.scss'
-import { motion, easeOut } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 export default function WhileFocus01() {
-	const containerRef = React.useRef(null)
 	return (
-		<div className={styles.wrap} ref={containerRef}>
+		<div className={styles.wrap}>
 			<div className={styles.exampleWrap}>
 				<motion.input
 					// onBlur={() => console.log('blur')}
@@ -17,9 +16,9 @@ export default function WhileFocus01() {
 					}}
 					whileFocus={{
 						background: [
-							'linear-gradient(to right, #f0f -200%, #0ff -100%, #f0f 0%,   #0ff 100%)',
-							'linear-gradient(to right, #f0f -100%, #0ff 0%,    #f0f 100%, #0ff 200%)',
-							'linear-gradient(to right, #f0f 0%,    #0ff 100%,  #f0f 200%, #0ff 300%)',
+							'linear-gradient(to right, var(--color-accent-red) -200%, var(--color-accent-blue) -100%, var(--color-accent-red) 0%,   var(--color-accent-blue) 100%)',
+							'linear-gradient(to right, var(--color-accent-red) -100%, var(--color-accent-blue) 0%,    var(--color-accent-red) 100%, var(--color-accent-blue) 200%)',
+							'linear-gradient(to right, var(--color-accent-red) 0%,    var(--color-accent-blue) 100%,  var(--color-accent-red) 200%, var(--color-accent-blue) 300%)',
 						],
 						transition: {
 							duration: 2,

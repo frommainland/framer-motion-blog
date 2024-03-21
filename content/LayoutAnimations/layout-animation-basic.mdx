@@ -1,0 +1,58 @@
+---
+title: 'Layout Animation Basic'
+chapter: 'Layout Animations'
+order: 0
+---
+
+# Layout animations
+Version 2.0 of Framer Motion added layout animations, enabling motion elements to automatically animate to a new size and position.
+
+
+<LayoutAnimationBasic />
+
+
+## The layout property
+The Handle is now a `motion.div`. By giving it a `layout` property it will now animate to its new position. When it needs to move left or right (because of the parent div changing its `justifyContent`) this now happens with a smooth animation.
+
+
+```js  
+export default function App() {
+    const [clicked, setClicked] = React.useState(false)
+
+    return (
+        <motion.div
+            className={styles.item}
+            style={{
+                justifyContent: clicked 
+                ? 'flex-start' 
+                : 'flex-end',
+            }}
+            animate={{
+                backgroundColor: clicked
+                    ? 'var(--color-surface-200)'
+                    : 'var(--color-text-100)',
+            }}
+        >
+            <motion.div
+            // magic word
+                layout
+                className={styles.handle}
+                animate={{
+                    backgroundColor: clicked
+                        ? 'var(--color-surface-300)'
+                        : 'var(--color-accent-green)',
+                }}
+                onClick={() => setClicked(!clicked)}
+            ></motion.div>
+        </motion.div>
+    );
+} 
+```
+
+Here we’re changing the Handle’s position but the layout property will also animate size changes. Animations can also happen because of changes to the element’s own CSS styling, be it inline styling or when changing its CSS class.
+
+Any layout change will be animated. Possible triggers might be:
+
+- changes of the element’s `width`, `height`, `top`, `bottom`, `left`, `right`, `x`, `y`, `margin`, `padding`, `position`, etc.,
+- changes to those same properties on its parent (or its parent’s parent, etc.),
+- the element’s position in a Flexbox or Grid.

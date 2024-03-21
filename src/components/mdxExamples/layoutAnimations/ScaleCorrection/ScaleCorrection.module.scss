@@ -1,0 +1,48 @@
+.wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 2;
+    border: 1px solid var(--color-surface-200);
+    border-radius: 2em;
+    margin-top: 2em;
+    padding: 2em;
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-template-columns: repeat(3, 1fr);
+
+    .exampleWrap {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: .5em;
+
+        .item {
+            width: 120px;
+            height: 120px;
+            border-radius: 10em;
+            background-color: var(--color-surface-200);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+
+            .handle {
+                width: 40px;
+                aspect-ratio: 1;
+                border-radius: 100%;
+                background-color: var(--color-surface-300);
+            }
+        }
+
+
+        p {
+            color: var(--color-text-300);
+            margin-bottom: 0;
+            font-weight: 400;
+            bottom: 0;
+            font-size: var(--fontSize--1);
+            text-align: center;
+        }
+    }
+}

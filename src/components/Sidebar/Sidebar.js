@@ -29,7 +29,7 @@ async function Sidebar() {
                 <SidebarList title='The Main Properties' content={TheMainProperties} />
                 <SidebarList title='Motion Values' content={MotionValues} />
                 <SidebarList title='Animations' content={Animations} />
-                {/* <SidebarList title='Layout Animations' content={LayoutAnimations} /> */}
+                <SidebarList title='Layout Animations' content={LayoutAnimations} />
 
                 {/* <SidebarList title='Manual Controls' content={ManualControls} /> */}
                 {/* <SidebarList title='SVG Animations' content={SVGAnimations} /> */}

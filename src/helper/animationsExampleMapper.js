@@ -22,6 +22,7 @@ import WhyuseAnimate from "@/components/mdxExamples/animations/UseAnimate/Whyuse
 // gesture animations
 import WhileTapHoverDrag from "@/components/mdxExamples/animations/gestureAnimations/WhileTapHoverDrag";
 import WhileFocus01 from "@/components/mdxExamples/animations/gestureAnimations/WhileFocus01";
+import WhileFocus02 from "@/components/mdxExamples/animations/gestureAnimations/WhileFocus02";
 const animationExampleMapper = {
     StaggerChildAndDelayChildren,
     StaggerDirectionAndWhen,
@@ -47,6 +48,7 @@ const animationExampleMapper = {
     //gesture animations
     WhileTapHoverDrag,
     WhileFocus01,
+    WhileFocus02,
 }
 
 export default animationExampleMapper

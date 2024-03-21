@@ -46,3 +46,18 @@ whileFocus={{
     },
 }}
 ```
+Example from Matt Perry. If you type empty space and leave `input`, you will get a color indicator by using `onBlur` eventListener on `input`.
+<WhileFocus02 />
+
+```js 
+onBlur={(e) => {
+    const { value } = e.currentTarget
+    if (!value) {
+        setValidity('neutral')
+    } else if (value.includes(' ')) {
+        setValidity('invalid')
+    } else {
+        setValidity('valid')
+    }
+}}
+```

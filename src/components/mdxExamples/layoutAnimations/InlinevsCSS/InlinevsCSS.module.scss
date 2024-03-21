@@ -1,0 +1,77 @@
+.wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1.5;
+    border: 1px solid var(--color-surface-200);
+    border-radius: 2em;
+    margin-top: 2em;
+    padding: 2em;
+    display: grid;
+
+    .exampleWrap {
+        position: relative;
+
+        .item {
+            position: absolute;
+            width: 110px;
+            aspect-ratio: 1;
+            background-color: var(--color-surface-200);
+            cursor: pointer;
+            display: grid;
+            place-content: center;
+
+            p {
+                color: var(--color-text-300);
+                margin-bottom: 0;
+                font-weight: 400;
+            }
+        }
+
+        .mark {
+            position: absolute;
+            width: 110px;
+            aspect-ratio: 1;
+            border-radius: 1em;
+            border: 1px solid var(--color-surface-200);
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .small {
+            position: absolute;
+            width: 110px;
+            aspect-ratio: 1;
+            border-radius: 20px;
+            background-color: var(--color-surface-200);
+            cursor: pointer;
+            box-shadow: 10px 5px 5px var(--color-accent-yellow);
+            left: calc(50% - 55px);
+            top: calc(50% - 55px);
+            display: grid;
+            place-content: center;
+        }
+
+        .big {
+            position: absolute;
+            width: 160px;
+            left: 30px;
+            aspect-ratio: 1;
+            border-radius: 20px;
+            background-color: var(--color-surface-200);
+            cursor: pointer;
+            box-shadow: 10px 5px 5px var(--color-accent-yellow);
+            display: grid;
+            place-content: center;
+        }
+
+
+
+
+        p {
+            color: var(--color-text-300);
+            margin-bottom: 0;
+            font-weight: 400;
+        }
+    }
+}

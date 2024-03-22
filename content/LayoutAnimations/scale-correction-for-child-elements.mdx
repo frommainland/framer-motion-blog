@@ -8,7 +8,7 @@ order: 200
 
 Check example below. If you change the width or height of the parent, even with the `layout` keyword, it still affect the child serialize. To fix this, you have to also add `layout` in the child. In a sense, the child is like picking up the size change in parent, and respond accordingly.
 
-One thing I find is if you use `animate` to width or height and the flex or grid layout, the child even without layout, it still change its size nicely. Also animate will push away the sibling element, so layout will change nicely.
+One thing I find is if you use `animate` to width or height and the flex or grid layout, the child even without `layout`, it still change its size nicely. Also animate will push away the sibling element, so layout will change nicely.
 <ScaleCorrection />
 
 ```js

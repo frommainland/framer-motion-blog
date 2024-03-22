@@ -20,7 +20,7 @@ export default function ScaleCorrection() {
 				>
 					<div className={styles.handle}></div>
 				</motion.div>
-				<p>layout only on parent</p>
+				<motion.p layout>layout only on parent</motion.p>
 			</div>
 			<div className={styles.exampleWrap}>
 				<motion.div
@@ -35,7 +35,7 @@ export default function ScaleCorrection() {
 					<motion.div layout className={styles.handle}></motion.div>
 				</motion.div>
 
-				<p>layout only on both parent & child</p>
+				<motion.p layout>layout only on both parent & child</motion.p>
 			</div>
 			<div className={styles.exampleWrap}>
 				<motion.div

@@ -7,6 +7,8 @@
     margin-top: 2em;
     padding: 2em;
     display: grid;
+    background-image: radial-gradient(var(--color-surface-200) 1px, var(--color-surface-100) 1px);
+    background-size: 14px 14px;
 
     .exampleWrap {
         position: relative;

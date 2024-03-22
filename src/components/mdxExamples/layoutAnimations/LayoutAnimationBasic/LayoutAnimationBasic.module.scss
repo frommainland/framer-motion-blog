@@ -10,6 +10,8 @@
     justify-content: center;
     align-items: center;
     gap: 4em;
+    background-image: radial-gradient(var(--color-surface-200) 1px, var(--color-surface-100) 1px);
+    background-size: 14px 14px;
 
     .exampleWrap {
         display: flex;

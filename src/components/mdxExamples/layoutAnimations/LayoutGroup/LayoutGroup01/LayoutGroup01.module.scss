@@ -1,0 +1,32 @@
+.wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 2;
+    border: 1px solid var(--color-surface-200);
+    border-radius: 2em;
+    margin-top: 2em;
+    padding: 2em;
+    background-image: radial-gradient(var(--color-surface-200) 1px, var(--color-surface-100) 1px);
+    background-size: 14px 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .exampleWrap {
+        width: 70%;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: flex-start;
+        align-items: start;
+        justify-content: start;
+        gap: 1em;
+        // background-color: red;
+        padding: 1em;
+
+        .item {
+            width: 50px;
+            height: 50px;
+            background-color: var(--color-surface-200);
+        }
+    }
+}

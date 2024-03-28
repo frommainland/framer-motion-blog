@@ -4,3 +4,30 @@ chapter: 'Layout Animations'
 order: 400
 ---
 
+# Layout Group
+
+We know `layout` could help individual element to animate smoothly with position, size and its layout. What if this element with `layout` affect its sibling elements? `LayoutGroup` is here to solve this.
+
+The example shows same boxes in a `flex` layout, click one of them will expand its `width`, which will also affect its sibling boxes. If you wrap all the all boxes under `LayoutGroup`, every boxes will animate spontaneously and automatically.
+
+<LayoutGroup01 />
+
+```js
+<LayoutGroup>
+    <div className={styles.flexbox}>
+        {range(10).map((item) => (
+            <Box key={item} />
+        ))}
+    </div>
+</LayoutGroup>
+```
+
+## layoutId
+Try turn on/off the layoutId checkbox in the example below. By useing `layoutId`, we could track when element get added or removed from a certain layout and animate that change.
+
+One caveat, if layoutId is set to `0`, it means `false`, so it will not track status change and only animate like `layout`. If you assign layoutId to an element, then no need to write `layout`.
+
+<LayoutGroup02 />
+
+## Put it altogether
+<LayoutGroup03 />

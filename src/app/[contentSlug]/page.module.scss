@@ -2,12 +2,14 @@
     // max-width: 100%;
     grid-area: 1 / 2 / 2 / 3;
     overflow: auto;
+
     .layout {
         color: var(--color-text-100);
         font-family: var(--font-kansas);
         margin: 0 auto;
         max-width: 80ch;
         margin-bottom: 6em;
+
         *::selection {
             background: var(--color-accent-green);
         }

@@ -1,0 +1,107 @@
+---
+title: 'LayoutId'
+chapter: 'Layout Animations'
+order: 400
+---
+
+# layoutId
+Setting unique layoutId to `motion.div` could track when element get added or removed from a certain layout and animate that change.
+
+One caveat, if layoutId is set to `0`, it means `false`, so it will not track status change and only animate like `layout`. If you assign layoutId to an element, then no need to write `layout`.
+
+<LayoutGroup02 />
+
+
+## Shared Layout
+
+Setting same layoutId to different `motion.div`s will animate from one to another as if it was the same `motion.div`. They are 'shared layout'.
+
+Check example below, if check mark is given the same `layoutId`, with conditonal rendering, check mark is moving to new position with click Target.
+
+<SharedLayout01 />
+
+```js
+{tabs.map(({ color, title }, index) => {
+    return (
+        <motion.div
+            key={index}
+            className={styles.item}
+            onClick={() => {
+                setcurrentIndex(index)
+                setformerColor(tabs[currentIndex].color)
+            }}
+            animate={{
+                backgroundColor:
+                    index === currentIndex
+                        ? tabs[index].color
+                        : 'var(--color-surface-200)',
+            }}
+        >
+            {index === currentIndex && (
+                <motion.div
+                    className={styles.indicator}
+                    layoutId={`${id}-indicator`}
+                    initial={{
+                        color: formerColor,
+                    }}
+                    animate={{
+                        color: color,
+                    }}
+                >
+                    {title}
+                </motion.div>
+            )}
+        </motion.div>
+    )
+})}
+```
+
+Try slow the animation speed Sliders. We can even animate check mark color based on `currentIndex`.
+
+## More example
+A good animation helps user navigate through space. 
+
+In this example, we set each colored box with 2 `motion.div`s of same `layoutId`.
+<SharedLayout02 />
+
+```js
+// list of colored boxes
+<div className={styles.exampleWrap}>
+    {tabs.map(({ color, title }, index) => {
+        return (
+            <motion.div
+                key={index}
+                className={styles.item}
+                onClick={() => {
+                    setcurrentIndex(index)
+                }}
+                style={{
+                    backgroundColor: color,
+                    borderRadius: 8,
+                }}
+                layoutId={`${title}-sharedLayout02`}
+            ></motion.div>
+        )
+    })}
+</div>
+
+/// box in big presentative view
+{currentIndex !== false && (
+    <div
+        className={styles.boxOpenContainer}
+        onClick={() => setcurrentIndex(false)}
+    >
+        <motion.div
+            layoutId={`${tabs[currentIndex].title}-sharedLayout02`}
+            className={styles.boxOpen}
+            style={{
+                backgroundColor: `${tabs[currentIndex].color}`,
+                borderRadius: 16,
+            }}
+        >
+            {tabs[currentIndex].title}
+        </motion.div>
+    </div>
+)}
+
+```

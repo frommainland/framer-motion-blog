@@ -5,15 +5,13 @@ order: 0
 ---
 
 # Layout animations
-Version 2.0 of Framer Motion added layout animations, enabling motion elements to automatically animate to a new size and position.
+
+
+## `layout`
+The green handle in the example is in a `flexbox` layout, when change its `justifyContent`, it will animate to new position. With `layout` it will animate smoothly to new position.
 
 
 <LayoutAnimationBasic />
-
-
-## The layout property
-The Handle is now a `motion.div`. By giving it a `layout` property it will now animate to its new position. When it needs to move left or right (because of the parent div changing its `justifyContent`) this now happens with a smooth animation.
-
 
 ```js  
 export default function App() {
@@ -49,10 +47,62 @@ export default function App() {
 } 
 ```
 
-Here we’re changing the Handle’s position but the layout property will also animate size changes. Animations can also happen because of changes to the element’s own CSS styling, be it inline styling or when changing its CSS class.
-
-Any layout change will be animated. Possible triggers might be:
+Layout changes are not only flexbox, those changes could trigger `layout` animation:
 
 - changes of the element’s `width`, `height`, `top`, `bottom`, `left`, `right`, `x`, `y`, `margin`, `padding`, `position`, etc.,
 - changes to those same properties on its parent (or its parent’s parent, etc.),
 - the element’s position in a Flexbox or Grid.
+
+`layout` animation can ONLY happen element's inline CSS styling or CSS class changes.
+
+## position or size or all
+
+`layout="position"`: we only smoothly transition the position-related properties. Size-related properties will transition abruptly.
+
+`layout="size"`: we only smoothly transition the size-related properties. Position-related properties will transition abruptly.
+
+<LayoutValues02 />
+
+### Long text layout animation
+This example by Matt Perry shows when you’d want to only animate "position".
+
+The `<motion.div>` containing the text and its parent `<motion.div>` both have a layout property, so they both animate their size and position.
+
+<LayoutValues />
+
+```js
+<motion.div layout="position" transition={transition}>
+    {isOpen ? long : summary}
+</motion.div>
+```
+
+
+## Transition setting
+You can set transition values on a per property basis. (Like, e.g., have only opacity animate slower or faster.) This also works for layout animations.
+
+Take this example. The `motion.div` has a `layout` animation for its `width` and `height` and a common animate for its `backgroundColor`:
+
+<CustomLayoutAnimation />
+
+```js
+<motion.div
+    layout
+    className={styles.item}
+    style={{
+        width: clicked ? 160 : 120,
+        height: clicked ? 160 : 120,
+    }}
+    animate={{
+        backgroundColor: clicked
+            ? 'var(--color-accent-yellow)'
+            : 'var(--color-surface-200)',
+    }}
+    onClick={() => setClicked(!clicked)}
+    transition={{
+        layout: { delay: 1, type: 'spring', stiffness: 150 },
+    }}
+>
+    <motion.div layout className={styles.handle}></motion.div>
+</motion.div>
+```
+

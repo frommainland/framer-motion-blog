@@ -9,6 +9,7 @@ import LayoutGroup02 from "@/components/mdxExamples/layoutAnimations/LayoutGroup
 import LayoutGroup03 from "@/components/mdxExamples/layoutAnimations/LayoutGroup/LayoutGroup03";
 import SharedLayout01 from "@/components/mdxExamples/layoutAnimations/SharedLayout/SharedLayout01";
 import SharedLayout02 from "@/components/mdxExamples/layoutAnimations/SharedLayout/SharedLayout02";
+import LayoutGroupNaming from "@/components/mdxExamples/layoutAnimations/LayoutGroup/LayoutGroupNaming";
 const layoutAnimationExampleMapper = {
     LayoutAnimationBasic,
     InlinevsCSS,
@@ -21,6 +22,7 @@ const layoutAnimationExampleMapper = {
     LayoutGroup03,
     SharedLayout01,
     SharedLayout02,
+    LayoutGroupNaming,
 }
 
 export default layoutAnimationExampleMapper

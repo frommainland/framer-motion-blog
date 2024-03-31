@@ -13,7 +13,7 @@ function Header({ theme }) {
     return (
         <div className={styles.header}>
             {/* setIsAcvive(introduction) is the slug for introduction, so click on logo will make <li> in sidebar - introduction hilighted */}
-            <Link href='/' className={styles.logoWrap} onClick={() => setIsActive('introduction')}>
+            <Link href='/introduction?catergory=Introduction' className={styles.logoWrap} onClick={() => setIsActive('introduction')}>
                 <Book size={32} className={styles.logo} />
                 Motion Book</Link>
             <div className={styles.navLinkWrap}>

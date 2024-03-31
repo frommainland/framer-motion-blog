@@ -22,6 +22,28 @@ The example shows same boxes in a `flex` layout, click one of them will expand i
 </LayoutGroup>
 ```
 
+## Layout Group Naming
+I bring the same example from Shared Layout. If you put multiple components with same `layoutId`, the animation will mess up, because `layoutId` is global. To solve this, wrapping component with `LayoutGroup` and unique `id` will put same layoutId under this id naming space. It will make it un-unique.
 
-## Put it altogether
-<LayoutGroup03 />
+<LayoutGroupNaming />
+
+```js
+<LayoutGroup id="layoutGroupNaming1">
+    <SharedLayoutComponent />
+</LayoutGroup>
+<LayoutGroup id="layoutGroupNaming2">
+    <SharedLayoutComponent />
+</LayoutGroup>
+```
+
+Another better way to solve it is to use `React.useId()` and it will get unique layoutId for every component.
+
+```js
+const id = React.useId()
+ ///
+<motion.div
+    className={styles.indicator}
+    layoutId={`${id}-indicator`}
+/>
+```
+

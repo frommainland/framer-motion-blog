@@ -10,6 +10,7 @@ import mdxMapper from '@/helper/mdxMapper';
 import motionValueExampleMapper from '@/helper/motionValueExampleMapper';
 import animationExampleMapper from '@/helper/animationsExampleMapper';
 import layoutAnimationExampleMapper from '@/helper/layoutAnimation-ExampleMapper';
+import svgAnimationExampleMapper from '@/helper/svgAnimation-ExampleMapper';
 
 const options = {
     mdxOptions: {
@@ -18,7 +19,8 @@ const options = {
     }
 }
 
-const combinedMdxMapper = { ...mdxMapper, ...motionValueExampleMapper, ...animationExampleMapper, ...layoutAnimationExampleMapper }
+// all the example mappers go here under combinedMdxMapper
+const combinedMdxMapper = { ...mdxMapper, ...motionValueExampleMapper, ...animationExampleMapper, ...layoutAnimationExampleMapper, ...svgAnimationExampleMapper }
 
 function formatName(name) {
     let trimmedString = name.trim();

@@ -5,9 +5,9 @@ import { motion, useMotionValue, useMotionValueEvent } from 'framer-motion'
 import SingleSlider from '@/components/SingleSlider'
 
 export default function SVGPathProperties() {
-	const [pathLength, setpathLength] = React.useState(1)
-	const [pathOffset, setpathOffset] = React.useState(0)
-	const [pathSpacing, setpathSpacing] = React.useState(1)
+	const [pathLength, setpathLength] = React.useState(0.5)
+	const [pathOffset, setpathOffset] = React.useState(0.5)
+	const [pathSpacing, setpathSpacing] = React.useState(0.5)
 
 	const pathOffsetMV = useMotionValue(pathOffset)
 	const pathLengthMV = useMotionValue(pathLength)
@@ -37,11 +37,10 @@ export default function SVGPathProperties() {
 					}}
 				>
 					<motion.path
-						d="M 30 39.5 V 56 L 13 39 h 34 L 13 4 h 34 v 17.5 H 13 v 17"
+						d="M 12.5 40 V 22.5 H 47.5 V 5 H 12.5 L 47.5 40 H 30 M 12.5 40 L 30 57.5 V 40 M 12.5 40 H 30"
 						stroke="var(--color-text-100)"
-						strokeWidth={3}
+						strokeWidth={4}
 						strokeLinecap="round"
-						strokeLinejoin="round"
 						fill="transparent"
 						style={{
 							pathOffset: pathOffsetMV,

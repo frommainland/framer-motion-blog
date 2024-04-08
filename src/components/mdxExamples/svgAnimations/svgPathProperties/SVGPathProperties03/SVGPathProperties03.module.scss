@@ -1,0 +1,19 @@
+.wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 2;
+    border: 1px solid var(--color-surface-200);
+    border-radius: 2em;
+    margin-top: 2em;
+    padding: 2em;
+    background-image: radial-gradient(var(--color-surface-200) 1px, var(--color-surface-100) 1px);
+    background-size: 14px 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    svg:last-child {
+        margin-right: 0 !important;
+    }
+
+}

@@ -2,7 +2,6 @@
 import React from 'react'
 import styles from './SVGPathProperties02.module.scss'
 import { motion } from 'framer-motion'
-import { smooth } from '@/helper/easing'
 
 export default function SVGPathProperties02() {
 	const DATA = [
@@ -16,7 +15,7 @@ export default function SVGPathProperties02() {
 		repeat: Infinity,
 		repeatType: 'reverse',
 		repeatDelay: 2,
-		ease: smooth,
+		type: 'spring',
 	}
 	return (
 		<div className={styles.wrap}>

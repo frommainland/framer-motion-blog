@@ -9,21 +9,21 @@ export default function SVGTurbulenceFilter() {
 			<svg
 				style={{
 					width: 240,
-					height: 120,
+					height: 200,
 				}}
 			>
 				<defs>
 					<filter id="displacementFilter3">
 						<feTurbulence
 							type="fractalNoise"
-							baseFrequency="0.02"
-							numOctaves="3"
+							baseFrequency="0.03"
+							numOctaves="10"
 							result="noise"
 						/>
 						<feDisplacementMap
 							in="SourceGraphic"
 							in2="noise"
-							scale="80"
+							scale="40"
 							result="displacement"
 							xChannelSelector="R"
 							yChannelSelector="G"
@@ -31,16 +31,19 @@ export default function SVGTurbulenceFilter() {
 					</filter>
 				</defs>
 				<motion.path
-					d="M0 57.6002C118.5 57.4999 120 57.501 240 57.6002C121.5 57.6 117 57.6 0 57.6002Z"
-					fill="#FFFCE1"
+					d="M 0 94 C 109 59 114 59 240 94 C 112 59 110 59 0 94 Z"
+					fill="var(--color-surface-200)"
 					animate={{
-						d: 'M0 57.6C80 140.8 160 140.8 240 57.6C160 -19.2 80 -19.2 0 57.6Z',
+						d: 'M 0 94 C 80 141 160 141 240 94 C 160 -19 80 -19 0 94 Z',
+						fill: 'var(--color-accent-yellow)',
 					}}
 					transition={{
 						repeat: Infinity,
-						duration: 2,
+						duration: 4,
+						repeatType: 'mirror',
+						type: 'spring',
 					}}
-					style="filter: url(#displacementFilter3)"
+					filter="url(#displacementFilter3)"
 				/>
 			</svg>
 		</div>

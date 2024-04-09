@@ -25,7 +25,7 @@ export default function SVGPathHamberger() {
 			>
 				<MotionConfig>
 					<motion.path
-						stroke="var(--color-accent-green)"
+						stroke="var(--color-text-100)"
 						animate={{
 							d: open ? 'M 40 40 L 80 80' : 'M 35 40 L 85 40',
 						}}
@@ -35,7 +35,7 @@ export default function SVGPathHamberger() {
 					/>
 					<motion.path
 						d="M 35 60 H 85"
-						stroke="var(--color-accent-green)"
+						stroke="var(--color-text-100)"
 						animate={{ opacity: open ? 0 : 1 }}
 						transition={{ duration: 0.1 }}
 						strokeWidth={10}
@@ -46,7 +46,7 @@ export default function SVGPathHamberger() {
 						animate={{
 							d: open ? 'M 40 80 L 80 40' : 'M 35 80 L 85 80',
 						}}
-						stroke="var(--color-accent-green)"
+						stroke="var(--color-text-100)"
 						strokeWidth={10}
 						strokeLinecap="round"
 						fill="transparent"

@@ -7,10 +7,121 @@ order: 100
 # SVG Path
 
 ## Path Basic
+
+An SVG contains its own type of elements like, e.g., Circle, Line, Image, Path, different Gradients, and Filters. And you can animate all of them.
+
+### A simple curve
+Every SVG path has a d attribute: a string that describes its shape. The letters in that string are drawing commands, and the numbers are values passed to those commands.
+
+```js
+<motion.path
+    d="M 24 24 C 96 24 96 96 96 96"
+    stroke="var(--color-accent-green)"
+    strokeWidth={10}
+    strokeLinecap="round"
+    fill="transparent"
+/>
+```
+The commands in this path’s `d` are:
+
+`M 24 24` — Move to a point 24 pixels from the left and 24 from the top.
+The list of commands always starts with an M. You need to place the pen somewhere on the paper before drawing a line.
+
+`C 96 24 96 96` — Add control point for a cubic Bézier curve at x-position 96 and y-position 24 for point(24,24), which is the first point. Add another control point for point(96,96), which is the last point
+A cubic Bézier curve has two control point that defines the slope for both its start and end points.
+
+`96 96` — Draw the next point, 96 pixels from the left and top.
+
+This can be visualized in this [site](https://yqnn.github.io/svg-path-editor/), powerful stuff.
+
+
+### The path’s style
+
+- `stroke` — Color of the path’s stroke.
+- `strokeWidth` — The stroke’s width in pixels.
+- `strokeLinecap` — How the path’s endings should look.
+- `fill` — The path’s fill color. We don’t want the default "black", so we make it "transparent".
+
+
+## Animating the curve
+Morphing the path’s shape is easy: You animate to another `d` string with a similar set of values. Same as animate html elements.
+
+```js
+<motion.path
+    d="M 24 24 C 96 24 96 96 96 96"
+    animate={{ d: 'M 96 96 C 58 58 24 96 24 96' }}
+    transition={{
+        repeat: Infinity,
+        repeatType: 'mirror',
+        ease: 'easeInOut',
+        duration: 3,
+    }}
+/>
+```
 <SVGPathBasic />
+
+## Keyframes
+Keyframes are also possible. Here the `<motion.path>` doesn’t need a `d` attribute because a keyframe animation uses its first keyframe as the from value.
+
+```js
+<motion.path
+    animate={{ 
+        d: [
+		'M 24 24 C 96 24 96 96 96 96',
+		'M 96 96 C 58 58 24 96 24 96',
+		'M 96 96 C 58 58 24 23 24 23',
+		'M 24 96 C 24 23 96 23 96 23',
+		'M 24 24 C 96 24 96 96 96 96',
+        ]
+    }}
+/>
+```
+
+### Paths must be similar
+This is the limitation when animating paths: you can only animate between paths with the same number of commands and same kind of commands. You can’t animate, for instance, from a quadratic Bézier curve (Q) to a cubic one (C), or to an arc curve (A).
 
 <SVGPathKeyframe />
 
+
+## Bending a straight line
+To get around this limitation, you can add extra points or curves. Here’s an example of how a straight line with an added curve can be animated to an arc.
+
+You can draw arc first in any vector graphic apps, and use that arc and bend it to a line. Don't remove the control handles. 
 <SVGLine2Circle />
 
+
+## More example
+This is from [Matt](https://codesandbox.io/s/mx2rw?file=/src/Example.jsx). Smart to just hide the second bar during animation, instead of morphing into X.
+
+```js
+<motion.path
+    stroke="var(--color-text-100)"
+    animate={{
+        d: open ? 'M 40 40 L 80 80' : 'M 35 40 L 85 40',
+    }}
+    strokeWidth={10}
+    strokeLinecap="round"
+    fill="transparent"
+/>
+<motion.path
+    d="M 35 60 H 85"
+    stroke="var(--color-text-100)"
+    animate={{ opacity: open ? 0 : 1 }}
+    transition={{ duration: 0.1 }}
+    strokeWidth={10}
+    strokeLinecap="round"
+    fill="transparent"
+/>
+<motion.path
+    animate={{
+        d: open ? 'M 40 80 L 80 40' : 'M 35 80 L 85 80',
+    }}
+    stroke="var(--color-text-100)"
+    strokeWidth={10}
+    strokeLinecap="round"
+    fill="transparent"
+/>
+```
+
 <SVGPathHamberger />
+

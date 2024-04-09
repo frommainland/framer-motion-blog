@@ -1,0 +1,25 @@
+.wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 2;
+    border: 1px solid var(--color-surface-200);
+    border-radius: 2em;
+    margin-top: 2em;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(var(--color-surface-200) 1.3px, transparent 1.3px), linear-gradient(to right, var(--color-surface-200) 1.3px, var(--color-surface-100) 1.3px);
+    background-size: 26px 26px;
+
+    .svgText {
+        display: block;
+        position: relative;
+        margin: 0 auto;
+        padding: 0.5em;
+        fill: var(--color-text-200);
+        font: 100px var(--font-kansas);
+        text-align: justify;
+    }
+}

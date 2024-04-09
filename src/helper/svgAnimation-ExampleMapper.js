@@ -7,8 +7,8 @@ import SVGPathProperties02 from "@/components/mdxExamples/svgAnimations/svgPathP
 import SVGPathProperties03 from "@/components/mdxExamples/svgAnimations/svgPathProperties/SVGPathProperties03"
 import SVGGradients from "@/components/mdxExamples/svgAnimations/svgGradientFilter/SVGGradients"
 import SVGTurbulenceFilter from "@/components/mdxExamples/svgAnimations/svgGradientFilter/SVGTurbulenceFilter"
-
-
+import SVGDisplacementFilter from "@/components/mdxExamples/svgAnimations/svgGradientFilter/SVGDisplacementFilter"
+import SVGGradients02 from "@/components/mdxExamples/svgAnimations/svgGradientFilter/SVGGradients02"
 const svgAnimationExampleMapper = {
     SVGPathBasic,
     SVGPathKeyframe,
@@ -18,7 +18,9 @@ const svgAnimationExampleMapper = {
     SVGPathProperties02,
     SVGPathProperties03,
     SVGGradients,
+    SVGGradients02,
     SVGTurbulenceFilter,
+    SVGDisplacementFilter,
 }
 
 export default svgAnimationExampleMapper

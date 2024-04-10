@@ -4,8 +4,115 @@ chapter: 'SVG Animations'
 order: 200
 ---
 
+# SVG Path Properties
+
+The `<motion.path>` element received a few extra properties (compared to its counterpart `<path>`) that make it a lot easier to animate its length and starting point.
+
+- `pathLength`
+- `pathOffset`
+- `pathSpacing`
+
 <SVGPathProperties />
+
+Thanks to this trio, you don’t have to calculate the path’s actual length and deal with properties like `stroke-dasharray` and `stroke-dashoffset`. 
+
+### Motion values for these
+For these props to work, they have to set in motion values.
+
+```js
+// values from sliders
+const [pathLength, setpathLength] = React.useState(1)
+const [pathOffset, setpathOffset] = React.useState(0)
+const [pathSpacing, setpathSpacing] = React.useState(1)
+
+// set motion values when states change
+const pathOffsetMV = useMotionValue(pathOffset)
+const pathLengthMV = useMotionValue(pathLength)
+const pathSpacingMV = useMotionValue(pathSpacing)
+
+React.useEffect(() => {
+    pathOffsetMV.set(pathOffset)
+}, [pathOffset])
+
+React.useEffect(() => {
+    pathLengthMV.set(pathLength)
+}, [pathLength])
+
+React.useEffect(() => {
+    pathSpacingMV.set(pathSpacing)
+}, [pathSpacing])
+```
+
+## Example 02
 
 <SVGPathProperties02 />
 
+I have create 3 sets of identical `YZ`, and each set have different animation configs and delays. At the end, the last set (white YZ)will overlay on top of everything.
+
+```js
+const DATA = [
+    { color: 'var(--color-accent-yellow)', delay: 0 },
+    { color: 'var(--color-accent-purple)', delay: 0.6 },
+    { color: 'var(--color-text-100)', delay: 0.9 },
+]
+
+const paths = [
+    { d: "M 80 98 V 146", delayFactor: 0.1 },
+    { d: "M 80 98 L 141 15", delayFactor: 0.2 },
+    { d: "M 19 15 L 80 98", delayFactor: 0.25 },
+]
+```
+```js
+const MotionPath = ({ d, delayFactor, color, index, delay }) => (
+    <motion.path
+        d={d}
+        stroke={color}
+        strokeWidth="12"
+        strokeLinecap="round"
+        initial={{
+            pathLength: 1,
+            pathOffset: 1,
+        }}
+        animate={{ pathOffset: 0 }}
+        transition={{
+            delay: delayFactor * (index + 1) + delay,
+            ...transitionDefault,
+        }}
+    />
+)
+
+{DATA.map((item, i) => (
+    <g key={i}>
+        {paths.map((path, index) => (
+            <MotionPath key={index} {...path} color={item.color} index={index} delay={item.delay} />
+        ))}
+    </g>
+))}
+```
+
+
+## Example 03
+
 <SVGPathProperties03 />
+
+Similar as example 02, 3 sets of identical svg for each letters. This time, I am changing `pathLength` and `pathSpacing`, which will display as dashed line going through the paths.
+
+```js
+<motion.path
+    d="M 2 2 V 48 V 94"
+    stroke={item.color}
+    strokeWidth="2"
+    strokeLinecap="round"
+    initial={{
+        pathLength: item.pathLength,
+        pathOffset: 1,
+        pathSpacing: item.pathSpacing,
+        opacity: 0,
+    }}
+    animate={{ pathOffset: 0, opacity: 1 }}
+    transition={{
+        delay: 0.1 * (i + 1) + item.delay,
+        ...transitionDefault,
+    }}
+/>
+```

@@ -4,12 +4,159 @@ chapter: 'SVG Animations'
 order: 300
 ---
 
+# SVG Gradients & Filters
+
+You can animate these tags in SVG.
+
+- SVG gradients, like `<linearGradient>`, `<radialGradient>`, and their color `<stop>`s
+
+- SVG `<filter>` primitives, like` <feGaussianBlur>`, `<feOffset>`,` <feFlood>`, `<feBlend>`, `<feColorMatrix>`,` <feTurbulence>`, `<feDropShadow>`, `<feMorphology>`, etc.
+
+## Linear gradient example
 
 <SVGGradients />
 
+```js
+<defs>
+    <motion.linearGradient
+        id="svg_gradient_01"
+        x1="75"
+        y1="0"
+        x2="75"
+        y2="150"
+        animate={{
+            y1: [0, 0.6, 0.499, 0, 0, 0],
+            y2: [1, 1, 0.501, 0.4, 1, 1],
+        }}
+        transition={{
+            repeat: Infinity,
+            duration: 5,
+            ease: 'circInOut',
+        }}
+    >
+        <stop
+            offset={0}
+            stopColor="var(--color-accent-yellow)"
+        />
+        <stop offset={1} stopColor="var(--color-accent-red)" />
+    </motion.linearGradient>
+</defs>
+```
+- `y1` — Vertical position of the gradient’s starting point
+- `y2` — Vertical position of the gradient’s ending point
+
+The start point of the gradient yellow (y1) moves from:
+ - 0%,
+ - to 60%,
+ - then to almost 50%,
+ - then back to 0%,
+ - and then stays there.
+
+They almost touch each other when they’re at 49.9% and 50.1%. (I didn’t use 50% because that can flip the direction of the gradient.)
+
+
+## Linear gradient example with `offset`
+
 <SVGGradients02 />
 
-<SVGTurbulenceFilter />
+```js
+<defs>
+    <linearGradient
+        id="svg_gradient_02"
+        x1="0"
+        y1="75"
+        x2="500"
+        y2="75"
+        gradientUnits="userSpaceOnUse"
+    >
+        <stop stopColor="var(--color-accent-red)" />
+        <motion.stop
+            offset="0.225"
+            stopColor="var(--color-accent-blue)"
+            animate={{ offset: [0.15, 0.35] }}
+            transition={{
+                type: 'spring',
+                duration: 4,
+                repeat: Infinity,
+                repeatType: 'mirror',
+            }}
+        />
+        <motion.stop
+            offset="0.5"
+            stopColor="var(--color-accent-yellow)"
+            animate={{ offset: [0.4, 0.6] }}
+            transition={{
+                type: 'spring',
+                duration: 6,
+                repeat: Infinity,
+                repeatType: 'mirror',
+            }}
+        />
+        <motion.stop
+            offset="0.73"
+            stopColor="var(--color-accent-purple)"
+            animate={{ offset: [0.65, 0.85] }}
+            transition={{
+                type: 'spring',
+                duration: 8,
+                repeat: Infinity,
+                repeatType: 'mirror',
+            }}
+        />
+        <stop
+            offset="1"
+            stopColor="var(--color-accent-green)"
+        />
+    </linearGradient>
+</defs>
+```
 
+`offset` is a value from 0 to 1 as location data in svg, kind same as `y1` `y2`, but in multiple colors gradient. We can animate its value, so the color of that offset can move around.
+
+## SVGTurbulenceFilter
+
+You can also animate svg Filter, but the value you are animating should be motion value.
+
+<SVGTurbulenceFilter />
+```js
+let numOctaves = useMotionValue(40)
+let baseFrequency = useMotionValue(0.01)
+animate(numOctaves, [40, 60], {
+    repeat: Infinity,
+    duration: 4,
+    repeatType: 'mirror',
+    type: 'spring',
+})
+
+animate(baseFrequency, [0.01, 0.1], {
+    repeat: Infinity,
+    duration: 4,
+    repeatType: 'mirror',
+    type: 'spring',
+})
+
+<defs>
+    <filter id="displacementFilter3">
+        <motion.feTurbulence
+            type="fractalNoise"
+            baseFrequency={baseFrequency}
+			numOctaves={numOctaves}
+            result="noise"
+        />
+        <feDisplacementMap
+            in="SourceGraphic"
+            in2="noise"
+            scale="40"
+            result="displacement"
+            xChannelSelector="R"
+            yChannelSelector="G"
+        />
+    </filter>
+</defs>
+
+```
+
+## SVGDisplacementFilter
 <SVGDisplacementFilter />
-https://www.smashingmagazine.com/2021/09/deep-dive-wonderful-world-svg-displacement-filtering/
+Similar as previous example, you can also animate other types of svg filters. For SVGDisplacementFilter details, you can check [here](https://www.smashingmagazine.com/2021/09/deep-dive-wonderful-world-svg-displacement-filtering/)
+

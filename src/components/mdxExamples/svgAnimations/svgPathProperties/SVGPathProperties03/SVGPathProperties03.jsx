@@ -40,7 +40,7 @@ export default function SVGPathProperties03() {
 					width: 54,
 					height: 96,
 					fill: 'none',
-                    marginRight:18
+					marginRight: 18,
 				}}
 			>
 				{DATA.map((item, i) => (
@@ -92,8 +92,8 @@ export default function SVGPathProperties03() {
 					width: 62,
 					height: 69,
 					fill: 'none',
-                    marginRight:12,
-                    marginTop:28
+					marginRight: 12,
+					marginTop: 28,
 				}}
 			>
 				{DATA.map((item, i) => (
@@ -145,8 +145,8 @@ export default function SVGPathProperties03() {
 					width: 34,
 					height: 68,
 					fill: 'none',
-                    marginRight:15,
-                    marginTop:28
+					marginRight: 15,
+					marginTop: 28,
 				}}
 			>
 				{DATA.map((item, i) => (
@@ -198,8 +198,8 @@ export default function SVGPathProperties03() {
 					width: 58,
 					height: 94,
 					fill: 'none',
-                    marginRight:15,
-                    marginTop:48
+					marginRight: 15,
+					marginTop: 48,
 				}}
 			>
 				{DATA.map((item, i) => (
@@ -251,8 +251,8 @@ export default function SVGPathProperties03() {
 					width: 58,
 					height: 69,
 					fill: 'none',
-                    marginRight:19,
-                    marginTop:28
+					marginRight: 19,
+					marginTop: 28,
 				}}
 			>
 				{DATA.map((item, i) => (

@@ -30,7 +30,6 @@ export default function SVGGradients() {
 						y1="0"
 						x2="75"
 						y2="150"
-						// gradientUnits="userSpaceOnUse"
 						animate={{
 							y1: [0, 0.6, 0.499, 0, 0, 0],
 							y2: [1, 1, 0.501, 0.4, 1, 1],

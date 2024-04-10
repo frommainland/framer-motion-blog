@@ -43,11 +43,9 @@ export default function SVGPathProperties() {
 						strokeLinecap="round"
 						strokeLinejoin="round"
 						fill="transparent"
-						style={{
-							pathOffset: pathOffsetMV,
-							pathLength: pathLengthMV,
-							pathSpacing: pathSpacingMV,
-						}}
+						pathOffset={pathOffsetMV}
+						pathLength={pathLengthMV}
+						pathSpacing={pathSpacingMV}
 						transition={{
 							repeat: Infinity,
 							repeatType: 'mirror',

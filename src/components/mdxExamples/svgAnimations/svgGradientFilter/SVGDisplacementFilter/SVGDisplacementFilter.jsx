@@ -3,6 +3,7 @@ import React from 'react'
 import styles from './SVGDisplacementFilter.module.scss'
 import { animate, motion, useMotionValue } from 'framer-motion'
 import waterDisplacement from '@/app/images/waterdisplacement.jpg'
+import SingleCheckBox from '@/components/SingleCheckBox'
 
 export default function SVGDisplacementFilter() {
 	const x = useMotionValue(0)
@@ -18,6 +19,8 @@ export default function SVGDisplacementFilter() {
 		repeat: Infinity,
 		repeatType: 'mirror',
 	})
+
+	const [showDisplacement, setshowDisplacement] = React.useState(false)
 	return (
 		<div className={styles.wrap}>
 			<svg
@@ -45,7 +48,8 @@ export default function SVGDisplacementFilter() {
 						/>
 						<motion.feDisplacementMap
 							id="fedisplacementmap"
-							in="SourceGraphic"
+							in={!showDisplacement ? 'SourceGraphic' : null}
+							in2={showDisplacement ? 'SourceGraphic' : null}
 							xChannelSelector="R"
 							yChannelSelector="B"
 							scale={scale}
@@ -62,14 +66,22 @@ export default function SVGDisplacementFilter() {
 				>
 					Galexio
 				</text>
-				{/* <motion.image
-					href={waterDisplacement.src}
-					width={941}
-					height={128}
-					x={0}
-					y={0}
-				/> */}
 			</svg>
+			<div
+				style={{
+					position: 'absolute',
+					bottom: 20,
+					left: '50%',
+					transform: 'translateX(-50%)',
+				}}
+			>
+				<SingleCheckBox
+					value={showDisplacement}
+					setValue={setshowDisplacement}
+					id="showDisplacement"
+					content="Displacement Image"
+				/>
+			</div>
 		</div>
 	)
 }

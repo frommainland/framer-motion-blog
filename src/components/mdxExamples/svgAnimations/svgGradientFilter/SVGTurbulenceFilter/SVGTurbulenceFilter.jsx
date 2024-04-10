@@ -1,9 +1,25 @@
 'use client'
 import React from 'react'
 import styles from './SVGTurbulenceFilter.module.scss'
-import { motion } from 'framer-motion'
+import { animate, motion, useMotionValue } from 'framer-motion'
 
 export default function SVGTurbulenceFilter() {
+	let numOctaves = useMotionValue(40)
+	let baseFrequency = useMotionValue(0.01)
+	animate(numOctaves, [40, 60], {
+		repeat: Infinity,
+		duration: 4,
+		repeatType: 'mirror',
+		type: 'spring',
+	})
+
+	animate(baseFrequency, [0.01, 0.1], {
+		repeat: Infinity,
+		duration: 4,
+		repeatType: 'mirror',
+		type: 'spring',
+	})
+
 	return (
 		<div className={styles.wrap}>
 			<svg
@@ -14,10 +30,10 @@ export default function SVGTurbulenceFilter() {
 			>
 				<defs>
 					<filter id="displacementFilter3">
-						<feTurbulence
+						<motion.feTurbulence
 							type="fractalNoise"
-							baseFrequency="0.03"
-							numOctaves="10"
+							baseFrequency={baseFrequency}
+							numOctaves={numOctaves}
 							result="noise"
 						/>
 						<feDisplacementMap

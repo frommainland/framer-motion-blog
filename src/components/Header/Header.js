@@ -16,16 +16,19 @@ function Header({ theme }) {
             <Link href='/introduction?catergory=Introduction' className={styles.logoWrap} onClick={() => setIsActive('introduction')}>
                 <Book size={32} className={styles.logo} />
                 Motion Book</Link>
-            <div className={styles.navLinkWrap}>
+
+            {/* disabled for later revision */}
+            {/* <div className={styles.navLinkWrap}>
                 <ul className={styles.navLink}>
                     <li>Github</li>
                     <li>ChangeLog</li>
                     <li>About</li>
                 </ul>
                 <button>{theme}</button>
-            </div>
+            </div> */}
+            <div className={styles.navLinkWrap}>work in progress</div>
         </div>
-    );
+    )
 }
 
 export default Header;

@@ -1,0 +1,114 @@
+---
+title: 'Dragging Basic'
+chapter: 'Animations'
+order: 100
+---
+
+# Dragging Basic
+
+## Dragging
+Make any element draggable with the drag property.
+
+Simply setting a motion element’s drag property to true, which will let you drag it. There’s also a shorthand syntax: You can omit the true and simply set drag:
+
+```js
+<motion.div drag />
+```
+Dragging comes with simulated physics: When you throw the div, it will keep moving with a bit of momentum before coming to a standstill.
+
+## Only horizontally or vertically
+Instead of setting drag to true (which enables dragging in all directions), you can also set it to `"x"` or `"y"`; this limits the movement of the motion element to just one direction.
+
+<DraggingBasicDirection />
+
+```js
+<motion.div drag="x">
+    Horizontal
+</motion.div>
+
+<motion.div drag="y">
+    Vertical
+</motion.div>
+```
+
+## Direction lock
+
+Did you notice how in Safari on iOS, when zoomed in on a page, scrolling will stick to one direction? This behavior is called `‘direction lock’` in Framer Motion, and by default, it’s disabled, so you have to switch it on:
+
+```js
+<motion.div
+    drag
+    dragDirectionLock={true}
+/>
+```
+
+What happens: When you start dragging, the motion div will stay put, and only after you’ve dragged a small distance, it’ll lock to that direction and start moving.
+
+<DraggingBasicDirectionLock />
+
+You can get the direction by 
+
+```js
+<motion.div
+    drag
+    dragDirectionLock
+    onDirectionLock={axis => console.log(axis)}
+/>
+```
+
+## DragPropagation
+
+Try drag around the yellow Box, turn on and off the `dragPropagation` to see the differences. It is set to false by default.
+
+<DraggingBasicDragPropagation />
+
+```js
+<motion.div drag="x" dragPropagation />
+```
+
+## DragConstraints
+
+Define how far you can drag an element or in which area it should stay.
+
+With the `dragConstraints` property, you can set how far the user can drag an element to the `top`, `bottom`, `left`, and `right` — or, alternatively: you pass `dragConstraints` a reference to an element you want it to stay in.
+
+These constraints don’t impose a hard stop; they have a bit of leeway, some elasticity. There’s a rubber-banding effect (which you can tweak with drag elastic) when you drag the element beyond its constraints.
+
+### Using the area of another element
+<DragConstraints />
+
+You can also give dragConstraints a reference to another element, like here the motion div’s parent div. The draggable motion div will then stay within that parent div.
+```js
+const constraintsRef = useRef(null);
+<div ref={constraintsRef}>
+    <motion.div
+        drag
+        dragConstraints={constraintsRef}
+    />
+</div>
+}
+```
+
+### Using exact values
+
+You can also use exact values for the `dragConstraints` property.
+
+When using `top`, `bottom`, `left`, and `right`, the constraints will refer to the element’s initial position. So, the value for right stands for ‘this many pixels to the right’.
+
+Note that top and left need negative values. (We’re actually setting the maximum transform values for the div’s `x` and `y` properties.)
+
+<DragConstraintsExactValue />
+
+```js
+<motion.div
+    drag
+    dragConstraints={{
+        top: -60,
+        right: 70,
+        bottom: 60,
+        left: -70,
+    }}
+/>
+```
+
+

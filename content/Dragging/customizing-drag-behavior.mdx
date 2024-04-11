@@ -4,3 +4,92 @@ chapter: 'Animations'
 order: 200
 ---
 
+# Customizing Drag Behavior
+
+## Drag Elastic
+
+When you drag an element beyond its `dragConstraints`, it’ll move slower. There’s a resistance signaling it will bounce back, and with the `dragElastic` property, you can change its strength.
+
+It’s a simple distance multiplier. For example, with a `dragElastic` of `0.5`, the element will move only half the distance you drag it. When set to `0.25`, it will only move a quarter, and when set to `1`, there’s no resistance at all.
+```js
+<motion.div
+    drag
+    dragElastic={0.2}
+/>
+```
+
+<DragElastic />
+
+## Drag Momentum
+
+Interacting with a draggable element feels natural because it has some simulated physics. For instance: when you throw it, it will keep moving with a momentum animation.
+
+You can disable this animation by setting `dragMomentum` to `false`.
+<DragMomentum />
+```js
+<motion.div
+    drag
+    dragMomentum={false}
+/>
+```
+
+## Drag Transition - move within constraints
+What if you want to tweak the `dragMomentum` instead of turn it off? Use `dragTransition`.
+
+The momentum animation takes the current speed (a.k.a. velocity) of the element and decelerates it at a rate that feels natural. The harder you throw it, the farther it will move. You can tweak the rate of deceleration with two settings: `power` and `timeConstant`.
+
+### power
+
+The docs say: “A higher power value equals a further target.” So, the higher the value, the farther you can throw the div.
+
+The default `power` is `0.8`; changing it to something like `0.1` makes the element feel heavier, make it `2` feels lighter.
+
+<DragTransitionPower />
+```js
+<motion.div
+    drag
+    dragTransition={{ power: 0.8 }}
+/>
+```
+
+### Time constant
+
+With `timeConstant`, you change the duration of the deceleration. The higher this value (the default is 700), the longer the animation will last.
+
+<DragTransitionTimeConstant />
+```js
+<motion.div
+    drag
+    dragTransition={{ timeConstant: 700 }}
+/>
+```
+
+## Drag Transition - snap to constraints
+
+This spring animation only kicks in when you’ve thrown the element hard enough for the momentum animation’s endpoint to be on the other side of the constraints. And it’s also the bounce-back animation that happens when you drag an element beyond its constraints and then release it.
+
+Two settings change the feel of this animation: `bounceStiffness` and `bounceDamping`.
+
+## Bounce stiffness
+
+This one is comparable to the stiffness setting of a spring animation. You could say that it’s the strength of the spring that pulls the element towards the constraint.
+
+<DragTransitionBounceStiffness />
+```js
+<motion.div
+    drag
+    dragTransition={{ bounceStiffness: 50 }}
+/>
+```
+
+## Bounce damping
+This one is like a spring animation’s damping and also has the same default: `10`. Lowering it will make the animation bouncier.
+
+<DragTransitionBounceDamping />
+
+```js
+<motion.div
+    drag
+    dragTransition={{ bounceDamping: 10 }}
+/>
+```

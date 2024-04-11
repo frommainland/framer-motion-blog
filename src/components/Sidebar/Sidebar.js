@@ -33,7 +33,7 @@ async function Sidebar() {
 
                 {/* <SidebarList title='Manual Controls' content={ManualControls} /> */}
                 <SidebarList title='SVG Animations' content={SVGAnimations} />
-                {/* <SidebarList title='Dragging' content={Dragging} /> */}
+                <SidebarList title='Dragging' content={Dragging} />
                 {/* <SidebarList title='API Overview' content={APIOverview} /> */}
                 {/* <SidebarList title='Some Examples' content={SomeExamples} /> */}
             </SidebarListWrap>

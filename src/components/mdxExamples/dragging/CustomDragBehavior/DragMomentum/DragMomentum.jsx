@@ -1,18 +1,19 @@
 'use client'
 import React from 'react'
-import styles from './DragConstraints.module.scss'
+import styles from './DragMomentum.module.scss'
 import { motion } from 'framer-motion'
 import SingleCheckBox from '@/components/SingleCheckBox'
 
-export default function DragConstraints() {
+export default function DragMomentum() {
 	const constraintsRef = React.useRef(null)
-	const [dragConstraints, setdragConstraints] = React.useState(true)
+	const [dragMomentum, setdragMomentum] = React.useState(true)
 	return (
-		<div className={styles.wrap} ref={constraintsRef} key={dragConstraints}>
+		<div className={styles.wrap} ref={constraintsRef}>
 			<motion.div
 				drag
 				className={styles.box}
-				dragConstraints={dragConstraints ? constraintsRef : undefined}
+				dragConstraints={constraintsRef}
+				dragMomentum={dragMomentum}
 			></motion.div>
 			<div
 				style={{
@@ -23,10 +24,10 @@ export default function DragConstraints() {
 				}}
 			>
 				<SingleCheckBox
-					value={dragConstraints}
-					setValue={setdragConstraints}
-					id="dragConstraints"
-					content="dragConstraints"
+					value={dragMomentum}
+					setValue={setdragMomentum}
+					id="dragMomentum"
+					content="dragMomentum"
 				/>
 			</div>
 		</div>

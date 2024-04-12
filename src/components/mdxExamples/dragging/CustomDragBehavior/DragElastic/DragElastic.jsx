@@ -19,10 +19,13 @@ export default function DragElastic() {
 					ref={dragContainer}
 				>
 					<motion.div
-						drag='x'
+						drag="x"
 						className={styles.box}
 						dragConstraints={dragContainer}
 						dragElastic={dragElastic[index]}
+						whileDrag={{
+							backgroundColor: 'var(--color-accent-yellow)',
+						}}
 					>
 						{content[index]}
 					</motion.div>

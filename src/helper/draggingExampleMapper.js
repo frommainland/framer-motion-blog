@@ -9,6 +9,10 @@ import DragTransitionPower from "@/components/mdxExamples/dragging/CustomDragBeh
 import DragTransitionTimeConstant from "@/components/mdxExamples/dragging/CustomDragBehavior/DragTransitionTimeConstant"
 import DragTransitionBounceStiffness from "@/components/mdxExamples/dragging/CustomDragBehavior/DragTransitionBounceStiffness"
 import DragTransitionBounceDamping from "@/components/mdxExamples/dragging/CustomDragBehavior/DragTransitionBounceDamping"
+import DragModifyTarget from "@/components/mdxExamples/dragging/CustomDragBehavior/DragModifyTarget"
+import DragModifyTarget02 from "@/components/mdxExamples/dragging/CustomDragBehavior/DragModifyTarget02"
+import SnapToGrid from "@/components/mdxExamples/dragging/CustomDragBehavior/SnapToGrid"
+import SnapToCorner from "@/components/mdxExamples/dragging/CustomDragBehavior/SnapToCorner"
 
 const draggingExampleMapper = {
     DraggingBasicDirection,
@@ -22,6 +26,10 @@ const draggingExampleMapper = {
     DragTransitionTimeConstant,
     DragTransitionBounceStiffness,
     DragTransitionBounceDamping,
+    DragModifyTarget,
+    DragModifyTarget02,
+    SnapToGrid,
+    SnapToCorner,
 }
 
 export default draggingExampleMapper

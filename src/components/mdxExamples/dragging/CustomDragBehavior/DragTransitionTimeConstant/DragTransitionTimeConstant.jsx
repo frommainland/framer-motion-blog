@@ -16,6 +16,9 @@ export default function DragTransitionTimeConstant() {
 					className={styles.box}
 					dragConstraints={constraintsRef}
 					dragTransition={{ timeConstant: item }}
+					whileDrag={{
+						backgroundColor: 'var(--color-accent-yellow)',
+					}}
 				>
 					{item}
 				</motion.div>

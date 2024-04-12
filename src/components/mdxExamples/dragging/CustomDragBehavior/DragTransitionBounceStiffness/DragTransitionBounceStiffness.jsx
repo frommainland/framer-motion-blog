@@ -17,6 +17,9 @@ export default function DragTransitionBounceStiffness() {
 					className={styles.box}
 					dragConstraints={constraintsRef}
 					dragTransition={{ bounceStiffness: item }}
+                    whileDrag={{
+							backgroundColor: 'var(--color-accent-yellow)',
+						}}
 				>
 					{item}
 				</motion.div>

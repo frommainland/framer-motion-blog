@@ -17,6 +17,9 @@ export default function DragTransitionPower() {
 					className={styles.box}
 					dragConstraints={constraintsRef}
 					dragTransition={{ power: item }}
+					whileDrag={{
+						backgroundColor: 'var(--color-accent-yellow)',
+					}}
 				>
 					{item}
 				</motion.div>

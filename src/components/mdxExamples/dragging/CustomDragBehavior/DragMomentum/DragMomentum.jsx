@@ -14,6 +14,9 @@ export default function DragMomentum() {
 				className={styles.box}
 				dragConstraints={constraintsRef}
 				dragMomentum={dragMomentum}
+				whileDrag={{
+					backgroundColor: 'var(--color-accent-yellow)',
+				}}
 			></motion.div>
 			<div
 				style={{

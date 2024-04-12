@@ -70,7 +70,7 @@ This spring animation only kicks in when you’ve thrown the element hard enough
 
 Two settings change the feel of this animation: `bounceStiffness` and `bounceDamping`.
 
-## Bounce stiffness
+### Bounce stiffness
 
 This one is comparable to the stiffness setting of a spring animation. You could say that it’s the strength of the spring that pulls the element towards the constraint.
 
@@ -82,7 +82,7 @@ This one is comparable to the stiffness setting of a spring animation. You could
 />
 ```
 
-## Bounce damping
+### Bounce damping
 This one is like a spring animation’s damping and also has the same default: `10`. Lowering it will make the animation bouncier.
 
 <DragTransitionBounceDamping />
@@ -91,5 +91,128 @@ This one is like a spring animation’s damping and also has the same default: `
 <motion.div
     drag
     dragTransition={{ bounceDamping: 10 }}
+/>
+```
+
+
+## ModifyTarget
+
+As you know, a momentum animation kicks off when you release a draggable element. This animation starts with the element’s current velocity and gradually slows it down until a complete standstill.
+
+This means that this animation’s endpoint is already known when it starts. But you can modify this target endpoint by giving `modifyTarget()` a callback function. Your function will receive the current target as a parameter, and you can return a corrected, desired position.
+
+<DragModifyTarget />
+
+You won’t see a big difference when you throw the div, but try to just place it somewhere; it’ll move an extra 40 points to the right and downwards.
+
+```js
+<motion.div
+    drag
+    dragConstraints={constraintsRef}
+    dragTransition={{
+        timeConstant: 300,
+        modifyTarget: (target) => target + 40,
+    }}
+/>
+```
+
+So yes, the function is actually called twice: once for `x` and once for `y`. But, unfortunately, there’s no way of telling for which axis it was called.
+
+### Target to 0
+Let’s try something else. What would happen when we always return `0` as the new target:
+
+<DragModifyTarget02 />
+
+```js
+dragTransition={{
+    timeConstant: 300,
+    modifyTarget: (target) => 0,
+}}
+```
+
+The div will return to its initial position. But when you drag it over the constraints, it will only move back to the constraints. That’s because `modifyTarget()` only alters the momentum animation and not the snap to constraints animation.
+
+
+### Exampel Snap To Grid
+
+Let’s try to make a draggable motion div always snap to one of the intersections of a grid.
+
+When you release a draggable element, a decelerating momentum animation starts. We can change—modify—the endpoint of that animation with `modifyTarget()` and direct it to one of a grid’s intersection points.
+
+The grid below is 80 by 80 pixels, we modify the target by `Math.round(target / gridSize)`, so that we know which grid the box will likely to stop at, then we multiply gridSize to get the distance to that grid.
+
+✱ When you do throw too hard, the div will be caught by the `dragConstraints`.
+<SnapToGrid />
+
+```js
+dragTransition={{
+    power: 0.5,
+    timeConstant: 100,
+    modifyTarget: (target) => {
+        let newTarget = Math.round(target / gridSize) * gridSize
+        return newTarget
+    }
+}}
+```
+
+### Example Snap to Corner
+
+<SnapToCorner />
+
+The `onDragEnd()` event is triggered when you release the draggable div. I use it to look at the div’s current position and direction and send it to its nearest corner or the corner it was heading for.
+
+### Tracking position 
+I use two Motion values to track the div’s `x` and `y` positions with `get()`.
+
+### Sending the div to the correct corner
+When the div’s `x` is less than `0`, I animate it (using animate()) to the left (`-80`), but when `point.x` is more than `0`, I’ll send it to the right (`80`).
+
+And the same happens in the y-direction with top and bottom. So the div will always jump to the nearest corner.
+
+But there’s an exception!
+
+### Tracking velocity
+When the div moves in a specific direction at a high enough speed (a velocity over 100), we’ll send it that way instead. This way, you can send it to another corner with just a quick fling. (Which is closer to the ‘intent of the gesture’ — [Apple’s Designing Fluid Interfaces](https://developer.apple.com/videos/play/wwdc2018/803/).)
+
+To know the div’s current speed and direction, I look at the velocity ✱ values in the event’s PanInfo object.
+
+✱ This contains the pointer’s velocity, but they’ll be more or less the same at that time anyway.
+
+
+
+```js
+<motion.div
+    style={{ x, y }}
+    drag
+    onDragEnd={(_, info) => {
+        let newX
+        if (x.get() < 0) {
+            newX = -80
+            if (info.velocity.x > 100) {
+                newX = 80
+            }
+        } else {
+            newX = 80
+            if (info.velocity.x < -100) {
+                newX = -80
+            }
+        }
+
+        let newY
+        if (y.get() < 0) {
+            newY = -160
+            if (info.velocity.y > 100) {
+                newY = 160
+            }
+        } else {
+            newY = 160
+            if (info.velocity.y < -100) {
+                newY = -160
+            }
+        }
+
+        animate(x, newX, { type: 'spring', damping: 20 })
+        animate(y, newY, { type: 'spring', damping: 20 })
+    }}
 />
 ```

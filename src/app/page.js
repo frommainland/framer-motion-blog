@@ -16,7 +16,9 @@ export default async function Home() {
 
     return (
         <div className={styles.layoutWrap}>
-            <MDXRemote source={content} components={mdxMapper} />
+            <div className={styles.layout}>
+                <MDXRemote source={content} components={mdxMapper} />
+            </div>
         </div>
     )
 }

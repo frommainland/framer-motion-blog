@@ -65,7 +65,6 @@ const ContentPage = async ({ params, searchParams }) => {
             <div className={styles.layout}>
                 <MDXRemote source={content} components={combinedMdxMapper} options={options} />
             </div>
-
         </div>
     )
 }

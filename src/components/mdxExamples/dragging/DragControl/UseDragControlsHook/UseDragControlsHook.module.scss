@@ -1,0 +1,39 @@
+.wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 2;
+    border: 1px solid var(--color-surface-200);
+    border-radius: 2em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    padding: 2em;
+    background-image: radial-gradient(var(--color-surface-200) 1px, var(--color-surface-100) 1px);
+    background-size: 14px 14px;
+    display: flex;
+    gap: 2em;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    .useDragControlArea {
+        width: 80%;
+        height: 60%;
+        border: 1px solid var(--color-surface-200);
+        background-image: repeating-linear-gradient(45deg, var(--color-surface-100) 25%, transparent 25%, transparent 75%, var(--color-surface-100) 75%, var(--color-surface-100)), repeating-linear-gradient(45deg, var(--color-surface-100) 25%, var(--color-surface-200) 25%, var(--color-surface-200) 75%, var(--color-surface-100) 75%, var(--color-surface-100));
+        background-position: 0 0, 20px 20px;
+        background-size: 40px 40px;
+        cursor: grab;
+
+        .box {
+            width: 8em;
+            aspect-ratio: 2;
+            background-color: var(--color-surface-200);
+            border: 1px solid var(--color-accent-yellow);
+            border-radius: .5em;
+            display: grid;
+            place-content: center;
+            cursor: grab;
+        }
+    }
+
+}

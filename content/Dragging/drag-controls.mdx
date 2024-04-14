@@ -4,4 +4,50 @@ chapter: 'Animations'
 order: 400
 ---
 
+# Drag Controls 
 
+Usually, when wanting to drag an element, you have to tap on it. But for some use-cases, it makes sense to not have to pick up the draggable element. For instance: when you tap a slider or video scrubber, the (draggable) knob should jump to where you tapped.
+
+## The useDragControls() hook
+
+The `useDragControls()` hook gives you a dragControls object with which you can control a draggable element. Here’s an example:
+
+<UseDragControlsHook />
+
+This `dragControls` object is a bit like a remote control with which you can `start()` a drag gesture. Here I did this with an `onPointerDown()` event on the background area:
+
+```js
+export default function App() {
+    const constraintsRef = useRef(null);
+    const dragControls = useDragControls();
+
+    return (
+        <div
+            className="area"
+            ref={constraintsRef}
+            onPointerDown={(event) => dragControls.start(event)}
+        >
+            <motion.div
+                className="box"
+                drag
+                dragConstraints={constraintsRef}
+                dragControls={dragControls}
+            />
+        </div>
+    );
+} 
+```
+
+You could also use `onMouseDown()` or `onTouchStart()` but `onPointerDown()` works on both touch and desktop. Whichever event you use, `the start()` function needs its event object for everything to work.
+
+## Cursor Snapping
+
+The `start()` function accepts a snapToCursor option. When set to true, the draggable element will jump to where you clicked or tapped.
+
+<CursorSnapping />
+
+```js
+onPointerDown={(event) =>
+    dragControls.start(event, { snapToCursor: true })
+}
+```

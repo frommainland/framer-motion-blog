@@ -3,4 +3,40 @@ title: 'Drag Events'
 chapter: 'Animations'
 order: 300
 ---
+# Drag Events
 
+## Drag Events
+A set of events are triggered when you drag an element.
+
+First, when you pick it up, an `onDragStart()` is emitted.
+Then, while dragging, there will be a continuous stream of `onDrag()` events.
+And finally, when you release it, there will be an `onDragEnd()`.
+These three events receive two objects with more details about the event:
+
+the browser’s native event object (a MouseEvent or TouchEvent), and a PanInfo object provided by Framer Motion.
+
+And there’s a fourth event: `onDirectionLock()`. When you’re using direction lock, it will trigger the moment the element locks to a direction (happens after dragging it 10 points). This event receives the current dragging axis.
+
+
+## MouseEvent and TouchEvent objects
+On the desktop, event will contain a `MouseEvent`, but on a tablet or phone, it will be a `TouchEvent`. They contain different data.
+
+As an example: a `MouseEvent` will contain the pointer’s position in `clientX` and `clientY`. But in a `TouchEvent`, you would have to get that information from a Touch object in its list of touches.
+
+
+## PanInfo object
+
+> Important to note that these values represent the position of the pointer, not of the element you’re dragging.
+
+| Syntax      | Description |
+| ----------- | ----------- |
+| `point.x`      | Horizontal distance of the pointer from the top left of the screen (or viewport)       |
+| `point.y`	   | Vertical distance of the pointer from the top left of the screen (or viewport)        |
+| `delta.x`      | Horizontal distance traveled by the pointer since the last event call       |
+| `delta.y`	   | Vertical distance traveled by the pointer since the last event call        |
+| `offset.x`      | Horizontal distance of the pointer from the starting point of the current gesture      |
+| `offset.y`	   | Vertical distance of the pointer from the starting point of the current gesture        |
+| `velocity.x`      | Current horizontal speed of the pointer       |
+| `velocity.y`	   | Current vertical speed of the pointer        |
+
+<DragEventsBasic />

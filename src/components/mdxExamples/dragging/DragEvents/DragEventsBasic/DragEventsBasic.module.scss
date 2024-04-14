@@ -1,0 +1,81 @@
+.wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 0.8;
+    border: 1px solid var(--color-surface-200);
+    border-radius: 2em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    padding: 2em;
+    background-image: radial-gradient(var(--color-surface-200) 1px, var(--color-surface-100) 1px);
+    background-size: 14px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+
+
+    .measure {
+        width: 240px;
+        height: 240px;
+        border: 1px solid var(--color-surface-300);
+        background-image: linear-gradient(var(--color-surface-300) 1px, transparent 1px), linear-gradient(to right, var(--color-surface-300) 1px, var(--color-surface-100) 1px);
+        border-radius: .5em;
+        display: grid;
+        place-content: center;
+
+        .box {
+            width: 60px;
+            height: 60px;
+            background-color: var(--color-surface-200);
+            border-radius: .5em;
+            display: grid;
+            place-content: center;
+            cursor: grab;
+        }
+
+        p {
+            color: var(--color-text-200);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    .dragInfoContainer {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 3em;
+
+        .group {
+            display: flex;
+            gap: 2em;
+
+            .draginfoFlex {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                p {
+                    margin-bottom: 0;
+                    color: var(--color-text-100);
+                    font-family: var(--font-kansas);
+                }
+
+                p:last-child {
+                    color: var(--color-text-300);
+                    font-family: var(--font-roobert);
+                    font-size: var(--fontSize-0);
+                }
+            }
+        }
+
+
+    }
+}

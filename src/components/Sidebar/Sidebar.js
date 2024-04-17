@@ -15,10 +15,9 @@ async function Sidebar() {
     const Animations = await getBlogPostList('Animations')
     const LayoutAnimations = await getBlogPostList('LayoutAnimations')
     const MotionValues = await getBlogPostList('MotionValues')
-    const ManualControls = await getBlogPostList('ManualControls')
     const SVGAnimations = await getBlogPostList('SVGAnimations')
     const Dragging = await getBlogPostList('Dragging')
-    const APIOverview = await getBlogPostList('APIOverview')
+    const Reorder = await getBlogPostList('Reorder')
 
 
     return (
@@ -34,6 +33,7 @@ async function Sidebar() {
                 {/* <SidebarList title='Manual Controls' content={ManualControls} /> */}
                 <SidebarList title='SVG Animations' content={SVGAnimations} />
                 <SidebarList title='Dragging' content={Dragging} />
+                <SidebarList title='Reorder' content={Reorder} />
                 {/* <SidebarList title='API Overview' content={APIOverview} /> */}
                 {/* <SidebarList title='Some Examples' content={SomeExamples} /> */}
             </SidebarListWrap>

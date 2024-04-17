@@ -1,0 +1,104 @@
+.wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 2;
+    border: 1px solid var(--color-surface-200);
+    border-radius: 2em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    // padding: 2em;
+    background-image: radial-gradient(var(--color-surface-200) 1px, var(--color-surface-100) 1px);
+    background-size: 14px 14px;
+    display: flex;
+    gap: 2em;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    overflow-x: hidden;
+
+    .stickyButtonWrap {
+        height: 100%;
+        width: 100%;
+        overflow: auto;
+        overflow-x: hidden;
+        display: flex;
+        justify-content: center;
+
+        #listWrap {
+            list-style-type: none;
+            padding: 0;
+            width: 50%;
+            margin-bottom: 3em;
+
+            li {
+                width: 100%;
+                background-color: var(--color-surface-200);
+                padding: 1em;
+                border-radius: 0.5em;
+                position: relative;
+                cursor: grab;
+
+                .contentWrap {
+                    display: flex;
+                    gap: 1em;
+                    align-items: center;
+
+                    .selector {
+                        width: 20px;
+                        height: 20px;
+                        border-radius: 50%;
+                        border: 2px solid var(--color-text-300);
+                        cursor: pointer;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        .dot {
+                            width: 10px;
+                            height: 10px;
+                            background-color: var(--color-accent-green);
+                            border-radius: 50%;
+                        }
+                    }
+
+                    p {
+                        margin: 0;
+                    }
+                }
+            }
+        }
+
+        .addItem {
+            position: absolute;
+            bottom: 2em;
+            right: 5%;
+            border-radius: 100em;
+            // transform: translateX(-50%);
+            text-align: center;
+            background-color: var(--color-surface-200);
+            font-size: var(--fontSize--1);
+            line-height: 1.6;
+            padding: 1em;
+            color: var(--color-accent-yellow);
+            cursor: pointer;
+        }
+
+        .addItem:disabled {
+            cursor: not-allowed;
+        }
+    }
+
+}
+
+.stickyButtonWrap::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+.stickyButtonWrap::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px var(--color-surface-100);
+}
+
+.stickyButtonWrap::-webkit-scrollbar-thumb {
+    background-color: var(--color-surface-200);
+    border-radius: 100rem;
+}

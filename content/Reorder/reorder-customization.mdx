@@ -1,0 +1,128 @@
+---
+title: 'Reorder Customization'
+chapter: 'Reorder'
+order: 200
+---
+# Reorder Customization
+
+## Add or remove items
+
+<ReorderCustomization />
+
+Adding or removing items is not related to framer motion. It is more about manipulating items you pass to `Reorder` component.
+
+
+### Add items
+
+The add item button is disabled at the beginnig, because the list length is limited by this array:
+
+`const FULLITEMS = [
+		'intro',
+		'main props',
+		'motion values',
+		'animation',
+		'layout',
+		'svg',
+		'drag',
+		'reorder']`
+
+After you remove items from List, you tap add item, `getNewItem()` finds item not in the `FULLITEMS`, and save it into `items`.
+
+```js
+function getNewItem() {
+		const newAnimal = FULLITEMS.find((item) => !items.includes(item))
+		if (newAnimal) setitems([...items, newAnimal])
+	}
+```
+
+### Remove items
+
+```js
+function deleteItem(item) {
+		const newItems = [...items]
+		newItems.splice(items.indexOf(item), 1)
+		setitems(newItems)
+	}
+```
+
+- we create a newItems array that contains the current items,
+- get the index of the current item with `indexOf()`,
+- use that number to `splice()` the newItems array, removing 1 item from the array,
+- and then save the updated newItems to items.
+
+### Add or remove animation
+
+Using `AnimatePresence` to animate item added or removed from `items`. 
+
+```jsx
+<AnimatePresence initial={false} mode="popLayout">
+    {items.map((item, index) => (
+        <ListItem
+            item={item}
+            key={item}
+            deleteItem={deleteItem}
+            setdrag={setdrag}
+        />
+    ))}
+</AnimatePresence>
+
+/// add and remove animation
+<Reorder.Item
+    initial={{ opacity: 0, y: 10 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, x: 300 }}
+/>
+
+```
+
+## Making only a part of the item draggable
+
+<ReorderPartDrag />
+
+First, you disable dragging by setting the `dragListener` on every `<Reorder.Item>` to `false`.
+
+For each item, you create a `dragControls` with the `useDragControls()` hook that you pass to the item’s `dragControls` property.
+
+When you drag the `<button>`, we `start()` the drag event. 
+
+```js
+function ListItem({ item }) {
+	const dragControls = useDragControls()
+	return (
+		<Reorder.Item
+			value={item}
+			dragListener={false}
+			dragControls={dragControls}
+		>
+			<p style={{ marginBottom: 0 }}>{item}</p>
+			<motion.button
+				whileHover={{
+					backgroundColor: 'var(--color-accent-yellow)',
+				}}
+				onPointerDown={(event) => dragControls.start(event)}
+			>
+				<Menu color="var(--color-surface-100)" />
+			</motion.button>
+		</Reorder.Item>
+	)
+}
+```
+
+I created a new component `ListItem` to wrap `Reorder.Item`. It is because I want to create `dragControls` for each of the `Reorder.Item`. If I create it inside a `map` function, this is not allowed by react. Because hooks can not be called inside a callback.
+
+```js
+<Reorder.Group
+    values={items}
+    onReorder={setitems}
+    axis="y"
+>
+    {items.map((item) => (
+        <ListItem key={item} item={item} />
+    ))}
+</Reorder.Group>
+```
+
+## A scrollable list
+
+When the items are within a scrollable container, that container needs a layoutScroll prop so that Framer Motion can correctly measure its scroll offset.
+<ReorderScrollable />

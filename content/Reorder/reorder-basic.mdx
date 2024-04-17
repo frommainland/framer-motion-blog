@@ -1,0 +1,79 @@
+---
+title: 'Reorder Basic'
+chapter: 'Reorder'
+order: 100
+---
+# Reorder
+
+These two components, both included in Reorder, let you create a drag-to-reorder list, which can be vertical or horizontal. You can also add and remove items and make only part of each item draggable.
+
+## The basics
+<ReorderBasic />
+
+In the component, you create a `useState()` containing the array with items.
+
+```js
+const [items, setitems] = React.useState([
+		'animation',
+		'motion values',
+		'layout',
+		'svg',
+		'drag',
+	])
+```
+
+### Reorder.Group
+The `Reorder` component contains a few things: With `<Reorder.Group>`, you create, well, the group of items. It needs:
+
+- the list of items passed to its values property,
+- which function it can use to rearrange the items, passed to `onReorder`: here it’s the `setItems()` provided by `useState()`,
+- and which `axis` to use; here, it’s a vertical list, so `"y"`.
+
+
+```js
+<Reorder.Group values={items} onReorder={setItems} axis="y">
+    … the items …
+</Reorder.Group>
+```
+
+### Reorder.Item
+We `map()` over the items array, creating a `<Reorder.Item>` for each animal. An item needs its value, and since it’s a list of items in React, each requires a key.
+
+```js
+<Reorder.Group values={items} onReorder={setitems} axis="y">
+    {items.map((item) => (
+        <Reorder.Item
+            key={item}
+            value={item}
+            whileHover={{
+                backgroundColor: 'var(--color-surface-300)',
+            }}
+            whileDrag={{
+                backgroundColor: 'var(--color-accent-yellow)',
+            }}
+        >
+            {item}
+        </Reorder.Item>
+    ))}
+</Reorder.Group>
+```
+
+### `<ul>` or `<ol>`
+By default, Reorder will create an unordered list, but you can change this to an ordered one by setting as on the `<Reorder.Group>` to "ol". Also these are valid 
+`<Reorder.Group as="span" />`, `<Reorder.Item as="div" />`, `<Reorder.Item as="aside" />`.
+
+### No list style
+To get rid of the default `<ul>` or` <ol>` styling, just set the CSS list-style to `"none"`.
+
+
+### A horizontal list
+
+To make a horizontal list of items, you change the axis of the `<Reorder.Group>` to `"x"`. 
+But you also have to display them horizontally. The easiest way is to make the `<Reorder.Group>` a `flexbox`. Just set display to `"flex"` because the default `flexDirection` will be `row` anyway.
+
+<ReorderBasic02 />
+
+Sometime when you drag and reorder items, item `z-index` may not work properly. Setting the `position` CSS property to `relative` for each instance of `Reorder.Item` will solve it.
+
+- Each `Reorder.Item` is a `motion` component
+- Each `Reorder.Item` component in the list is able, out-of-the-box, to perform `layout` animations

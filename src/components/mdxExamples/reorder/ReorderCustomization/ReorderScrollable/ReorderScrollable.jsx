@@ -8,6 +8,41 @@ import {
 	useMotionValueEvent,
 } from 'framer-motion'
 
+function ListItem({ item, groupRef }) {
+	const ref = React.useRef(null)
+	const { scrollYProgress } = useScroll({
+		container: groupRef,
+		target: ref,
+		offset: ['start start', 'end end'],
+		layoutEffect: false,
+	})
+
+	const [progress, setProgress] = React.useState(0)
+	useMotionValueEvent(scrollYProgress, 'change', (v) => {
+		setProgress(v.toFixed(2))
+		// this not working, scrolloffset is no working, dont know why
+		console.log(v)
+	})
+
+	const rotate = useTransform(scrollYProgress, [0, 1], [0, 360])
+	return (
+		<Reorder.Item
+			ref={ref}
+			key={item}
+			value={item}
+			whileHover={{
+				backgroundColor: 'var(--color-surface-300)',
+			}}
+			whileDrag={{
+				backgroundColor: 'var(--color-accent-yellow)',
+			}}
+		>
+			{item}
+			{progress}
+		</Reorder.Item>
+	)
+}
+
 export default function ReorderScrollable() {
 	const [items, setitems] = React.useState([
 		'animation',
@@ -18,23 +53,6 @@ export default function ReorderScrollable() {
 	])
 
 	const groupRef = React.useRef(null)
-	const ref = React.useRef(null)
-
-    console.log(ref)
-	const { scrollYProgress } = useScroll({
-		container: groupRef,
-		target: ref,
-		// offset: ['start start', 'end end'],
-		// layoutEffect: false,
-	})
-
-	const [progress, setProgress] = React.useState(0)
-	useMotionValueEvent(scrollYProgress, 'change', (v) => {
-		setProgress(v.toFixed(2))
-		console.log(v)
-	})
-
-	const rotate = useTransform(scrollYProgress, [0, 1], [0, 360])
 
 	return (
 		<div className={styles.wrap}>
@@ -47,20 +65,7 @@ export default function ReorderScrollable() {
 				layoutScroll
 			>
 				{items.map((item) => (
-					<Reorder.Item
-						ref={ref}
-						key={item}
-						value={item}
-						whileHover={{
-							backgroundColor: 'var(--color-surface-300)',
-						}}
-						whileDrag={{
-							backgroundColor: 'var(--color-accent-yellow)',
-						}}
-					>
-						{item}
-						{progress}
-					</Reorder.Item>
+					<ListItem key={item} groupRef={groupRef} item={item} />
 				))}
 			</Reorder.Group>
 		</div>

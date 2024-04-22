@@ -6,15 +6,12 @@ import { range } from '@/utils'
 
 
 
-// calc(var(--base-hue) + ${diagonalIndex})
-
 function Box({ row, column }) {
     const diagnalDirection = (row + column) * 6
     return (
         <div className={styles.box} key={column}
-            // style={{ backgroundColor: `hsl(70, 5%, var(--rotate)` }}
-            style={{ backgroundColor: `hsl(70, 5%, calc(var(--rotate) + ${diagnalDirection}%))` }}
-        >{row}{column}</div>
+            style={{ backgroundColor: `hsl(70, 5%, clamp(0%, calc(var(--rotate) + ${diagnalDirection}%), 100%))` }}
+        >{row}-{column}</div>
     )
 }
 
@@ -24,8 +21,8 @@ export default function AnimateCSSVariable() {
             <motion.div
                 className={styles.boxesWrap}
                 initial={{ '--rotate': '25%' }}
-                animate={{ '--rotate': ['25%', '-54%', '25%'] }}
-                transition={{ duration: 6, repeat: 'Infinity', repeatDelay: 1 }}>
+                animate={{ '--rotate': ['25%', '-50%', '25%'] }}
+                transition={{ duration: 6, repeat: 'Infinity', repeatDelay: 1, ease: 'linear' }}>
                 {range(4).map((row) => {
                     return (
                         range(4).map((column) =>

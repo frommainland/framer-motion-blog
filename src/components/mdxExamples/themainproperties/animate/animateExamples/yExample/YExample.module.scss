@@ -1,21 +1,23 @@
 .wrapper {
-	width: 100%;
-	aspect-ratio: 1;
-	background-color: var(--color-surface-200);
-	border-radius: 2em;
-	overflow: hidden;
-	display: grid;
-	place-items: center;
+    width: 100%;
+    aspect-ratio: 1;
+    background-color: var(--color-surface-200);
+    border-radius: 2em;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
     cursor: pointer;
-	.innerWrap {
-		display: flex;
-		align-items: center;
-		gap: 0.5em;
-		.ball {
-			height: 3vw;
-			aspect-ratio: 1;
-			background-color: var(--color-accent-green);
-			border-radius: 100em;
-		}
-	}
+
+    .innerWrap {
+        display: flex;
+        align-items: center;
+        gap: 0.5em;
+
+        .ball {
+            height: 3vw;
+            aspect-ratio: 1;
+            background-color: var(--color-accent-green);
+            border-radius: 100em;
+        }
+    }
 }

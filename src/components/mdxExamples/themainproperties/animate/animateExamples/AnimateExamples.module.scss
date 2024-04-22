@@ -1,5 +1,16 @@
 .gridWrap {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 2em;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2em;
+    margin-bottom: 2em;
+}
+
+
+
+@media (width < 400px) {
+    .gridWrap {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2em;
+    }
 }

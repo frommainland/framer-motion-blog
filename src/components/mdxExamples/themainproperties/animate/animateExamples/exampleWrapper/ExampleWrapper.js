@@ -5,7 +5,7 @@ export default function ExampleWrapper({ children, caption }) {
     return (
         <div className={styles.container}>
             {children}
-            <p>{caption}</p>
+            <p className={styles.sub}>{caption}</p>
         </div>
     )
 }

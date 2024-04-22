@@ -1,12 +1,9 @@
-'use client'
 import React from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { flow } from '@/helper/easing'
+import { useLongPress, useMeasure } from "@uidotdev/usehooks";
 import styles from './State01.module.scss'
-import { useLongPress } from "@uidotdev/usehooks";
-import { useMeasure } from "@uidotdev/usehooks";
 
-
+// Function to map a value from one range to another
 function mapRange(input, rangeA, rangeB) {
     const [rangeAStart, rangeAEnd] = rangeA;
     const [rangeBStart, rangeBEnd] = rangeB;
@@ -14,18 +11,46 @@ function mapRange(input, rangeA, rangeB) {
 }
 
 export default function State01() {
-    // mouse div circle stuff
-    const [mPos, setMPos] = React.useState({ top: 0, left: 0 })
     const circleSize = 20
     const ref = React.useRef(null)
+    const gauge = React.useRef(null)
 
-    //long press, div box stuff
-    const [boxRef, { boxwidth, height }] = useMeasure();
+    // get ref width
+    const [outerFlexWidth, setOuterFlexWidth] = React.useState(0);
+    const [outerFlexHeight, setOuterFlexHeight] = React.useState(0);
 
+    const updateDimensions = () => {
+        if (ref.current) {
+            setOuterFlexWidth(ref.current.offsetWidth);
+            setOuterFlexHeight(ref.current.offsetHeight);
+        }
+    }
+
+    React.useEffect(() => {
+        updateDimensions();
+        window.addEventListener("resize", updateDimensions);
+        return () => window.removeEventListener("resize", updateDimensions);
+    }, []);
+
+    // State for mouse position
+    const [mPos, setMPos] = React.useState({ top: 0, left: 0 })
+
+    // State for long press
     const [isLongPress, setIsLongPress] = React.useState(false)
-    // when long pressed, get mouse position relative left postion percentage by container's width
+
+    // State for div scale
     const [divScaleX, setDivScaleX] = React.useState(1)
 
+    // State for mouse inside
+    const [isMouseInside, setIsMouseInside] = React.useState(false);
+
+    // State for gauge distance
+    const [toGaugeDis, setToGaugeDis] = React.useState(null)
+
+    // Measure box
+    // const [boxRef, { boxwidth, height }] = useMeasure();
+
+    // Handle mouse move
     const handleMouseMove = (e) => {
         const containerRect = ref.current.getBoundingClientRect();
         const left = Math.max(Math.min(e.clientX - containerRect.left, containerRect.width - circleSize), 0);
@@ -37,20 +62,18 @@ export default function State01() {
         }
     }
 
+    // Long press attributes
     const attrs = useLongPress(
         () => {
             setIsLongPress(true);
         },
         {
-            // onStart: (event) => console.log("Press started"),
             onFinish: () => setIsLongPress(false),
-            // onCancel: (event) => console.log("Press cancelled"),
             threshold: 500,
         }
     );
 
-    const gauge = React.useRef(null)
-    const [toGaugeDis, setToGaugeDis] = React.useState(null)
+    // Calculate gauge distance
     React.useEffect(() => {
         const parentElement = ref.current;
         const childElement = gauge.current;
@@ -58,11 +81,7 @@ export default function State01() {
         const childTop = childElement.offsetTop;
         const childLeft = childElement.offsetLeft;
         setToGaugeDis({ top: childTop, left: childLeft })
-        // const topDistance = childTop - parentTop;
-        // console.log('Top Distance:', topDistance);
     }, [])
-
-    const [isMouseInside, setIsMouseInside] = React.useState(false);
 
     return (
         <div
@@ -74,7 +93,7 @@ export default function State01() {
             onMouseLeave={() => setIsMouseInside(false)}
         >
             <div className={styles.boxFlex}>
-                <motion.div ref={boxRef} className={styles.box} animate={{ width: 200 * divScaleX }} />
+                <motion.div className={styles.box} animate={{ width: outerFlexWidth * 0.3 * divScaleX }} />
             </div>
 
             <motion.div
@@ -88,7 +107,7 @@ export default function State01() {
                 <div className={styles.gauge}>
                     <p>smaller</p>
                     <p>small</p>
-                    <p>•</p>
+                    <p style={{ color: 'var(--color-accent-red)' }}>•</p>
                     <p>big</p>
                     <p>bigger</p>
                 </div>
@@ -100,8 +119,6 @@ export default function State01() {
                         top: mPos.top,
                         left: mPos.left + circleSize / 2,
                         zIndex: 20
-                        // width: `${circleSize}px`,
-                        // height: `${circleSize}px`,
                     }}
                     animate={{
                         top: isLongPress ? toGaugeDis.top + 2 : mPos.top,
@@ -121,7 +138,7 @@ export default function State01() {
                     borderRadius: '50%',
                     width: `${circleSize}px`,
                     height: `${circleSize}px`,
-                    border: `solid var(--color-text-100) 4px`,
+                    border: 'solid var(--color-text-100) 4px',
                     zIndex: 30,
                     ...mPos
                 }}
@@ -134,4 +151,3 @@ export default function State01() {
         </div>
     )
 }
-

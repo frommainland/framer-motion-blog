@@ -10,11 +10,13 @@
 
     .innerWrap {
         display: flex;
+        width: 100%;
         align-items: center;
-        gap: 0.5em;
+        justify-content: space-around;
+        padding: 1em;
 
         .ball {
-            height: 3vw;
+            height: clamp(12px, calc(1.5vw + 1px), 3vw);
             aspect-ratio: 1;
             background-color: var(--color-accent-green);
             border-radius: 100em;

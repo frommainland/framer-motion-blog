@@ -11,7 +11,7 @@ export default function WidthExample() {
             <div className={styles.wrapper} >
                 <motion.div className={styles.innerWrap} onHoverStart={() => setIsHover(true)} onHoverEnd={() => setIsHover(false)} whileHover={{ backgroundColor: 'var(--color-accent-green)' }}>
                     <motion.div className={styles.ring}
-                        animate={{ width: isHover ? '3vw' : '1vw', height: isHover ? '4vw' : '1vw' }}
+                        animate={{ width: isHover ? '40%' : '10%', height: isHover ? '50%' : '10%' }}
                     ></motion.div>
                 </motion.div>
             </div>

@@ -1,17 +1,18 @@
 .wrapper {
-	width: 100%;
-	aspect-ratio: 1;
-	background-color: var(--color-surface-200);
-	border-radius: 2em;
-	overflow: hidden;
-	display: grid;
-	place-items: center;
-	cursor: pointer;
+    width: 100%;
+    aspect-ratio: 1;
+    background-color: var(--color-surface-200);
+    border-radius: 2em;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
     position: relative;
+
     .bar {
         position: absolute;
-        width: 120px;
-        height: 20px;
+        width: 60%;
+        height: 8%;
         background-color: var(--color-accent-purple);
         border-radius: 100em;
     }

@@ -1,18 +1,19 @@
 .wrapper {
-	width: 100%;
-	aspect-ratio: 1;
-	background-color: var(--color-accent-yellow);
-	border-radius: 2em;
-	overflow: hidden;
-	display: grid;
-	place-items: center;
-	cursor: pointer;
-	clip-path: inset(0 round 2em);
-	.circle {
-		max-width: 100px;
-		width: 4vw;
-		aspect-ratio: 1;
-		background-color: var(--color-text-100);
-		border-radius: 50%;
-	}
+    width: 100%;
+    aspect-ratio: 1;
+    background-color: var(--color-accent-yellow);
+    border-radius: 2em;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    clip-path: inset(0 round 2em);
+
+    .circle {
+        max-width: 100px;
+        width: 40%;
+        aspect-ratio: 1;
+        background-color: var(--color-text-100);
+        border-radius: 50%;
+    }
 }

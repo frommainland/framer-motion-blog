@@ -18,7 +18,8 @@ export default function Petal({ repeatType, animOptions }) {
 			<motion.div
 				className={styles.outer}
 				layout
-				animate={{ width: 220, height: 220 }}
+				// animate={{ width: 220, height: 220 }}
+				animate={{ width: '50%' }}
 				transition={transition}
 			>
 				{range(petalNum).map((item) => {
@@ -37,7 +38,7 @@ export default function Petal({ repeatType, animOptions }) {
 						>
 							<motion.div
 								className={styles.petal}
-								animate={{ height: 120 }}
+								animate={{ height: '100%' }}
 								transition={transition}
 							></motion.div>
 						</motion.div>

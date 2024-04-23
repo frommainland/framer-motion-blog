@@ -1,34 +1,39 @@
 .container {
-	display: grid;
-	place-content: center;
-	gap: 2em;
-	text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
 
-	.outer {
-		position: relative;
-		width: 100px;
-		aspect-ratio: 1;
-		background-color: var(--color-text-100);
-		border-radius: 100%;
-		.petalWrap {
-			width: 60px;
-			height: 60px;
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			mix-blend-mode: multiply;
-			.petal {
-				position: absolute;
-				bottom: 0;
-				width: 60px;
-				height: 60px;
-				background-color: var(--color-accent-red);
-				border-radius: 100em;
-			}
-		}
-	}
-	p {
-		color: var(--color-text-100);
-	}
+    .outer {
+        position: relative;
+        width: 30%;
+        aspect-ratio: 1;
+        background-color: var(--color-text-100);
+        border-radius: 100%;
+
+        .petalWrap {
+            width: 50%;
+            height: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            mix-blend-mode: multiply;
+
+            .petal {
+                position: absolute;
+                bottom: 0;
+                width: 50%;
+                height: 50%;
+                background-color: var(--color-accent-red);
+                border-radius: 100em;
+            }
+        }
+    }
+
+    p {
+        color: var(--color-text-100);
+    }
 }

@@ -33,6 +33,7 @@ export default function TransitionPerProp() {
 					display: 'flex',
 					gap: '8em',
 					justifyContent: 'center',
+					marginTop: '2em',
 				}}
 			>
 				<Diagram values={values} setValues={setValues} title="xPos" />
@@ -184,7 +185,13 @@ function DiagramMix({ values }) {
 		'easeInOut-Cubic': [0.65, 0, 0.35, 1],
 	}
 	return (
-		<div style={{ display: 'flex', justifyContent: 'center' }}>
+		<div
+			style={{
+				display: 'flex',
+				justifyContent: 'center',
+				marginBottom: '2em',
+			}}
+		>
 			<div className={styles.gridWrap}>
 				<div>
 					<div className={styles.grid} ref={ref}>

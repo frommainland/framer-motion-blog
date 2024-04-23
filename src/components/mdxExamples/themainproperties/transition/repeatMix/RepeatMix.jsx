@@ -6,7 +6,7 @@ import Gauge from './Gauge'
 
 export default function RepeatMix() {
 	const animOptions = {
-		duration: 1.2,
+		duration: 2,
 		repeatDelay: 1,
 	}
 

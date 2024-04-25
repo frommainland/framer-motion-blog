@@ -6,6 +6,7 @@ import styles from './page.module.scss'
 import "the-new-css-reset/css/reset.css";
 import localFont from 'next/font/local'
 import { GlobalContextProvider } from './context/SidebarContext'
+import { SidebarMenuProvider } from './context/sidebarMenuContext'
 
 const newKansas = localFont({
     src: './font/newKansas/NewKansasTRIAL-SemiBold.otf',
@@ -58,11 +59,13 @@ export default function RootLayout({ children }) {
         <html lang="en" style={theme == 'light' ? LIGHT_TOKENS : DARK_TOKENS}>
             <body className={`${Roobert.variable} ${newKansas.variable} ${input.variable} ${inter.variable}`}>
                 <GlobalContextProvider>
-                    <Header theme={theme} />
-                    <div className={styles.contentWrap}>
-                        <Sidebar />
-                        {children}
-                    </div>
+                    <SidebarMenuProvider>
+                        <Header theme={theme} />
+                        <div className={styles.contentWrap}>
+                            <Sidebar />
+                            {children}
+                        </div>
+                    </SidebarMenuProvider>
                 </GlobalContextProvider>
             </body>
         </html>

@@ -1,9 +1,11 @@
+
 import React from 'react';
-import styles from './Sidebar.module.scss'
 import { getBlogPostList } from '@/helper/file-helpers';
 import { SidebarList } from '../SidebarList/SidebarList';
 import SidebarListWrap from '../SidebarListWrap';
 import SidebarListOnlyTitle from '../SidebarListOnlyTitle';
+
+
 
 async function Sidebar() {
     // sidebar list order as follows: 
@@ -21,23 +23,18 @@ async function Sidebar() {
 
 
     return (
-        <div className={styles.sidebarWrap}>
-            <SidebarListWrap>
-                {/* <SidebarListOnlyTitle title='Introduction' content={Introduction} /> */}
-                <SidebarList title='Introduction' content={Introduction} />
-                <SidebarList title='The Main Properties' content={TheMainProperties} />
-                <SidebarList title='Motion Values' content={MotionValues} />
-                <SidebarList title='Animations' content={Animations} />
-                <SidebarList title='Layout Animations' content={LayoutAnimations} />
 
-                {/* <SidebarList title='Manual Controls' content={ManualControls} /> */}
-                <SidebarList title='SVG Animations' content={SVGAnimations} />
-                <SidebarList title='Dragging' content={Dragging} />
-                <SidebarList title='Reorder' content={Reorder} />
-                {/* <SidebarList title='API Overview' content={APIOverview} /> */}
-                {/* <SidebarList title='Some Examples' content={SomeExamples} /> */}
-            </SidebarListWrap>
-        </div>
+        <SidebarListWrap>
+            <SidebarList title='Introduction' content={Introduction} />
+            <SidebarList title='The Main Properties' content={TheMainProperties} />
+            <SidebarList title='Motion Values' content={MotionValues} />
+            <SidebarList title='Animations' content={Animations} />
+            <SidebarList title='Layout Animations' content={LayoutAnimations} />
+
+            <SidebarList title='SVG Animations' content={SVGAnimations} />
+            <SidebarList title='Dragging' content={Dragging} />
+            <SidebarList title='Reorder' content={Reorder} />
+        </SidebarListWrap>
 
     )
 }

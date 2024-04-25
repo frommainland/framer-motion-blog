@@ -16,7 +16,7 @@ function titleCase(str) {
 }
 
 
-export function SidebarList({ title, content, isActive, setIsActive }) {
+export function SidebarList({ title, content, isActive, setIsActive, setIsSidebarOpen }) {
     return (
         <div className={styles.sidebarCatergory}>
             <div className={styles.sidebarTitle}>
@@ -32,7 +32,10 @@ export function SidebarList({ title, content, isActive, setIsActive }) {
                     return (
                         <motion.li
                             key={item.slug}
-                            onClick={() => setIsActive(item.slug)}
+                            onClick={() => {
+                                setIsActive(item.slug)
+                                setIsSidebarOpen(false)
+                            }}
                             className={isActive === item.slug ? styles.isActive : undefined}>
                             <Link
                                 href={{

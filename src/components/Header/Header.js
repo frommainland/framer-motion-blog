@@ -5,10 +5,22 @@ import styles from './Header.module.scss'
 import { Book } from 'react-feather';
 import Link from 'next/link';
 import { useGlobalContext } from '@/app/context/SidebarContext';
+import { Menu } from 'react-feather';
+
+import { useSidebarMenuContext } from '@/app/context/sidebarMenuContext';
+import { motion } from 'framer-motion';
+
 
 function Header({ theme }) {
 
     const { isActive, setIsActive } = useGlobalContext()
+
+    const { isSidebarOpen, setIsSidebarOpen } = useSidebarMenuContext()
+
+    React.useEffect(() => {
+        document.body.style.overflow = isSidebarOpen ? 'hidden' : 'auto';
+    }, [isSidebarOpen])
+
 
     return (
         <div className={styles.header}>
@@ -26,7 +38,23 @@ function Header({ theme }) {
                 </ul>
                 <button>{theme}</button>
             </div> */}
-            <div className={styles.navLinkWrap}>work in progress</div>
+            <p style={{ color: 'var(--color-text-300)' }}>work in progress</p>
+            {/* <Link href='/about'>About</Link> */}
+            <motion.button
+                className={styles.sidebarMenu}
+                // onClick={() => {
+                //     const newIsSidebarOpen = !isSidebarOpen;
+                //     setIsSidebarOpen(newIsSidebarOpen);
+                //     document.body.style.overflow = newIsSidebarOpen ? 'hidden' : 'auto';
+                // }}
+                onClick={() => {
+                    setIsSidebarOpen(!isSidebarOpen);
+                }}
+                whileHover={{ backgroundColor: 'var(--color-surface-300)' }}
+            >
+                <Menu color='var(--color-text-100)' />
+            </motion.button>
+
         </div>
     )
 }

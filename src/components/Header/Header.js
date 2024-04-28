@@ -5,7 +5,6 @@ import styles from './Header.module.scss'
 import { Book } from 'react-feather';
 import Link from 'next/link';
 import { useGlobalContext } from '@/app/context/SidebarContext';
-import { Menu } from 'react-feather';
 
 import { useSidebarMenuContext } from '@/app/context/sidebarMenuContext';
 import { motion } from 'framer-motion';
@@ -42,17 +41,40 @@ function Header({ theme }) {
             {/* <Link href='/about'>About</Link> */}
             <motion.button
                 className={styles.sidebarMenu}
-                // onClick={() => {
-                //     const newIsSidebarOpen = !isSidebarOpen;
-                //     setIsSidebarOpen(newIsSidebarOpen);
-                //     document.body.style.overflow = newIsSidebarOpen ? 'hidden' : 'auto';
-                // }}
                 onClick={() => {
                     setIsSidebarOpen(!isSidebarOpen);
                 }}
                 whileHover={{ backgroundColor: 'var(--color-surface-300)' }}
             >
-                <Menu color='var(--color-text-100)' />
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <motion.path
+                        stroke="var(--color-text-100)"
+                        animate={{
+                            d: isSidebarOpen ? 'M 6 6 L 18 18' : 'M 3 12 H21 12',
+                        }}
+                        strokeWidth={2}
+                        strokeLinecap="round"
+                        fill="transparent"
+                    />
+                    <motion.path
+                        d="M 3 6 H 21 6"
+                        stroke="var(--color-text-100)"
+                        animate={{ opacity: isSidebarOpen ? 0 : 1 }}
+                        transition={{ duration: 0.1 }}
+                        strokeWidth={2}
+                        strokeLinecap="round"
+                        fill="transparent"
+                    />
+                    <motion.path
+                        animate={{
+                            d: isSidebarOpen ? 'M 6 18 L 18 6' : 'M 3 18 H 21 18',
+                        }}
+                        stroke="var(--color-text-100)"
+                        strokeWidth={2}
+                        strokeLinecap="round"
+                        fill="transparent"
+                    />
+                </svg>
             </motion.button>
 
         </div>

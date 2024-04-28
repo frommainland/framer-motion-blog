@@ -59,8 +59,6 @@ const ContentPage = async ({ params, searchParams }) => {
     }
 
     const { frontmatter, content } = contentData
-
-
     return (
         <div className={styles.layoutWrap}>
             <div className={styles.layout}>

@@ -21,7 +21,6 @@ export function SidebarList({ title, content, isActive, setIsActive, setIsSideba
         <div className={styles.sidebarCatergory}>
             <div className={styles.sidebarTitle}>
                 <h3>{title}</h3>
-                {/* <ChevronDown size={24} /> */}
             </div>
 
             <ul>

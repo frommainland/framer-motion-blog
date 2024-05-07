@@ -28,21 +28,38 @@ function Header({ theme }) {
                 <Book size={32} className={styles.logo} />
                 Motion Book</Link>
 
-            {/* disabled for later revision */}
-            {/* <div className={styles.navLinkWrap}>
+            <div className={styles.navLinkWrap}>
                 <ul className={styles.navLink}>
-                    <li>Github</li>
-                    <li>ChangeLog</li>
-                    <li>About</li>
+                    <Link
+                        href='/changelog'
+                        onClick={() => {
+                            setIsActive('changelog')
+                            setIsSidebarOpen(false)
+                        }}
+                        className={isActive === 'changelog' ? styles.isActive : undefined}
+                    >
+                        Changelog
+                    </Link>
+                    <Link
+                        href='/advanced-examples'
+                        onClick={() => {
+                            setIsActive('advanced-examples')
+                            setIsSidebarOpen(false)
+                        }}
+                        className={isActive === 'advanced-examples' ? styles.isActive : undefined}
+                    >
+                        Advanced Examples
+                    </Link>
                 </ul>
-                <button>{theme}</button>
-            </div> */}
-            <p style={{ color: 'var(--color-text-300)' }}>work in progress</p>
-            {/* <Link href='/about'>About</Link> */}
+                {/* theme button */}
+                {/* <button>{theme}</button> */}
+            </div>
+
             <motion.button
                 className={styles.sidebarMenu}
                 onClick={() => {
-                    setIsSidebarOpen(!isSidebarOpen);
+                    setIsSidebarOpen(!isSidebarOpen)
+                    console.log('menu clicked')
                 }}
                 whileHover={{ backgroundColor: 'var(--color-surface-300)' }}
             >

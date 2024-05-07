@@ -1,0 +1,25 @@
+// @use '../SidebarList/SidebarList.module.scss' as *;
+@import '../SidebarList/SidebarList.module.scss';
+
+
+.sidebarCatergory {
+
+    .sidebarTitle {
+
+        h3 {
+            color: var(--color-text-100);
+            transition: color 0.35s ease-in-out;
+        }
+
+        h3.isActive {
+            color: var(--color-accent-mint);
+        }
+    }
+}
+
+
+@media screen and (width > 900px) {
+    .sidebarCatergory {
+        display: none;
+    }
+}

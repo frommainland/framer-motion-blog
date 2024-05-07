@@ -5,8 +5,6 @@ import { SidebarList } from '../SidebarList/SidebarList';
 import SidebarListWrap from '../SidebarListWrap';
 import SidebarListOnlyTitle from '../SidebarListOnlyTitle';
 
-
-
 async function Sidebar() {
     // sidebar list order as follows: 
     //  'TheMainProperties', 'Animations', 'LayoutAnimations', 'MotionValues', 'ManualControls', 'SVGAnimations', 'Dragging', 'APIOverview', 'SomeExamples'
@@ -21,7 +19,6 @@ async function Sidebar() {
     const Dragging = await getBlogPostList('Dragging')
     const Reorder = await getBlogPostList('Reorder')
 
-
     return (
 
         <SidebarListWrap>
@@ -34,6 +31,8 @@ async function Sidebar() {
             <SidebarList title='SVG Animations' content={SVGAnimations} />
             <SidebarList title='Dragging' content={Dragging} />
             <SidebarList title='Reorder' content={Reorder} />
+            <SidebarListOnlyTitle title='Changelog' slug='changelog' />
+            <SidebarListOnlyTitle title='Advanced Examples' slug='advanced-examples' />
         </SidebarListWrap>
 
     )

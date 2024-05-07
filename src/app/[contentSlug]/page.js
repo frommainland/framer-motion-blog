@@ -5,6 +5,7 @@ import { loadBlogPost } from '@/helper/file-helpers';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import { BLOG_TITLE } from '@/constants';
 import remarkGfm from 'remark-gfm'
+import Sidebar from '@/components/Sidebar';
 
 import mdxMapper from '@/helper/mdxMapper';
 import motionValueExampleMapper from '@/helper/motionValueExampleMapper';
@@ -60,12 +61,24 @@ const ContentPage = async ({ params, searchParams }) => {
 
     const { frontmatter, content } = contentData
     return (
-        <div className={styles.layoutWrap}>
-            <div className={styles.layout}>
-                <MDXRemote source={content} components={combinedMdxMapper} options={options} />
+        <div className={styles.contentWrap}>
+            <Sidebar />
+            <div className={styles.layoutWrap}>
+                <div className={styles.layout}>
+                    <MDXRemote source={content} components={combinedMdxMapper} options={options} />
+                </div>
             </div>
         </div>
+
+
+
     )
 }
 
 export default ContentPage
+
+{/* <div className={styles.layoutWrap}>
+            <div className={styles.layout}>
+                <MDXRemote source={content} components={combinedMdxMapper} options={options} />
+            </div>
+</div> */}

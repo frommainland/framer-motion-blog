@@ -61,10 +61,7 @@ export default function RootLayout({ children }) {
                 <GlobalContextProvider>
                     <SidebarMenuProvider>
                         <Header theme={theme} />
-                        <div className={styles.contentWrap}>
-                            <Sidebar />
-                            {children}
-                        </div>
+                        {children}
                     </SidebarMenuProvider>
                 </GlobalContextProvider>
             </body>

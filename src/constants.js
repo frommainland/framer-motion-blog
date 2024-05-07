@@ -12,6 +12,7 @@ export const DARK_COLORS = {
     '--color-accent-purple': '#8874E3',
     '--color-accent-blue': '#3600DF',
     '--color-accent-green': '#1C6F59',
+    '--color-accent-mint': '#52EFCC',
     '--nav-bg': 'rgba(14, 16, 15, 0.8)'
 };
 
@@ -27,6 +28,7 @@ export const LIGHT_COLORS = {
     '--color-accent-purple': '#8874E3',
     '--color-accent-blue': '#3600DF',
     '--color-accent-green': '#1C6F59',
+    '--color-accent-mint': '#52EFCC',
     '--nav-bg': 'rgba(248, 246, 245, 0.8)'
 };
 

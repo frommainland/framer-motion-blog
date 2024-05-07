@@ -1,16 +1,21 @@
 'use client'
 import Link from "next/link";
 import React from "react";
-import styles from '../SidebarList/SidebarList.module.scss'
+import styles from './SidebarListOnlyTitle.module.scss'
+
+export function SidebarListOnlyTitle({ title, slug, isActive, setIsActive, setIsSidebarOpen }) {
 
 
-export function SidebarListOnlyTitle({ title, content, isActive, setIsActive }) {
-    console.log(isActive)
     return (
         <div className={styles.sidebarCatergory}>
             <div className={styles.sidebarTitle}>
-                <h3 style={{ color: isActive == null ? 'green' : 'white' }}>
-                    <Link href='/' onClick={() => setIsActive(null)}>{title}</Link>
+                <h3 className={isActive === slug ? styles.isActive : undefined}>
+                    <Link href={`/${slug}`} onClick={() => {
+                        setIsActive(slug)
+                        setIsSidebarOpen(false)
+                    }
+
+                    }>{title}</Link>
                 </h3>
             </div>
         </div >

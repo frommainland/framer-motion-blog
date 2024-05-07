@@ -5,7 +5,8 @@ import { loadBlogPost } from '@/helper/file-helpers';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import { BLOG_TITLE } from '@/constants';
 import remarkGfm from 'remark-gfm'
-import Sidebar from '@/components/Sidebar';
+import Sidebar from '@/components/Sidebar'
+import Custom404 from './Custom404';
 
 import mdxMapper from '@/helper/mdxMapper';
 import motionValueExampleMapper from '@/helper/motionValueExampleMapper';
@@ -33,6 +34,7 @@ function formatName(name) {
 
 
 export async function generateMetadata({ params, searchParams }) {
+
     let folderName = formatName(searchParams.catergory)
     const title = params.contentSlug;
     const catergory = searchParams.catergory
@@ -50,13 +52,17 @@ export async function generateMetadata({ params, searchParams }) {
     };
 }
 
+
 const ContentPage = async ({ params, searchParams }) => {
 
     let folderName = formatName(searchParams.catergory)
     const contentData = await loadBlogPost(folderName, params.contentSlug)
 
+    // example
+    // http://localhost:3000/the-animate-property?catergory=The+Main+Properties+!@#@#$@
+    // so it returns 404
     if (!contentData) {
-        return <p style={{ color: `red` }}>no article here</p>
+        return <Custom404 />
     }
 
     const { frontmatter, content } = contentData

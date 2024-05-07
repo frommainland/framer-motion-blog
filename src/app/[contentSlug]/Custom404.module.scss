@@ -1,0 +1,12 @@
+.wrap {
+    width: 100%;
+    height: calc(100svh - 7.5rem);
+    display: grid;
+    place-content: center;
+
+    h1 {
+        color: var(--color-text-200);
+        font-size: var(--fontSize-p);
+        margin-bottom: 1em;
+    }
+}

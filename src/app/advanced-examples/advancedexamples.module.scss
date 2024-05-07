@@ -1,0 +1,30 @@
+@import '~@/app/[contentSlug]/page.module.scss';
+
+.contentWrap {
+    display: block;
+
+    .layoutWrap {
+        .layout {
+            max-width: 42em;
+
+            section {
+
+                // margin-bottom: 3em;
+                h2 {
+                    margin-bottom: 0;
+                }
+
+                .date {
+                    font-family: var(--font-roobert);
+                    font-weight: 400;
+                    font-size: var(--fontSize-p);
+                    line-height: 150%;
+                    color: var(--color-text-300);
+                    margin-bottom: .75em;
+                }
+            }
+        }
+    }
+
+
+}

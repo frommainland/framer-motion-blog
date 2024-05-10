@@ -2,6 +2,7 @@
 import React from 'react'
 
 import styles from './advancedexamples.module.scss'
+import IpadPointer from './components/ipadPointer/IpadPointer'
 
 const Advancedexamples = () => {
     return (
@@ -10,9 +11,9 @@ const Advancedexamples = () => {
                 <div className={styles.layout}>
                     <h1>Advanced Examples</h1>
                     <section>
-                        <h2>Site launch</h2>
-                        <p className={styles.date}>May 06, 2024</p>
-                        <p>This site is alive, including the most basic examples of how framer motion works in web animations.</p>
+                        <h2>iPad Pointer Effect</h2>
+                        <p>When you hover on any icons, it feels the icon pull the cursor in when it is near. This magnetic feel animations is explained by Apple designers at WWDC20.</p>
+                        <IpadPointer />
                     </section>
 
                 </div>

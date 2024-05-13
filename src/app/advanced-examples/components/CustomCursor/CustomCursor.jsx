@@ -3,10 +3,8 @@
 import React from 'react'
 import styles from './CustomCursor.module.scss'
 import Image from 'next/image'
-import album from '../CustomCursor/bobbyChen.jpg'
 import { useMotionValue, motion, useTransform, useSpring } from 'framer-motion'
 import { useMouse } from '@uidotdev/usehooks'
-import BackgroundColor from '@/components/mdxExamples/themainproperties/animate/animateExamples/backgroundcolor/BackgroundColor'
 
 export const CustomCursor = () => {
 	const cursorSize = 15
@@ -92,9 +90,10 @@ export const CustomCursor = () => {
 				}}
 			>
 				<Image
-					src={album}
+					src="/CustomCursor/bobbyChen.jpg"
 					width={300}
 					height={300}
+					priority
 					alt="Picture of the author"
 					style={{
 						borderRadius: 8,
@@ -104,6 +103,7 @@ export const CustomCursor = () => {
 
 			{/* mouse dot */}
 			<motion.div
+				layout="position"
 				className={styles.cursor}
 				style={{
 					x,
@@ -116,6 +116,7 @@ export const CustomCursor = () => {
 				transition={{ type: 'spring', stiffness: 1000, damping: 70 }}
 			>
 				<motion.span
+					layout
 					variants={{
 						default: {
 							scale: 0,
@@ -126,7 +127,7 @@ export const CustomCursor = () => {
 								type: 'spring',
 								stiffness: 1000,
 								damping: 70,
-								delay: 0.05,
+								// delay: 0.05,
 							},
 						},
 					}}

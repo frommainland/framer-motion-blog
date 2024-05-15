@@ -1,0 +1,46 @@
+.wrap {
+    position: relative;
+    aspect-ratio: 1;
+    width: 100%;
+    border: 1px solid var(--color-surface-200);
+    border-radius: .75em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    padding: 4em;
+    background-image: radial-gradient(var(--color-surface-200) 1px, var(--color-surface-100) 1px);
+    background-size: 14px 14px;
+    // background-color: #161616;
+    display: flex;
+    gap: 2em;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    cursor: none;
+
+    .imagesWrap {
+        max-width: 300px;
+        width: 50%;
+        aspect-ratio: 1;
+        position: relative;
+        perspective: 800px;
+
+        .imageItem {
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: .5em;
+        }
+    }
+
+    .cursor {
+        top: 0;
+        left: 0;
+        position: absolute;
+        border-radius: 50%;
+        background-color: var(--color-text-100);
+        display: grid;
+        place-content: center;
+        color: var(--color-surface-200);
+    }
+}

@@ -9,7 +9,6 @@ import {
 	useMotionValue,
 	useTransform,
 	useVelocity,
-	useMotionValueEvent,
 } from 'framer-motion'
 import CursorTarget from './CursorTarget'
 
@@ -63,31 +62,6 @@ export const VelocityCursor = () => {
 		return clamp((Math.sign(y) * x) / 40, -40, 40)
 	})
 	const skew = useSpring(rawSkew, springConfig)
-
-	const activate = React.useCallback(
-		(data) => {
-			setIsActive(true)
-			setData((prev) => ({
-				...prev,
-				...data,
-			}))
-		},
-		[setIsActive, setData]
-	)
-
-	const deactivate = React.useCallback(
-		(data) => {
-			setIsActive(false)
-			setData((prev) => {
-				const next = { ...prev }
-				Object.keys(data).forEach((key) => {
-					delete next[key]
-				})
-				return next
-			})
-		},
-		[setIsActive, setData]
-	)
 
 	return (
 		<div className={styles.wrap} ref={ref}>

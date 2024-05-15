@@ -5,6 +5,8 @@ import styles from './advancedexamples.module.scss'
 import IpadPointer from './components/ipadPointer/IpadPointer'
 import { CustomCursor } from './components/CustomCursor/CustomCursor'
 import { VelocityCursor } from './components/VelocityCursor/VelocityCursor'
+import { CursorTrail } from './components/CursorTrail/CursorTrail'
+import { CustomCursorDirectionalBokeh } from './components/CustomCursorDirectionalBokeh/CustomCursorDirectionalBokeh'
 
 const Advancedexamples = () => {
     return (
@@ -18,16 +20,27 @@ const Advancedexamples = () => {
                         <IpadPointer />
                     </section>
 
-                    <section>
+                    {/* <section>
                         <h3>Custom Cursor</h3>
                         <p>Cursor controled perspective and enter effect</p>
                         <CustomCursor />
-                    </section>
+                    </section> */}
 
                     <section>
                         <h3>Velocity Cursor</h3>
                         <p>You can access the velocity of a motion value and use it to skew shapes</p>
                         <VelocityCursor />
+                    </section>
+
+                    {/* <section>
+                        <h3>Cursor Trail</h3>
+                        <CursorTrail />
+                    </section> */}
+
+                    <section>
+                        <h3>Cursor Directional Bokeh</h3>
+                        {/* <p>Images trail</p> */}
+                        <CustomCursorDirectionalBokeh />
                     </section>
                 </div>
             </div>

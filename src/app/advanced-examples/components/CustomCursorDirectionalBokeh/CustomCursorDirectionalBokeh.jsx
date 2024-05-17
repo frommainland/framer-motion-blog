@@ -9,6 +9,8 @@ import {
 	useTransform,
 	useSpring,
 	useMotionTemplate,
+	animate,
+	spring,
 } from 'framer-motion'
 import { useMouse } from '@uidotdev/usehooks'
 
@@ -29,6 +31,8 @@ export const CustomCursorDirectionalBokeh = () => {
 	React.useEffect(() => {
 		x.set(mouse.elementX)
 		y.set(mouse.elementY)
+		// animate(x, mouse.elementX, springValues)
+		// animate(y, mouse.elementY, springValues)
 	}, [mouse])
 
 	const globalAperture = 1.6
@@ -157,9 +161,10 @@ export const CustomCursorDirectionalBokeh = () => {
 						width={300}
 						height={300}
 						priority
-						alt="Picture of the author"
+						alt="Bobby Chen album cover image"
 						style={{
 							borderRadius: 8,
+							objectFit: 'cover',
 						}}
 					/>
 				</motion.div>
@@ -188,9 +193,10 @@ export const CustomCursorDirectionalBokeh = () => {
 						width={300}
 						height={300}
 						priority
-						alt="Picture of the author"
+						alt="Bobby Chen album cover image"
 						style={{
 							borderRadius: 8,
+							objectFit: 'cover',
 						}}
 					/>
 				</motion.div>
@@ -219,9 +225,10 @@ export const CustomCursorDirectionalBokeh = () => {
 						width={300}
 						height={300}
 						priority
-						alt="Picture of the author"
+						alt="Bobby Chen album cover image"
 						style={{
 							borderRadius: 8,
+							objectFit: 'cover',
 						}}
 					/>
 				</motion.div>
@@ -236,10 +243,11 @@ export const CustomCursorDirectionalBokeh = () => {
 					y,
 					width: cursorSize,
 					height: cursorSize,
+					pointerEvents: 'none',
 				}}
 				variants={variants}
 				animate={cursorVariant}
-				transition={springValues}
+				// transition={springValues}
 			>
 				<motion.span
 					layout

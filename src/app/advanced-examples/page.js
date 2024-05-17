@@ -7,6 +7,7 @@ import { CustomCursor } from './components/CustomCursor/CustomCursor'
 import { VelocityCursor } from './components/VelocityCursor/VelocityCursor'
 import { CursorTrail } from './components/CursorTrail/CursorTrail'
 import { CustomCursorDirectionalBokeh } from './components/CustomCursorDirectionalBokeh/CustomCursorDirectionalBokeh'
+import { CursorBackgroundPointer } from './components/CursorBackgroundPointer/CursorBackgroundPointer'
 
 const Advancedexamples = () => {
     return (
@@ -39,8 +40,14 @@ const Advancedexamples = () => {
 
                     <section>
                         <h3>Cursor Directional Bokeh</h3>
-                        {/* <p>Images trail</p> */}
+                        <p>Move the cursor around, and the image will rotate. The blur effect will also go along the rotation.</p>
                         <CustomCursorDirectionalBokeh />
+                    </section>
+
+                    <section>
+                        <h3>Background Reveal</h3>
+                        <p>Background will reveal its details when you move cursor over and hide it when you stop moving</p>
+                        <CursorBackgroundPointer />
                     </section>
                 </div>
             </div>

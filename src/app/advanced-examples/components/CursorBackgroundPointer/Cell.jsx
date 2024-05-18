@@ -12,8 +12,12 @@ const Cell = ({ mouseXMV, mouseYMV, cellSize, springConfig }) => {
 	React.useEffect(() => {
 		if (ref) {
 			const rect = ref.current.getBoundingClientRect()
-			const centerX = rect.left + cellSize / 2
-			const centerY = rect.top + cellSize / 2
+			const rectLeft = ref.current.offsetLeft
+			const rectTop = ref.current.offsetTop
+			// const centerX = rect.left + cellSize / 2
+			// const centerY = rect.top + cellSize / 2
+			const centerX = rectLeft + cellSize / 2
+			const centerY = rectTop + cellSize / 2
 			setCellCenter({ x: centerX, y: centerY })
 		}
 	}, [ref.current])

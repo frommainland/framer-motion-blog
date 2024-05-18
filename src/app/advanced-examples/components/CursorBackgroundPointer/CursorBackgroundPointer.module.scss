@@ -24,11 +24,8 @@
         mask-image: radial-gradient(rgba(0, 0, 0, 1),
                 rgba(0, 0, 0, 0.4),
                 transparent);
-        // mask-image: url(/CustomCursor/bobbyChen.jpg);
         mask-repeat: no-repeat;
         mask-size: 300px 300px;
-        // mask-position: center;
-        // mask-position: 0px 300px;
 
         .cell {
             border: 1px solid var(--color-surface-200);

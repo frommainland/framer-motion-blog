@@ -1,89 +1,74 @@
 'use client'
 
-import React, { useEffect } from 'react'
+import React, { useRef, useState } from 'react'
 import styles from './CursorTrail.module.scss'
-import {
-	distance,
-	motion,
-	useAnimation,
-	useAnimationFrame,
-	useMotionValue,
-	useSpring,
-	transform,
-} from 'framer-motion'
-
-import { useMouse } from '@uidotdev/usehooks'
-// import img1 from './images/1.jpg'
-// import img2 from './images/2.jpg'
-// import img3 from './images/3.jpg'
+import { motion, AnimatePresence } from 'framer-motion'
+import Image from 'next/image'
 
 export const CursorTrail = () => {
-	const mouseInfo = React.useRef({
-		now: { x: 0, y: 0 },
-		prev: { x: 0, y: 0 },
-		prevImage: { x: 0, y: 0 },
-	}).current
+	const wrapRef = useRef(null)
+	const [trail, setTrail] = useState([])
+	const [index, setIndex] = useState(0)
 
-	const positionRef = React.useRef({
-		mouseX: 0,
-		mouseY: 0,
-		destinationX: 0,
-		destinationY: 0,
-		distanceX: 0,
-		distanceY: 0,
-	})
+	// console.log(index)
 
-	const mouseRef = React.useRef(null)
-	const mouseRef2 = React.useRef(null)
+	function handleMouseMove(e) {
+		const { clientX, clientY } = e
+		if (!wrapRef.current) return
 
-	const [mouse, ref] = useMouse()
+		const rect = wrapRef.current.getBoundingClientRect()
+		const position = {
+			x: clientX - rect.left,
+			y: clientY - rect.top,
+		}
+		const newTrailItem = {
+			id: `${index}-${position.x}-${position.y}`,
+			position,
+		}
 
-	useAnimationFrame(() => {
-		positionRef.current.mouseX = mouse.elementX
-		positionRef.current.mouseY = mouse.elementY
+		let lastPosition = trail[trail.length - 1]?.position
 
-		mouseRef.current.style.transform = `translate3d(${
-			mouse.elementX - mouseRef.current.clientWidth / 2
-		}px, ${mouse.elementY - mouseRef.current.clientHeight / 2}px, 0)
-        `
+		if (!lastPosition) {
+			setIndex(1)
+			setTrail([newTrailItem])
+			return
+		}
 
-		const { mouseX, mouseY } = positionRef.current
-		positionRef.current.destinationX +=
-			(mouseX - positionRef.current.destinationX) * 0.06
-		positionRef.current.destinationY +=
-			(mouseY - positionRef.current.destinationY) * 0.06
+		const distance = Math.sqrt(
+			Math.pow(position.x - lastPosition.x, 2) +
+				Math.pow(position.y - lastPosition.y, 2)
+		)
+        console.log(distance)
 
-		mouseRef2.current.style.transform = `translate3d(${
-			positionRef.current.destinationX - mouseRef.current.clientWidth / 2
-		}px, ${
-			positionRef.current.destinationY - mouseRef.current.clientHeight / 2
-		}px, 0)`
-	})
+		if (distance < 1000) return
+
+		setIndex((pre) => pre + 1)
+		setTrail((prevEmojis) => [...prevEmojis, newTrailItem])
+	}
+
+	function removeItem(index) {
+		setTrail(trail.filter((item) => item.index !== index))
+	}
 
 	return (
-		<div className={styles.wrap} ref={ref}>
-			<motion.div
-				ref={mouseRef}
-				style={{
-					backgroundColor: 'red',
-					height: 16,
-					width: 16,
-					position: 'absolute',
-					top: 0,
-					left: 0,
-				}}
-			/>
-			<motion.div
-				ref={mouseRef2}
-				style={{
-					backgroundColor: 'green',
-					height: 16,
-					width: 16,
-					position: 'absolute',
-					top: 0,
-					left: 0,
-				}}
-			/>
+		<div
+			className={styles.wrap}
+			ref={wrapRef}
+			onMouseMove={handleMouseMove}
+		>
+			<AnimatePresence>
+				{trail.map(({ position, index }) => (
+					<motion.div
+						className={styles.trailItem}
+						key={index}
+						initial={{ x: position.x, y: position.y }}
+						animate={{ x: 0, y: 0 }}
+						exit={{ opacity: 0 }}
+						transition={{ duration: 0.5 }}
+						onAnimationComplete={() => removeItem(index)}
+					></motion.div>
+				))}
+			</AnimatePresence>
 		</div>
 	)
 }

@@ -27,10 +27,6 @@ export const CursorBackgroundPointer = () => {
 	const mouseXVelocity = useVelocity(mouseXMV)
 	const mouseXYelocity = useVelocity(mouseYMV)
 
-
-	useMotionValueEvent(mouseYMV, 'change', (v) => {
-		console.log(`mouseYMV is ${v}`)
-	})
 	const mouseVelocity = useTransform(
 		[mouseXVelocity, mouseXYelocity],
 		([x, y]) => {
@@ -100,8 +96,8 @@ export const CursorBackgroundPointer = () => {
 			const rect = cellContainerRef.current.getBoundingClientRect()
 			// const percent = ((y - rect.top) / rect.height) * 100
 			// return Math.min(100, Math.max(0, percent))
-            const percent = y / rect.height * 100
-            return percent
+			const percent = (y / rect.height) * 100
+			return percent
 		}
 	})
 

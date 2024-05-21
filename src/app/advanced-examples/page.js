@@ -8,7 +8,7 @@ import { VelocityCursor } from './components/VelocityCursor/VelocityCursor'
 import { CursorTrail } from './components/CursorTrail/CursorTrail'
 import { CustomCursorDirectionalBokeh } from './components/CustomCursorDirectionalBokeh/CustomCursorDirectionalBokeh'
 import { CursorBackgroundPointer } from './components/CursorBackgroundPointer/CursorBackgroundPointer'
-
+import CursorConfetti from './components/CursorConfetti/CursorConfetti'
 const Advancedexamples = () => {
     return (
         <div className={styles.contentWrap}>
@@ -23,12 +23,12 @@ const Advancedexamples = () => {
                         <CustomCursor />
                     </section> */}
 
+                    {/* ---- */}
+
                     {/* <section>
                         <h3>Cursor Trail</h3>
                         <CursorTrail />
                     </section> */}
-                    {/* ---- */}
-
 
 
                     <section>
@@ -57,7 +57,11 @@ const Advancedexamples = () => {
                         <CursorBackgroundPointer />
                     </section>
 
-
+                    <section>
+                        <h3>Cursor Confetti</h3>
+                        <p>wip</p>
+                        <CursorConfetti />
+                    </section>
 
                 </div>
             </div>

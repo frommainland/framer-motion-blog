@@ -1,0 +1,27 @@
+.wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    border: 1px solid var(--color-surface-200);
+    border-radius: .75em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    padding: 4em;
+    // background-image: radial-gradient(var(--color-surface-200) 1px, var(--color-surface-100) 1px);
+    // background-size: 14px 14px;
+    background-color: var(--color-surface-100);
+    background-image: linear-gradient(var(--color-surface-200) 1px, transparent 1px), linear-gradient(to right, var(--color-surface-200) 1px, var(--color-surface-100) 1px);
+    background-size: 20px 20px;
+    // background-color: #161616;
+    display: flex;
+    gap: 2em;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    .confettiItem {
+        position: absolute;
+        width: 100px;
+        aspect-ratio: 1;
+    }
+}

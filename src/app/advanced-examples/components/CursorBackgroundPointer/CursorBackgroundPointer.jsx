@@ -53,13 +53,23 @@ export const CursorBackgroundPointer = () => {
 		}
 		// mouseXMV.set(e.clientX)
 		// mouseYMV.set(e.clientY)
-		cellContainerRef.current.addEventListener('mousemove', handleMouseMove)
-		return () =>
-			cellContainerRef.current.removeEventListener(
+
+		if (cellContainerRef.current) {
+			cellContainerRef.current.addEventListener(
 				'mousemove',
 				handleMouseMove
 			)
-	}, [cellContainerRef])
+		}
+
+		return () => {
+			if (cellContainerRef.current) {
+				cellContainerRef.current.removeEventListener(
+					'mousemove',
+					handleMouseMove
+				)
+			}
+		}
+	}, [cellContainerRef, mouseXMV, mouseYMV])
 
 	// const [wrapRef, { width, height }] = useMeasure()
 

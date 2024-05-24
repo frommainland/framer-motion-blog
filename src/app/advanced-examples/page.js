@@ -9,6 +9,8 @@ import { CursorTrail } from './components/CursorTrail/CursorTrail'
 import { CustomCursorDirectionalBokeh } from './components/CustomCursorDirectionalBokeh/CustomCursorDirectionalBokeh'
 import { CursorBackgroundPointer } from './components/CursorBackgroundPointer/CursorBackgroundPointer'
 import CursorConfetti from './components/CursorConfetti/CursorConfetti'
+import SVGCursorCurve from './components/SVGCursorCurve/SVGCursorCurve'
+
 const Advancedexamples = () => {
     return (
         <div className={styles.contentWrap}>
@@ -63,6 +65,13 @@ const Advancedexamples = () => {
                         <CursorConfetti />
                     </section>
 
+
+                    <section>
+                        <h3>SVG Curve</h3>
+                        <p>SVG curve changes responding to the cursor</p>
+                        <SVGCursorCurve />
+
+                    </section>
                 </div>
             </div>
         </div>

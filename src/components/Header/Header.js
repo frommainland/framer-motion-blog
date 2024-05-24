@@ -63,22 +63,22 @@ function Header({ theme }) {
                 className={styles.sidebarMenu}
                 onClick={() => {
                     setIsSidebarOpen(!isSidebarOpen)
-                    console.log('menu clicked')
+                    // console.log('menu clicked')
                 }}
                 whileHover={{ backgroundColor: 'var(--color-surface-300)' }}
             >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="red" xmlns="http://www.w3.org/2000/svg">
                     <motion.path
                         stroke="var(--color-text-100)"
                         animate={{
-                            d: isSidebarOpen ? 'M 6 6 L 18 18' : 'M 3 12 H21 12',
+                            d: !isSidebarOpen ? 'M 3 6 H 21 6' : 'M 6 6 L 18 18',
                         }}
                         strokeWidth={2}
                         strokeLinecap="round"
                         fill="transparent"
                     />
                     <motion.path
-                        d="M 3 6 H 21 6"
+                        d="M 3 12 H 21 12"
                         stroke="var(--color-text-100)"
                         animate={{ opacity: isSidebarOpen ? 0 : 1 }}
                         transition={{ duration: 0.1 }}
@@ -88,7 +88,7 @@ function Header({ theme }) {
                     />
                     <motion.path
                         animate={{
-                            d: isSidebarOpen ? 'M 6 18 L 18 6' : 'M 3 18 H 21 18',
+                            d: !isSidebarOpen ? 'M 3 18 H 21 18' : 'M 6 18 L 18 6',
                         }}
                         stroke="var(--color-text-100)"
                         strokeWidth={2}

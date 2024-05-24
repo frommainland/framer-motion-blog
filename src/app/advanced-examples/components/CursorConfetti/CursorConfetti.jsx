@@ -11,6 +11,7 @@ import {
 	useSpring,
 	useVelocity,
 	animate,
+	useCycle,
 } from 'framer-motion'
 import { range } from '@/utils'
 import { smooth, bouncy } from '@/helper/easing'
@@ -76,7 +77,7 @@ function CursorConfetti() {
 	const scale = useTransform(
 		distance,
 		[Math.hypot(wrapSize.width * 0.3, wrapSize.height * 0.3), 0],
-		[2, 0.7]
+		[3.2, 1]
 	)
 
 	// const scaleSmooth = useSpring(scale, springConfig)
@@ -141,6 +142,10 @@ function CursorConfetti() {
 		setConfettiPos([])
 	}
 
+	// change main image
+
+	const [mainImg, cycleImg] = useCycle('duck.gif', 'coin.png', 'crystal.gif')
+
 	return (
 		<div
 			className={styles.wrap}
@@ -156,7 +161,8 @@ function CursorConfetti() {
 						type: 'spring',
 						bounce: 0.7,
 					}).finished,
-				])
+				]).then()
+				cycleImg()
 				mouseXMV.set(0)
 				mouseYMV.set(0)
 				generateConfetti()
@@ -169,14 +175,19 @@ function CursorConfetti() {
 					rotate: rotateSmooth,
 					zIndex: 1000,
 					position: 'relative',
+					width: 100,
+					height: 120,
 					scale,
 				}}
 			>
 				<Image
-					src="/CursorConfetti/duck.gif"
-					width={383 / 2}
-					height={400 / 2}
+					src={`/CursorConfetti/${mainImg}`}
+					fill
+					sizes="100px"
 					alt="duck"
+					style={{ objectFit: 'cover' }}
+					priority
+					as="image"
 				/>
 			</motion.div>
 
@@ -200,10 +211,13 @@ function CursorConfetti() {
 					onAnimationComplete={() => resetPos()}
 				>
 					<Image
-						src="/CursorConfetti/duck.gif"
+						src={`/CursorConfetti/${mainImg}`}
 						fill
+						sizes={`${size[index]}px`}
 						style={{ objectFit: 'cover' }}
 						alt="confetti"
+						priority
+						as="image"
 					/>
 				</motion.div>
 			))}

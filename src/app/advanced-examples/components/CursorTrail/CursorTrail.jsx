@@ -38,9 +38,8 @@ export const CursorTrail = () => {
 			Math.pow(position.x - lastPosition.x, 2) +
 				Math.pow(position.y - lastPosition.y, 2)
 		)
-        console.log(distance)
 
-		if (distance < 1000) return
+		if (distance < 20) return
 
 		setIndex((pre) => pre + 1)
 		setTrail((prevEmojis) => [...prevEmojis, newTrailItem])

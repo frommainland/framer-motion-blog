@@ -15,7 +15,7 @@ function L({ width }) {
 			}}
 		>
 			<SVGCursorCurveVertical
-				svgWidth={240}
+				svgWidth={160}
 				svgHeight={(width * 0.2) / 1.5}
 				strokeColor="#F3B53F"
 			/>
@@ -34,7 +34,7 @@ function I({ width }) {
 			}}
 		>
 			<SVGCursorCurveVertical
-				svgWidth={240}
+				svgWidth={160}
 				svgHeight={(width * 0.2) / 3}
 				strokeColor="#F3B53F"
 			/>
@@ -53,7 +53,7 @@ function N({ width }) {
 			}}
 		>
 			<SVGCursorCurveVertical
-				svgWidth={240}
+				svgWidth={160}
 				svgHeight={(width * 0.2) / 1.2}
 				strokeColor="#F3B53F"
 			/>
@@ -72,7 +72,7 @@ function N2({ width }) {
 			}}
 		>
 			<SVGCursorCurveVertical
-				svgWidth={240}
+				svgWidth={160}
 				svgHeight={(width * 0.2) / 1.5}
 				strokeColor="#F3B53F"
 			/>
@@ -91,7 +91,7 @@ function E({ width }) {
 			}}
 		>
 			<SVGCursorCurveVertical
-				svgWidth={240}
+				svgWidth={160}
 				svgHeight={(width * 0.2) / 1.5}
 				strokeColor="#F3B53F"
 			/>

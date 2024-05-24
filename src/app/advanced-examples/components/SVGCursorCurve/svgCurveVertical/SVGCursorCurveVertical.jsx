@@ -103,7 +103,7 @@ const SVGCursorCurveVertical = ({
 				/>
 				<motion.path
 					d={pathPoint}
-					stroke={strokeColor}
+					stroke={isHover ? '#BA7F0F' : `${strokeColor}`}
 					strokeWidth="3"
 					strokeLinecap="round"
 					fill="none"

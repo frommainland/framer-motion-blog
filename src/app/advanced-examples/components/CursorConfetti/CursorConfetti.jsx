@@ -173,7 +173,7 @@ function CursorConfetti() {
 					x: duckX,
 					y: duckY,
 					rotate: rotateSmooth,
-					zIndex: 1000,
+					zIndex: 20,
 					position: 'relative',
 					width: 100,
 					height: 120,

@@ -2,8 +2,11 @@
 
 .contentWrap {
     display: block;
+    padding-bottom: 3em;
 
     .layoutWrap {
+        overflow: initial;
+
         .layout {
             max-width: 42em;
 

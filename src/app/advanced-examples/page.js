@@ -10,6 +10,7 @@ import { CustomCursorDirectionalBokeh } from './components/CustomCursorDirection
 import { CursorBackgroundPointer } from './components/CursorBackgroundPointer/CursorBackgroundPointer'
 import CursorConfetti from './components/CursorConfetti/CursorConfetti'
 import SVGCursorCurve from './components/SVGCursorCurve/SVGCursorCurve'
+import CarouselCardStack from './components/CarouselCardStack/CarouselCardStack'
 
 const Advancedexamples = () => {
     return (
@@ -70,8 +71,14 @@ const Advancedexamples = () => {
                         <h3>SVG Curve</h3>
                         <p>SVG curve changes responding to the cursor</p>
                         <SVGCursorCurve />
-
                     </section>
+
+                    <section>
+                        <h3>Carousel Card Stack</h3>
+                        <p>Drag card to select and tap to show more, WIP</p>
+                        <CarouselCardStack />
+                    </section>
+
                 </div>
             </div>
         </div>

@@ -3,16 +3,16 @@
 import React from 'react'
 import styles from './CustomCursorDirectionalBokeh.module.scss'
 import Image from 'next/image'
+import useMouse from '@react-hook/mouse-position'
+
 import {
 	useMotionValue,
 	motion,
-	useTransform,
 	useSpring,
 	useMotionTemplate,
-	animate,
-	spring,
 } from 'framer-motion'
-import { useMouse } from '@uidotdev/usehooks'
+
+// import { useMouse } from '@uidotdev/usehooks'
 
 export const CustomCursorDirectionalBokeh = () => {
 	const cursorSize = 15
@@ -26,11 +26,19 @@ export const CustomCursorDirectionalBokeh = () => {
 	const x = useMotionValue(0)
 	const y = useMotionValue(0)
 
-	const [mouse, ref] = useMouse()
+	// const [mouse, ref] = useMouse()
+
+	const ref = React.useRef(null)
+	const mouse = useMouse(ref, {
+		enterDelay: 100,
+		leaveDelay: 100,
+	})
 
 	React.useEffect(() => {
-		x.set(mouse.elementX)
-		y.set(mouse.elementY)
+		// x.set(mouse.elementX)
+		// y.set(mouse.elementY)
+		x.set(mouse.x)
+		y.set(mouse.y)
 		// animate(x, mouse.elementX, springValues)
 		// animate(y, mouse.elementY, springValues)
 	}, [mouse])
@@ -72,7 +80,6 @@ export const CustomCursorDirectionalBokeh = () => {
 		blur.set(blurIntensity)
 	}
 
-	const [cursorText, setCursorText] = React.useState('')
 	const [cursorVariant, setCursorVariant] = React.useState('default')
 
 	const variants = {
@@ -80,6 +87,10 @@ export const CustomCursorDirectionalBokeh = () => {
 			height: cursorSize,
 			width: cursorSize,
 			backgroundColor: 'rgba(255, 252, 225, .5)',
+			transition: {
+				type: 'spring',
+				mass: 0.6,
+			},
 		},
 		view: {
 			height: cursorSize * 4,
@@ -137,7 +148,15 @@ export const CustomCursorDirectionalBokeh = () => {
 				cursorScale.set(1)
 			}}
 		>
-			<div className={styles.imagesWrap}>
+			<div
+				className={styles.imagesWrap}
+				onMouseEnter={() => {
+					setCursorVariant('view')
+				}}
+				onMouseLeave={() => {
+					setCursorVariant('default')
+				}}
+			>
 				{/* image 1 */}
 				<motion.div
 					className={styles.imageItem}
@@ -146,14 +165,6 @@ export const CustomCursorDirectionalBokeh = () => {
 						rotateY,
 						scale,
 						maskImage: mask,
-					}}
-					onMouseEnter={() => {
-						setCursorText('View')
-						setCursorVariant('view')
-					}}
-					onMouseLeave={() => {
-						setCursorText('')
-						setCursorVariant('default')
 					}}
 				>
 					<Image
@@ -179,14 +190,6 @@ export const CustomCursorDirectionalBokeh = () => {
 						maskImage: mediumMask,
 						filter: blurMedium,
 					}}
-					onMouseEnter={() => {
-						setCursorText('View')
-						setCursorVariant('view')
-					}}
-					onMouseLeave={() => {
-						setCursorText('')
-						setCursorVariant('default')
-					}}
 				>
 					<Image
 						src="/CustomCursor/bobbyChen.jpg"
@@ -211,14 +214,6 @@ export const CustomCursorDirectionalBokeh = () => {
 						maskImage: maskFar,
 						filter: blurFar,
 					}}
-					onMouseEnter={() => {
-						setCursorText('View')
-						setCursorVariant('view')
-					}}
-					onMouseLeave={() => {
-						setCursorText('')
-						setCursorVariant('default')
-					}}
 				>
 					<Image
 						src="/CustomCursor/bobbyChen.jpg"
@@ -236,21 +231,12 @@ export const CustomCursorDirectionalBokeh = () => {
 
 			{/* mouse dot */}
 			<motion.div
-				layout="position"
 				className={styles.cursor}
-				style={{
-					x,
-					y,
-					width: cursorSize,
-					height: cursorSize,
-					pointerEvents: 'none',
-				}}
+				style={{ x, y, width: cursorSize, height: cursorSize }}
 				variants={variants}
 				animate={cursorVariant}
-				// transition={springValues}
 			>
 				<motion.span
-					layout
 					variants={{
 						default: {
 							scale: 0,
@@ -260,7 +246,7 @@ export const CustomCursorDirectionalBokeh = () => {
 						},
 					}}
 				>
-					{cursorText}
+					View
 				</motion.span>
 			</motion.div>
 		</div>

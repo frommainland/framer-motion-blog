@@ -12,6 +12,8 @@ import CursorConfetti from './components/CursorConfetti/CursorConfetti'
 import SVGCursorCurve from './components/SVGCursorCurve/SVGCursorCurve'
 import CarouselCardStack from './components/CarouselCardStack/CarouselCardStack'
 
+import ShuffleFlipCard from '../advanced-examples/components/ShuffleFlipCard/ShuffleFlipCard'
+
 const Advancedexamples = () => {
     return (
         <div className={styles.contentWrap}>
@@ -78,6 +80,14 @@ const Advancedexamples = () => {
                         <p>Drag card to select and tap to show more, WIP</p>
                         <CarouselCardStack />
                     </section>
+
+
+                    <section>
+                        <h3>Shuffle Flip Card</h3>
+                        <p>WIP</p>
+                        <ShuffleFlipCard />
+                    </section>
+
 
                 </div>
             </div>

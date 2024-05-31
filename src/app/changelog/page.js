@@ -3,6 +3,8 @@ import React from 'react'
 
 import styles from './changelog.module.scss'
 
+
+
 const ChangeLog = () => {
     return (
         <div className={styles.contentWrap}>
@@ -10,6 +12,7 @@ const ChangeLog = () => {
                 <div className={styles.layout}>
                     <h1>Changelog</h1>
                     {/* newer start here */}
+
                     <section>
                         <h2>Cursor examples</h2>
                         <p className={styles.date}>May 24, 2024</p>
@@ -21,7 +24,6 @@ const ChangeLog = () => {
                         <p className={styles.date}>May 06, 2024</p>
                         <p>This site is alive, including the most basic examples of how framer motion works in web animations.</p>
                     </section>
-
 
 
                 </div>

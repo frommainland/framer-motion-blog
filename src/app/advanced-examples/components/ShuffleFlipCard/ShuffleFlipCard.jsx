@@ -9,8 +9,8 @@ import {
 } from 'framer-motion'
 import React from 'react'
 import Card from './Card'
-import { range } from '@/utils'
-import { X } from 'react-feather'
+import { X, HardDrive } from 'react-feather'
+import { bouncy } from '@/helper/easing'
 
 const ShuffleFlipCard = () => {
 	const dragcontrol = React.useRef(null)
@@ -33,12 +33,21 @@ const ShuffleFlipCard = () => {
 		})
 	}, [])
 
-	const CARDSIZE = { width: 100, height: 130 }
+	const CARDSIZE = { width: 120, height: 170 }
+	// const CardImages = [
+	// 	'JMT',
+	// 	'Lucas_Zanotto',
+	// 	'Rami_Niemi',
+	// 	'Tim_Lahan',
+	// 	'Xoana_Herrera',
+	// ]
+	const CardImages = ['JMT', 'Lucas', 'Rami', 'Tim', 'Xoana']
 	const CARDNUM = 5
 
 	// show cards stack together, 1/2 card covers the previous card, the last card show 100%
 	// total stacked card width
-	const stackedWidth = (CARDSIZE.width / 2) * (CARDNUM - 1) + CARDSIZE.width
+	const stackedWidth =
+		(CARDSIZE.width / 2) * (CardImages.length - 1) + CARDSIZE.width
 	const firstCardX = (containerSize.width - stackedWidth) / 2
 	// the rest of the card will be placed at the right of the first card by half of the card width
 
@@ -46,23 +55,57 @@ const ShuffleFlipCard = () => {
 
 	return (
 		<motion.div ref={dragcontrol} className={styles.wrap}>
-			<button
+			<motion.button
+				style={{ x: '-50%' }}
+				initial={{ top: -48 }}
+				animate={{
+					top: !removeClicked ? 50 : -48,
+					transition: {
+						duration: 0.35,
+						ease: bouncy,
+						delay: removeClicked ? 0.1 : 0.1 * CardImages.length,
+					},
+				}}
 				className={styles.remove}
 				onClick={() => setRemoveClicked(!removeClicked)}
+				whileTap={{ scale: 0.8 }}
+				whileHover={{ scale: 1.1 }}
 			>
 				<X color="var(--color-text-300)" />
-			</button>
+			</motion.button>
+
+			<motion.button
+				className={styles.show}
+				style={{ x: '-50%' }}
+				initial={{ bottom: -48 }}
+				animate={{
+					bottom: removeClicked ? 50 : -48,
+					transition: {
+						duration: 0.35,
+						ease: bouncy,
+						delay: removeClicked ? 0.1 * CardImages.length : 0.1,
+					},
+				}}
+				onClick={() => setRemoveClicked(!removeClicked)}
+				whileTap={{ scale: 0.8 }}
+				whileHover={{ scale: 1.1 }}
+			>
+				<HardDrive color="var(--color-text-300)" />
+			</motion.button>
+
 			<AnimatePresence>
 				{!removeClicked && (
 					<>
-						{range(CARDNUM).map((item, i) => (
+						{CardImages.map((item, i) => (
 							<Card
 								key={i}
 								containerSize={containerSize}
 								containerPos={containerPos}
 								cardSize={CARDSIZE}
 								initialX={firstCardX + (CARDSIZE.width / 2) * i}
-								index={item}
+								index={i}
+								cardNum={CardImages.length}
+								item={item}
 							/>
 						))}
 					</>

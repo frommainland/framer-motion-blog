@@ -1,0 +1,80 @@
+.wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    border: 1px solid var(--color-surface-200);
+    border-radius: 2em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    padding: 2em;
+    display: flex;
+    gap: 2em;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+
+    .leftmask {
+        height: 100%;
+        width: 20%;
+        background: linear-gradient(to left, rgba(0, 0, 0, 0) 0%, var(--color-surface-100) 100%);
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        left: 0;
+    }
+
+    .rightmask {
+        height: 100%;
+        width: 20%;
+        background: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, var(--color-surface-100) 100%);
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+    }
+
+    .scene {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        perspective: 1000px;
+        // keep carousel 3d
+        transform-style: preserve-3d;
+        cursor: grab;
+
+
+        .carousel {
+            // keep faces 3d
+            transform-style: preserve-3d;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            // border: 1px solid green;
+            width: 100%;
+            // width: 1800px;
+            user-select: none;
+
+
+            .face {
+                pointer-events: none;
+                position: absolute;
+                height: 100%;
+                padding: 1em;
+                // border: 1px solid red;
+                background-color: var(--color-surface-100);
+                display: grid;
+                place-content: center;
+            }
+
+
+        }
+    }
+
+
+}

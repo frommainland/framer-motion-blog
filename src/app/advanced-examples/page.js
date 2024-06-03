@@ -14,6 +14,8 @@ import CarouselCardStack from './components/CarouselCardStack/CarouselCardStack'
 
 import ShuffleFlipCard from '../advanced-examples/components/ShuffleFlipCard/ShuffleFlipCard'
 
+import CynlinderCarousel from './components/CynlinderCarousel/CynlinderCarousel'
+
 const Advancedexamples = () => {
     return (
         <div className={styles.contentWrap}>
@@ -82,10 +84,18 @@ const Advancedexamples = () => {
                     </section>
 
 
+
                     <section>
                         <h3>Shuffle Flip Card</h3>
-                        <p>WIP</p>
+                        <p>Drag and click the card</p>
                         <ShuffleFlipCard />
+                    </section>
+
+
+                    <section>
+                        <h3>Cylinder Carousel</h3>
+                        <p>Cards on 3d</p>
+                        <CynlinderCarousel />
                     </section>
 
 

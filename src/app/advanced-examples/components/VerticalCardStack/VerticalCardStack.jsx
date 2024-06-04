@@ -75,11 +75,13 @@ const VerticalCardStack = () => {
 							initial={{
 								// top: height / 2 - CARD_SIZE.height / 2,
 								// left: width / 2 - CARD_SIZE.width / 2,
-								top: 70,
+								top: 72,
 								left: 50,
-								backgroundColor: `hsl(${
-									Math.random() * 360
-								}, 100%, 80%)`,
+								// backgroundColor: `hsl(${
+								// 	Math.random() * 360
+								// }, 100%, 80%)`,
+								background:
+									'linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 68%), #FF0000',
 							}}
 							variants={{
 								single: {
@@ -87,7 +89,10 @@ const VerticalCardStack = () => {
 									// left: width / 2 - CARD_SIZE.width / 2,
 									// transform: `translateY(0) translateZ(100px) scale(1.5)`,
 									// y: 0,
+									y: 0,
 									scale: 1.5,
+									background:
+										'linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 68%), #FF0000',
 								},
 								stack: {
 									// top: 0,
@@ -98,9 +103,9 @@ const VerticalCardStack = () => {
 									// }px) scale(1) rotateX(${-45 + i * -3}deg)`,
 									y:
 										i * (height / (cardNum * 2)) +
-										dragDis -
+										dragDis / 2 -
 										70,
-									z: i * 30,
+									z: i * 30 + dragDis / 2,
 									scale: 1,
 									rotateX: -45 + i * -3,
 								},
@@ -110,6 +115,8 @@ const VerticalCardStack = () => {
 									// transform: `translateY(0) translateZ(-100px) scale(1)`,
 									y: -height * 1.2,
 									scale: 1,
+									background:
+										'linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 68%), #FF0000',
 								},
 							}}
 							transition={{

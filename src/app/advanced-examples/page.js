@@ -15,6 +15,7 @@ import CarouselCardStack from './components/CarouselCardStack/CarouselCardStack'
 import ShuffleFlipCard from '../advanced-examples/components/ShuffleFlipCard/ShuffleFlipCard'
 
 import CynlinderCarousel from './components/CynlinderCarousel/CynlinderCarousel'
+import VerticalCardStack from './components/VerticalCardStack/VerticalCardStack'
 
 const Advancedexamples = () => {
     return (
@@ -96,6 +97,12 @@ const Advancedexamples = () => {
                         <h3>Cylinder Carousel</h3>
                         <p>Cards on 3d</p>
                         <CynlinderCarousel />
+                    </section>
+
+                    <section>
+                        <h3>Vertical Card Stack</h3>
+                        <p>WIP</p>
+                        <VerticalCardStack />
                     </section>
 
 

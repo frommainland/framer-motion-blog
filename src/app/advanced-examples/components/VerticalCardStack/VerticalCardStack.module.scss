@@ -13,21 +13,35 @@
     overflow: hidden;
 
     .scene {
-        width: 100%;
-        height: 100%;
         position: relative;
-        perspective: 800px;
-        transform-style: preserve-3d;
-        border: 1px solid red;
+        border: 1px solid var(--color-surface-200);
         overflow: hidden;
         border-radius: .5em;
-    }
 
-    .card {
-        width: 200px;
-        height: 300px;
-        position: absolute;
-        border-radius: .5em;
-    }
+        .dragContainer {
+            perspective: 800px;
+            transform-style: preserve-3d;
+            // border: 1px solid blue;
 
+            .card {
+                width: 200px;
+                height: 300px;
+                top: 0;
+                position: relative;
+                border-style: solid;
+                border-width: 1px;
+                // border: 1px solid var(--color-surface-200);
+            }
+
+
+
+            .cardGradient {
+                position: absolute;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 1) 68%);
+            }
+        }
+    }
 }

@@ -9,125 +9,89 @@ import {
 	useMotionValueEvent,
 	useTransform,
 } from 'framer-motion'
+import { Card } from './Card'
 import { useMeasure } from '@uidotdev/usehooks'
+
 const VerticalCardStack = () => {
-	const [ref, { width, height }] = useMeasure()
+	// prevent misinterpreting clicking and dragging
+	const [isDragging, setIsDragging] = React.useState(false)
+
+	const [cardClickedIndex, setCardClickedIndex] = React.useState(null)
 
 	const CARD_SIZE = { width: 200, height: 300 }
-	const cardNum = 5
 
-	const [clicked, setIsClicked] = React.useState(false)
-	const [clickedCardIndex, setClickedCardIndex] = React.useState(cardNum - 1)
+	// because card posiiton is absolute, so no way to tell how tall when it ratateX, so i ball park the base height when card is in rotateX perspective
+	const baseHeightStart = 266
+	const baseCardHeight = 50
+	const cardNum = 10
 
-	const rotationX = useMotionValue(0)
-	function handleDrag(_, info) {
-		rotationX.set(
-			Math.max(-80, Math.min(80, rotationX.get() + info.delta.y))
-		)
-	}
+	const [singleView, setsingleView] = React.useState(false)
 
-	useMotionValueEvent(rotationX, 'change', (v) => console.log(v))
+	const y = useMotionValue(0)
 
-	const [dragDis, setDragDis] = React.useState(0)
-	useMotionValueEvent(rotationX, 'change', (v) => setDragDis(v))
+	// Create a new ref to store the dragContainer element
+	const sceneRef = React.useRef(null)
 
-	const fakeTransform = useTransform(rotationX, (value) => {
-		return `rotate3d(0, 0, 0, ${value}deg)`
-	})
+	const [sceneHeight, setsceneHeight] = React.useState(0)
+
+	React.useEffect(() => {
+		if (sceneRef) {
+			const height = sceneRef.current.clientHeight
+			setsceneHeight(height)
+		}
+	}, [])
 
 	return (
-		<div className={styles.wrap} ref={ref}>
-			{width && (
+		<div className={styles.wrap}>
+			{/* // scene only for overflow:hidden */}
+			<motion.div
+				ref={sceneRef}
+				className={styles.scene}
+				style={{
+					width: CARD_SIZE.width * 1.5,
+					height: CARD_SIZE.height * 1.5,
+				}}
+			>
+				{/* dragContainer for drag area, when in stack view, it should expand to centain height, then make stack cards move like scroll with rubber band efffect at the edge */}
 				<motion.div
-					className={styles.scene}
-					drag="y"
-					dragConstraints={{ top: 0, right: 0, bottom: 0, left: 0 }}
-					onDrag={handleDrag}
+					className={styles.dragContainer}
+					drag={singleView ? false : 'y'}
+					onDragStart={() => setIsDragging(true)}
+					onDragEnd={() => setIsDragging(false)}
 					style={{
-						transform: fakeTransform,
-						width: CARD_SIZE.width * 1.5,
-						height: CARD_SIZE.height * 1.5,
+						height: singleView
+							? CARD_SIZE.height * 1.5
+							: baseHeightStart + (cardNum - 1) * baseCardHeight,
+						y,
+					}}
+					dragConstraints={{
+						top:
+							(baseHeightStart +
+								(cardNum - 1) * baseCardHeight -
+								CARD_SIZE.height * 1.5 +
+								20) *
+							-1,
+						bottom: 20,
 					}}
 				>
-					{range(cardNum).map((i) => (
-						<motion.div
-							className={styles.card}
-							key={i}
-							onClick={() => {
-								setIsClicked(!clicked)
-								setClickedCardIndex(i)
-								rotationX.set(0)
-							}}
-							animate={
-								clicked
-									? 'stack'
-									: i === clickedCardIndex
-									? 'single'
-									: 'down'
-							}
-							style={{
-								zIndex: clicked
-									? 0
-									: i === clickedCardIndex
-									? 10
-									: 0,
-							}}
-							initial={{
-								// top: height / 2 - CARD_SIZE.height / 2,
-								// left: width / 2 - CARD_SIZE.width / 2,
-								top: 72,
-								left: 50,
-								// backgroundColor: `hsl(${
-								// 	Math.random() * 360
-								// }, 100%, 80%)`,
-								background:
-									'linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 68%), #FF0000',
-							}}
-							variants={{
-								single: {
-									// top: height / 2 - CARD_SIZE.height / 2,
-									// left: width / 2 - CARD_SIZE.width / 2,
-									// transform: `translateY(0) translateZ(100px) scale(1.5)`,
-									// y: 0,
-									y: 0,
-									scale: 1.5,
-									background:
-										'linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 68%), #FF0000',
-								},
-								stack: {
-									// top: 0,
-									// transform: `translateY(${
-									// 	i * (height / (cardNum * 2)) + dragDis
-									// }px) translateZ(${
-									// 	i * 20
-									// }px) scale(1) rotateX(${-45 + i * -3}deg)`,
-									y:
-										i * (height / (cardNum * 2)) +
-										dragDis / 2 -
-										70,
-									z: i * 30 + dragDis / 2,
-									scale: 1,
-									rotateX: -45 + i * -3,
-								},
-								down: {
-									// top: 0,
-									// left: width / 2 - CARD_SIZE.width / 2,
-									// transform: `translateY(0) translateZ(-100px) scale(1)`,
-									y: -height * 1.2,
-									scale: 1,
-									background:
-										'linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 68%), #FF0000',
-								},
-							}}
-							transition={{
-								type: 'spring',
-								stiffness: 200,
-								damping: 30,
-							}}
-						></motion.div>
-					))}
+					{range(cardNum).map((i) => {
+						return (
+							<Card
+								key={i}
+								i={i}
+								CARD_SIZE={CARD_SIZE}
+								singleView={singleView}
+								isDragging={isDragging}
+								setsingleView={setsingleView}
+								cardClickedIndex={cardClickedIndex}
+								setCardClickedIndex={setCardClickedIndex}
+								y={y}
+								sceneHeight={sceneHeight}
+							/>
+						)
+					})}
 				</motion.div>
-			)}
+			</motion.div>
 		</div>
 	)
 }

@@ -1,9 +1,18 @@
 'use client'
 import React from 'react'
-import { motion, useMotionValueEvent, useTransform } from 'framer-motion'
+import {
+	AnimatePresence,
+	animate,
+	motion,
+	useMotionValue,
+	useMotionValueEvent,
+	useTransform,
+} from 'framer-motion'
 import styles from './VerticalCardStack.module.scss'
 import { clamp } from '@/utils'
 import Image from 'next/image'
+import { smooth } from '@/helper/easing'
+import { NEXT_CACHE_REVALIDATE_TAG_TOKEN_HEADER } from 'next/dist/lib/constants'
 
 export const Card = ({
 	i,
@@ -16,11 +25,20 @@ export const Card = ({
 	y,
 	sceneHeight,
 }) => {
+	// track down when in stack view, click on card and track its current drag y value. So when click card on single view, it will go back where the card was clicked
+	const stackViewYTrack = React.useRef(0)
+	// const [stackViewYTrack, setStackViewYTrack] = React.useState(0)
 	function handleCardClick(i) {
 		if (!isDragging) {
 			setCardClickedIndex(i)
 			setsingleView(!singleView)
-			y.set(0)
+			if (singleView) {
+				y.set(stackViewYTrack.current)
+			}
+			if (!singleView) {
+				stackViewYTrack.current = y.get()
+				y.set(0)
+			}
 		}
 	}
 
@@ -53,7 +71,9 @@ export const Card = ({
 				rotateX: singleView ? 0 : rotateX,
 				z: singleView ? 0 : z,
 				borderRadius: '.25em',
-				// pointerEvents: singleView ? 'none' : 'auto',
+				pointerEvents:
+					singleView && i !== cardClickedIndex ? 'none' : 'auto',
+				// opacity: singleView ? 1 : opacity,
 			}}
 			onClick={() => handleCardClick(i)}
 			variants={{
@@ -61,14 +81,30 @@ export const Card = ({
 					y: 0.25 * CARD_SIZE.height,
 					scale: 1.5,
 					rotateX: 0,
+
+					borderColor: 'var(--color-surface-200)',
+					transition: {
+						type: 'spring',
+						bounce: 0.2,
+					},
 				},
 				stack: {
 					y: cardToCardDis * i,
 					scale: 1,
+					borderColor: 'var(--color-text-100)',
+					transition: {
+						duration: 0.3,
+						delay: i === cardClickedIndex ? 0 : 0.15,
+						ease: 'easeIn',
+					},
 				},
 				down: {
 					y: CARD_SIZE.height * 1.5,
-					scale: 1,
+					scale: 0.7,
+					transition: {
+						type: 'spring',
+						bounce: 0.2,
+					},
 				},
 			}}
 			animate={
@@ -78,20 +114,24 @@ export const Card = ({
 					? 'single'
 					: 'down'
 			}
-			transition={{ duration: 0.5 }}
 			whileHover={{
 				y: singleView
 					? 0.25 * CARD_SIZE.height
 					: cardToCardDis * i - 10,
-				transition: { duration: 0.2 },
+				transition: { duration: 0.1 },
 			}}
 		>
-			{!singleView && (
-				<div
-					className={styles.cardGradient}
-					style={{ borderRadius: '.25em' }}
-				></div>
-			)}
+			<AnimatePresence>
+				{!singleView && (
+					<motion.div
+						className={styles.cardGradient}
+						style={{ borderRadius: '.25em' }}
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						exit={{ opacity: 0 }}
+					/>
+				)}
+			</AnimatePresence>
 
 			<Image
 				src={`/VerticalCardStack/red${i + 1}.webp`}

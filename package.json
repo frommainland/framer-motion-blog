@@ -16,6 +16,7 @@
     "@uidotdev/usehooks": "^2.4.1",
     "bezier-easing": "^2.1.0",
     "bright": "^0.8.4",
+    "colorthief": "^2.4.0",
     "framer-motion": "^11.2.9",
     "gray-matter": "^4.0.3",
     "micromark": "^4.0.0",

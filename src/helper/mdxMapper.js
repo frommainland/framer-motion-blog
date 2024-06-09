@@ -11,6 +11,7 @@ import DelayExample from '@/components/mdxExamples/themainproperties/transition/
 import DelayMix from "@/components/mdxExamples/themainproperties/transition/delayMix/index";
 import SpringExample from "@/components/mdxExamples/themainproperties/transition/spring/index";
 import TweenExample from "@/components/mdxExamples/themainproperties/transition/tween/index";
+import SpringWithCustomName from "@/components/mdxExamples/themainproperties/transition/springWithCustomName/index";
 import InertiaPower from "@/components/mdxExamples/themainproperties/transition/inertia/inertiaPower/index";
 import RepeatMix from "@/components/mdxExamples/themainproperties/transition/repeatMix/index";
 import TransitionPerProp from "@/components/mdxExamples/themainproperties/transition/transitionPerProp/index";
@@ -34,6 +35,7 @@ const mdxMapper = {
     DelayMix,
     SpringExample,
     TweenExample,
+    SpringWithCustomName,
     InertiaPower,
     RepeatMix,
     TransitionPerProp,

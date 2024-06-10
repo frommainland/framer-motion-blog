@@ -16,6 +16,7 @@ import ShuffleFlipCard from '../advanced-examples/components/ShuffleFlipCard/Shu
 
 import CynlinderCarousel from './components/CynlinderCarousel/CynlinderCarousel'
 import VerticalCardStack from './components/VerticalCardStack/VerticalCardStack'
+import DiagonalCardStack from './components/DiagonalCardStack/DiagonalCardStack'
 
 const Advancedexamples = () => {
     return (
@@ -105,6 +106,11 @@ const Advancedexamples = () => {
                         <VerticalCardStack />
                     </section>
 
+                    <section>
+                        <h3>Diagonal Card Stack</h3>
+                        <p>Inspired by Apple 100 best albums</p>
+                        <DiagonalCardStack />
+                    </section>
 
                 </div>
             </div>

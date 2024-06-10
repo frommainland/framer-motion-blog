@@ -2,7 +2,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import styles from './SpringWithCustomName.module.scss'
-import RestartDemoWrap from '@/components/RestartDemoWrap'
 
 export default function SpringWithCustomName() {
 	const standard = {
@@ -71,47 +70,45 @@ export default function SpringWithCustomName() {
 	).config
 
 	return (
-		<RestartDemoWrap>
-			<div className={styles.wrap}>
-				<motion.div
-					className={styles.ballWrap}
-					animate={{
-						x: animationTrigger ? 'calc(100% - 60px - 2em)' : 0,
-					}}
-					transition={{ type: 'spring', ...config }}
-				>
-					<Ball1 />
-				</motion.div>
-				<div className={styles.buttonsWrap}>
-					{Spring_template.map((item, i) => (
-						<motion.button
-							key={item.id}
-							onClick={() => {
-								setSpringConfigName(item.id)
-								setAnimationTrigger(!animationTrigger)
-							}}
-							whileHover={{
-								scale: 1.05,
-								backgroundColor: 'var(--color-surface-300)',
-							}}
-							whileTap={{ scale: 0.95 }}
-							animate={{
-								borderColor:
-									item.id === springConfigName
-										? 'var(--color-text-200)'
-										: 'var(--color-surface-200)',
-								color:
-									item.id === springConfigName
-										? 'var(--color-text-100)'
-										: 'var(--color-text-300)',
-							}}
-						>
-							{item.id}
-						</motion.button>
-					))}
-				</div>
+		<div className={styles.wrap}>
+			<motion.div
+				className={styles.ballWrap}
+				animate={{
+					x: animationTrigger ? 'calc(100% - 60px - 2em)' : 0,
+				}}
+				transition={{ type: 'spring', ...config }}
+			>
+				<Ball1 />
+			</motion.div>
+			<div className={styles.buttonsWrap}>
+				{Spring_template.map((item, i) => (
+					<motion.button
+						key={item.id}
+						onClick={() => {
+							setSpringConfigName(item.id)
+							setAnimationTrigger(!animationTrigger)
+						}}
+						whileHover={{
+							scale: 1.05,
+							backgroundColor: 'var(--color-surface-300)',
+						}}
+						whileTap={{ scale: 0.95 }}
+						animate={{
+							borderColor:
+								item.id === springConfigName
+									? 'var(--color-text-200)'
+									: 'var(--color-surface-200)',
+							color:
+								item.id === springConfigName
+									? 'var(--color-text-100)'
+									: 'var(--color-text-300)',
+						}}
+					>
+						{item.id}
+					</motion.button>
+				))}
 			</div>
-		</RestartDemoWrap>
+		</div>
 	)
 }
 

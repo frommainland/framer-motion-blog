@@ -69,16 +69,32 @@ const DiagonalCardStack = () => {
 	const [textColor, setTextColor] = React.useState(null)
 
 	const imageRef = React.useRef(null)
+	const handleImageLoad = async () => {
+		if (!imageRef.current || imageRef.current.naturalWidth === 0) return
+		const colorThief = new ColorThief()
+		const color = colorThief.getColor(imageRef.current)
+		if (color) {
+			setDominantColor(`rgb(${color.join(',')})`)
+			setDominantColorRaw(color)
+		}
+	}
+
 	React.useEffect(() => {
-		const getColor = async () => {
-			const colorThief = new ColorThief()
-			if (imageRef.current) {
-				const color = colorThief.getColor(imageRef.current)
-				setDominantColorRaw(color)
-				setDominantColor(`rgb(${color.join(',')})`)
+		if (imageRef.current) {
+			if (imageRef.current.complete) {
+				handleImageLoad()
+			} else {
+				imageRef.current.addEventListener('load', handleImageLoad)
+			}
+			return () => {
+				if (imageRef.current) {
+					imageRef.current.removeEventListener(
+						'load',
+						handleImageLoad
+					)
+				}
 			}
 		}
-		getColor()
 	}, [currentIndex])
 
 	React.useEffect(() => {

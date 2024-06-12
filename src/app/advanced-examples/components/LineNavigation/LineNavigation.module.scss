@@ -1,0 +1,31 @@
+.wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    border: 1px solid var(--color-surface-200);
+    border-radius: 2em;
+    margin-top: 2em;
+    padding: 2em;
+    overflow: hidden;
+    display: grid;
+    place-content: center;
+
+    .lineWrap {
+        height: 1em;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: .5em;
+        position: relative;
+
+        .line {
+            height: 2px;
+        }
+
+        .time {
+            margin: 0 !important;
+            position: absolute;
+            color: var(--color-accent-yellow);
+        }
+    }
+}

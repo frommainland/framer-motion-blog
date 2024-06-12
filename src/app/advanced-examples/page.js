@@ -17,6 +17,9 @@ import ShuffleFlipCard from '../advanced-examples/components/ShuffleFlipCard/Shu
 import CynlinderCarousel from './components/CynlinderCarousel/CynlinderCarousel'
 import VerticalCardStack from './components/VerticalCardStack/VerticalCardStack'
 import DiagonalCardStack from './components/DiagonalCardStack/DiagonalCardStack'
+import GridCardStack from './components/GridCardStack/GridCardStack'
+
+import LineNavigation from './components/LineNavigation/LineNavigation'
 
 const Advancedexamples = () => {
     return (
@@ -110,6 +113,18 @@ const Advancedexamples = () => {
                         <h3>Diagonal Card Stack</h3>
                         <p>Inspired by Apple 100 best albums</p>
                         <DiagonalCardStack />
+                    </section>
+
+                    <section>
+                        <h3>Grid Card Stack</h3>
+                        <p>Add some flavors to layoutId</p>
+                        <GridCardStack />
+                    </section>
+
+                    <section>
+                        <h3>Line Navigation</h3>
+                        <p>Inspired by stripe press</p>
+                        <LineNavigation />
                     </section>
 
                 </div>

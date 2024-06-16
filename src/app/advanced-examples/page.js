@@ -20,6 +20,7 @@ import DiagonalCardStack from './components/DiagonalCardStack/DiagonalCardStack'
 import GridCardStack from './components/GridCardStack/GridCardStack'
 
 import LineNavigation from './components/LineNavigation/LineNavigation'
+import CardHoverAccordian from './components/CardHoverAccordian/CardHoverAccordian'
 
 const Advancedexamples = () => {
     return (
@@ -125,6 +126,11 @@ const Advancedexamples = () => {
                         <h3>Line Navigation</h3>
                         <p>Inspired by stripe press</p>
                         <LineNavigation />
+                    </section>
+
+                    <section>
+                        <h3>Card Hover Accordion</h3>
+                        <CardHoverAccordian />
                     </section>
 
                 </div>

@@ -1,0 +1,28 @@
+.wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    border: 1px solid var(--color-surface-200);
+    border-radius: 2em;
+    margin-top: 2em;
+    padding: 2em;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .card {
+        position: absolute;
+        border-radius: .5em;
+        filter: drop-shadow(83px 0px 33px rgba(0, 0, 0, 0.01)) drop-shadow(46px 0px 28px rgba(0, 0, 0, 0.05)) drop-shadow(21px 0px 21px rgba(0, 0, 0, 0.09)) drop-shadow(5px 0px 11px rgba(0, 0, 0, 0.1));
+        cursor: pointer;
+
+        .mask {
+            position: absolute;
+            top: 0;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(14, 16, 15, 0.55) 0%, var(--color-surface-100) 100%);
+        }
+    }
+
+}

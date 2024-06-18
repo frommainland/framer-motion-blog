@@ -10,7 +10,6 @@ const ChangeLog = () => {
                 <div className={styles.layout}>
                     <h1>Changelog</h1>
                     {/* newer start here */}
-
                     <section>
                         <h2>Cursor examples</h2>
                         <p className={styles.date}>May 24, 2024</p>

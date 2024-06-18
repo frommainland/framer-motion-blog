@@ -21,6 +21,7 @@ import GridCardStack from './components/GridCardStack/GridCardStack'
 
 import LineNavigation from './components/LineNavigation/LineNavigation'
 import CardHoverAccordian from './components/CardHoverAccordian/CardHoverAccordian'
+import { CardStack2 } from './components/CardStack2/CardStack2'
 
 const Advancedexamples = () => {
     return (
@@ -88,6 +89,14 @@ const Advancedexamples = () => {
                         <p>Drag card to select and tap to show more, WIP</p>
                         <CarouselCardStack />
                     </section>
+
+
+                    <section>
+                        <h3>Carousel Card Stack 2</h3>
+                        <p>Now you can tap on any card, but no detail view</p>
+                        <CardStack2 />
+                    </section>
+
 
 
 

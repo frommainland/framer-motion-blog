@@ -23,6 +23,8 @@ import LineNavigation from './components/LineNavigation/LineNavigation'
 import CardHoverAccordian from './components/CardHoverAccordian/CardHoverAccordian'
 import { CardStack2 } from './components/CardStack2/CardStack2'
 
+import MapFold from './components/MapFold/MapFold'
+
 const Advancedexamples = () => {
     return (
         <div className={styles.contentWrap}>
@@ -140,6 +142,12 @@ const Advancedexamples = () => {
                     <section>
                         <h3>Card Hover Accordion</h3>
                         <CardHoverAccordian />
+                    </section>
+
+                    <section>
+                        <h3>Map Fold</h3>
+                        <p>drag down the map and reveal full map</p>
+                        <MapFold />
                     </section>
 
                 </div>

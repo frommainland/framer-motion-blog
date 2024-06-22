@@ -16,6 +16,10 @@ import SnapToCorner from "@/components/mdxExamples/dragging/CustomDragBehavior/S
 import DragEventsBasic from "@/components/mdxExamples/dragging/DragEvents/DragEventsBasic"
 import UseDragControlsHook from "@/components/mdxExamples/dragging/DragControl/UseDragControlsHook"
 import CursorSnapping from "@/components/mdxExamples/dragging/DragControl/CursorSnapping"
+
+// 2024.6.22
+import DraggingBasicUndescore from "@/components/mdxExamples/dragging/DraggingBasic/DraggingBasicUndescore/"
+
 const draggingExampleMapper = {
     DraggingBasicDirection,
     DraggingBasicDirectionLock,
@@ -35,7 +39,7 @@ const draggingExampleMapper = {
     DragEventsBasic,
     UseDragControlsHook,
     CursorSnapping,
-
+    DraggingBasicUndescore,
 }
 
 export default draggingExampleMapper

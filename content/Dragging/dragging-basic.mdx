@@ -31,6 +31,19 @@ Instead of setting drag to true (which enables dragging in all directions), you 
 </motion.div>
 ```
 
+## Dragging but not moving
+Sometimes you need drag a pseudo element to make other element move. If you ever need to do it, here is how to do: no motionvalue in `style`, add an underscore props instead.
+<DraggingBasicUndescore />
+
+```js
+<motion.div
+    drag="x"
+    // style={{ x: dragX }}
+    _dragX={dragX}
+>
+```
+
+
 ## Direction lock
 
 Did you notice how in Safari on iOS, when zoomed in on a page, scrolling will stick to one direction? This behavior is called `‘direction lock’` in Framer Motion, and by default, it’s disabled, so you have to switch it on:
@@ -111,4 +124,6 @@ Note that top and left need negative values. (We’re actually setting the maxim
 />
 ```
 
+
+import { jsx } from "react/jsx-runtime"
 

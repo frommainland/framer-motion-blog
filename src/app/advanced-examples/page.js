@@ -24,6 +24,7 @@ import CardHoverAccordian from './components/CardHoverAccordian/CardHoverAccordi
 import { CardStack2 } from './components/CardStack2/CardStack2'
 
 import MapFold from './components/MapFold/MapFold'
+import CardWheel from './components/CardWheel/CardWheel'
 
 const Advancedexamples = () => {
     return (
@@ -148,6 +149,11 @@ const Advancedexamples = () => {
                         <h3>Map Fold</h3>
                         <p>drag down the map and reveal full map</p>
                         <MapFold />
+                    </section>
+
+                    <section>
+                        <h3>Wheel Selection</h3>
+                        <CardWheel />
                     </section>
 
                 </div>

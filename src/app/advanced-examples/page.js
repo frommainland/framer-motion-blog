@@ -26,6 +26,7 @@ import { CardStack2 } from './components/CardStack2/CardStack2'
 import MapFold from './components/MapFold/MapFold'
 import CardWheel from './components/CardWheel/CardWheel'
 import CursorTrail3 from './components/CursorTrail3/CursorTrail3'
+import CursorTrail2 from './components/CursorTrail2/CursorTrail2'
 
 const Advancedexamples = () => {
     return (
@@ -47,6 +48,9 @@ const Advancedexamples = () => {
                         <h3>Cursor Trail</h3>
                         <CursorTrail />
                     </section> */}
+
+                    {/* it is ready, but is not related to framer motion. so no display
+                    <CursorTrail2 /> */}
 
 
                     <section>

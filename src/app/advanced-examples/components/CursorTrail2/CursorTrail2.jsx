@@ -1,14 +1,17 @@
 'use client'
-import { motion } from 'framer-motion'
 import styles from './CursorTrail2.module.scss'
 import React from 'react'
 import { range } from '@/utils'
-import { useMeasure, useMouse } from '@uidotdev/usehooks'
-import { ClientPageRoot } from 'next/dist/client/components/client-page'
+import Image from 'next/image'
 
 const CursorTrail2 = () => {
-	let refs = []
 	let totalImgNum = 10
+	// let refs = []
+	const [refs, setRefs] = React.useState([])
+	React.useEffect(() => {
+		setRefs(range(totalImgNum).map(() => React.createRef()))
+	}, [])
+
 	let maxNumberOfImages = 4
 	let currentIndex = 0
 	let steps = 0
@@ -48,7 +51,7 @@ const CursorTrail2 = () => {
 		images[0].style.display = 'none'
 		nbOfImages--
 	}
-    
+
 	const getCurrentImages = () => {
 		let images = []
 
@@ -79,7 +82,7 @@ const CursorTrail2 = () => {
 			onMouseMove={handleMouseMove}
 			ref={wrapRef}
 		>
-			{range(totalImgNum).map((item) => {
+			{/* {range(totalImgNum).map((item) => {
 				const ref = React.useRef(null)
 				refs.push(ref)
 				return (
@@ -89,7 +92,18 @@ const CursorTrail2 = () => {
 						src={`/CursorTrail2/image${item + 1}.webp`}
 					/>
 				)
-			})}
+			})} */}
+			{refs.map((ref, index) => (
+				<Image
+					key={index}
+					ref={ref}
+					alt="typo rebus background"
+					src={`/CursorTrail2/image${index + 1}.webp`}
+					width={500}
+					height={500}
+					style={{ height: 'auto', width: '30%' }}
+				/>
+			))}
 		</div>
 	)
 }

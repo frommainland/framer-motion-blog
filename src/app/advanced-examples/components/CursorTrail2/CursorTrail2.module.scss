@@ -1,0 +1,21 @@
+.wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    border: 1px solid var(--color-surface-200);
+    border-radius: 2em;
+    margin-top: 2em;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        width: 30%;
+        position: absolute;
+        display: none;
+        transform: translate(-50%, -50%);
+    }
+}

@@ -25,6 +25,7 @@ import { CardStack2 } from './components/CardStack2/CardStack2'
 
 import MapFold from './components/MapFold/MapFold'
 import CardWheel from './components/CardWheel/CardWheel'
+import CursorTrail3 from './components/CursorTrail3/CursorTrail3'
 
 const Advancedexamples = () => {
     return (
@@ -73,6 +74,13 @@ const Advancedexamples = () => {
                         <p>Background will reveal its details when you move cursor over and hide it when you stop moving</p>
                         <CursorBackgroundPointer />
                     </section>
+
+                    <section>
+                        <h3>CursorTrail 3</h3>
+                        <p>Move mouse around to see the image trails. If you move fast, image trail size will repond to it. </p>
+                        <CursorTrail3 />
+                    </section>
+
 
                     <section>
                         <h3>Cursor Confetti</h3>

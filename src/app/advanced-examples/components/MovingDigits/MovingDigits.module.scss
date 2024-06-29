@@ -1,0 +1,127 @@
+.wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    border: 1px solid var(--color-surface-200);
+    border-radius: 2em;
+    margin-top: 2em;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    justify-content: center;
+    align-items: center;
+
+    .watchContainer {
+        width: 50%;
+        max-width: 198px;
+        aspect-ratio: 198 / 242;
+        border: 1px solid var(--color-surface-200);
+        padding: 13px;
+        font-weight: 500;
+        font-family: var(--font-roobert);
+        font-feature-settings: 'tnum' on, 'lnum' on;
+        border-radius: 2em;
+
+        .nav {
+            height: 40px;
+            // border: 1px solid red;
+        }
+
+        .distance {
+            color: var(--color-accent-mint);
+
+            .primary {
+                font-size: var(--fontSize-h1);
+                display: inline-block;
+
+                .digitsContainer {
+                    background: linear-gradient(180deg, var(--color-surface-100) 10%, var(--color-surface-100) 90%);
+                    position: relative;
+                    overflow: hidden;
+                    display: inline-block;
+
+                    .digits {
+                        position: absolute;
+                        line-height: .8;
+                    }
+                }
+            }
+
+        }
+
+        .duration {
+            display: flex;
+            margin-top: 1em;
+
+            .container {
+                // border: 1px solid red;
+                position: relative;
+                overflow: hidden;
+
+                .digitContainer {
+                    position: absolute;
+                    top: 50%;
+                    width: 200px;
+
+                    .digit {
+                        color: var(--color-text-100);
+                        font-size: var(--fontSize-h2);
+                        display: inline-block;
+                    }
+                }
+            }
+
+            .digit {
+                color: var(--color-text-100);
+                font-size: var(--fontSize-h2);
+                display: inline-block;
+                line-height: 0.95;
+            }
+        }
+
+        .calories {
+            font-size: var(--fontSize-h3);
+            display: flex;
+            gap: 4px;
+            align-items: flex-end;
+            margin-top: 4px;
+
+            .digitsWrap {
+                display: flex;
+                // width: 50px;
+
+                justify-content: flex-start;
+                font-feature-settings: 'tnum' on, 'lnum' on;
+
+                .digit {
+                    position: relative;
+
+                    span {
+                        position: absolute;
+                        top: 0;
+                        margin: 0 !important;
+                        line-height: 1 !important;
+                    }
+                }
+
+            }
+
+            .content {
+                font-weight: 400;
+                font-size: var(--fontSize--1);
+            }
+        }
+
+        .heartrate {
+            display: flex;
+            align-items: flex-end;
+            gap: .25em;
+
+            .tertiary {
+                font-size: var(--fontSize-h3);
+                color: var(--color-accent-red);
+            }
+        }
+    }
+}

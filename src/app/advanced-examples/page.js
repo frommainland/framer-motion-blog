@@ -28,6 +28,8 @@ import CardWheel from './components/CardWheel/CardWheel'
 import CursorTrail3 from './components/CursorTrail3/CursorTrail3'
 import CursorTrail2 from './components/CursorTrail2/CursorTrail2'
 
+import MovingDigits from './components/MovingDigits/MovingDigits'
+
 const Advancedexamples = () => {
     return (
         <div className={styles.contentWrap}>
@@ -167,6 +169,12 @@ const Advancedexamples = () => {
                         <h3>Wheel Selection</h3>
                         <CardWheel />
                     </section>
+
+                    <section>
+                        <h3>Moving Digits</h3>
+                        <MovingDigits />
+                    </section>
+
 
                 </div>
             </div>

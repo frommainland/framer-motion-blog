@@ -1,0 +1,60 @@
+.wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    border: 1px solid var(--color-surface-200);
+    border-radius: 2em;
+    margin-top: 2em;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    justify-content: center;
+    align-items: center;
+
+    .counterWrap {
+        display: flex;
+        gap: 0.25em;
+        justify-content: center;
+        align-items: center;
+        padding: 2em;
+        border: 1px solid var(--color-surface-300);
+
+        button {
+            border: 1px solid var(--color-surface-300);
+            width: 44px;
+            height: 44px;
+            display: grid;
+            place-content: center;
+        }
+
+        .digitsWrap {
+            // padding: 1em 2em;
+            display: flex;
+            width: 50px;
+            height: 44px;
+            // border: 1px solid red;
+            align-items: center;
+            justify-content: center;
+            font-feature-settings: 'tnum' on, 'lnum' on;
+
+            .digit {
+                position: relative;
+                width: 1em;
+                height: 100%;
+                // display: grid;
+                // place-content: center;
+
+                span {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    // transform: translate(-50%, -50%);
+                    margin: 0 !important;
+                    line-height: 1 !important;
+                }
+            }
+
+        }
+    }
+}

@@ -10,6 +10,13 @@ const ChangeLog = () => {
                     <h1>Changelog</h1>
                     {/* newer start here */}
                     {/* <BasicCounter /> */}
+
+                    <section>
+                        <h2>Card examples</h2>
+                        <p className={styles.date}>July 01, 2024</p>
+                        <p>Add 10 examples of card effect in advanced examples. Add custome spring easing in transition.</p>
+                    </section>
+
                     <section>
                         <h2>Cursor examples</h2>
                         <p className={styles.date}>May 24, 2024</p>

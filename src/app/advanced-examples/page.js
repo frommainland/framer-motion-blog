@@ -29,6 +29,7 @@ import CursorTrail3 from './components/CursorTrail3/CursorTrail3'
 import CursorTrail2 from './components/CursorTrail2/CursorTrail2'
 
 import MovingDigits from './components/MovingDigits/MovingDigits'
+import AppStoreCard from './components/AppStoreCard/AppStoreCard'
 
 const Advancedexamples = () => {
     return (
@@ -173,6 +174,11 @@ const Advancedexamples = () => {
                     <section>
                         <h3>Moving Digits</h3>
                         <MovingDigits />
+                    </section>
+
+                    <section>
+                        <h3>App store card layout</h3>
+                        <AppStoreCard />
                     </section>
 
 

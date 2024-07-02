@@ -9,6 +9,7 @@ const Button = ({
 	originY,
 	children,
 	rect,
+	setOrigin,
 }) => {
 	const buttonRef = React.useRef(null)
 	const [buttonRect, setbuttonRect] = React.useState(null)
@@ -35,6 +36,7 @@ const Button = ({
 				position: 'relative',
 				color: 'white',
 				cursor: 'none',
+				// border: '1px solid red',
 			}}
 			transition={{
 				type: 'spring',
@@ -44,11 +46,16 @@ const Button = ({
 			whileHover={{
 				scale: 1.02,
 			}}
-			onMouseEnter={() => {
+			onMouseEnter={(e) => {
 				if (buttonRef.current !== undefined) {
 					const buttonRect = buttonRef.current.getBoundingClientRect()
 					onHoverOn(buttonRect)
 					setbuttonRect(buttonRect)
+					const xPercent =
+						(e.clientX - buttonRect.left) / buttonRect.width
+					const yPercent =
+						(e.clientY - buttonRect.top) / buttonRect.height
+					setOrigin({ xPercent, yPercent })
 				}
 			}}
 			onMouseLeave={() => {

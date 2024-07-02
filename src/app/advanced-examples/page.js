@@ -56,11 +56,11 @@ const Advancedexamples = () => {
                     <CursorTrail2 /> */}
 
 
-                    {/* <section>
+                    <section>
                         <h3>iPad Pointer Effect</h3>
                         <p>When you hover on any icons, it feels the icon pull the cursor in when it is near. This magnetic feel animations is explained by Apple designers at WWDC20.</p>
                         <IpadPointer />
-                    </section> */}
+                    </section>
 
 
                     <section>

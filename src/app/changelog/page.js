@@ -1,6 +1,7 @@
 
 import React from 'react'
 import styles from './changelog.module.scss'
+import IpadPointer from '../advanced-examples/components/ipadPointer/IpadPointer'
 
 const ChangeLog = () => {
     return (

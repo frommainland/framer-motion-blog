@@ -8,7 +8,9 @@ import { useMotionValue, transform, useMotionValueEvent } from 'framer-motion'
 import { useMouse } from '@uidotdev/usehooks'
 import { Menu, Share, Edit } from 'react-feather'
 
+
 const IpadPointer = () => {
+    
 	const [rect, setRect] = React.useState()
 
 	const cursorSize = 16

@@ -1,0 +1,166 @@
+.wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1.5;
+    border: 1px solid var(--color-surface-200);
+    border-radius: 2em;
+    margin-top: 2em;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    justify-content: center;
+    align-items: center;
+
+    .bottomNavWrap {
+
+        background: var(--color-surface-300, #42433d);
+        border-radius: 16px;
+        padding: .625em .875em .625em .875em;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        position: absolute;
+        bottom: 60px;
+        width: 90%;
+        max-width: 420px;
+        font-size: var(--fontSize-0);
+        box-sizing: border-box;
+
+        .navItemWrap {
+            display: flex;
+            flex-direction: row;
+            gap: .375em;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border-radius: .625em;
+            cursor: pointer;
+            padding: 0.625em 1em 0.625em 1em;
+
+            .text {
+                color: var(--color-text-100, #fffce1);
+                text-align: left;
+                font-family: var(--font-roobert);
+
+                font-weight: 500;
+                position: relative;
+            }
+
+            .indicator {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-color: red;
+                z-index: 0;
+                border-radius: 1em;
+            }
+        }
+
+    }
+
+    .navDetailsContainer {
+        overflow: hidden;
+        border-radius: 1em;
+
+
+
+        .navDetailsWrap {
+            position: relative;
+            width: 100%;
+            background-color: var(--color-surface-300);
+            padding: 1em;
+            display: flex;
+            flex-direction: column;
+            gap: .375em;
+            overflow: hidden;
+
+            .spacer {
+                height: .5em;
+                width: 100%;
+                border-bottom: 1px solid var(--color-surface-200);
+            }
+
+            .navDetails {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                padding: .375em .625em;
+                border-radius: .5em;
+                cursor: pointer;
+
+                .left {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    gap: .625em;
+
+
+                    p {
+                        font-size: var(--fontSize-0);
+                        margin: 0 !important;
+                        color: var(--color-text-200);
+                    }
+                }
+
+                .right {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 1em;
+
+                    .tag {
+                        font-size: var(--fontSize--2);
+                        color: var(--color-text-300);
+                        padding: .25em .625em;
+                        border: 1px solid var(--color-text-300);
+                        border-radius: 1em;
+                    }
+
+                    .date {
+                        font-size: var(--fontSize--1);
+                        color: var(--color-text-200);
+                    }
+
+                    p {
+                        margin: 0 !important;
+                    }
+                }
+
+                .Apps {
+                    display: flex;
+                    flex-direction: row;
+                    gap: .625em;
+
+                    .content {
+                        display: flex;
+                        gap: 2px;
+                        flex-direction: column;
+
+                        p {
+                            margin: 0 !important;
+                            line-height: 1.4;
+                        }
+
+                        p:first-of-type {
+                            font-weight: 400;
+                            color: var(--color-text-200);
+                            font-size: var(--fontSize-0);
+                        }
+
+                        p:last-of-type {
+                            font-weight: 400;
+                            color: var(--color-text-300);
+                            font-size: var(--fontSize--1);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+}

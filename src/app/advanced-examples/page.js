@@ -30,6 +30,8 @@ import CursorTrail2 from './components/CursorTrail2/CursorTrail2'
 
 import MovingDigits from './components/MovingDigits/MovingDigits'
 import AppStoreCard from './components/AppStoreCard/AppStoreCard'
+import BottomNav from './components/BottomNav/BottomNav'
+import Link from 'next/link'
 
 const Advancedexamples = () => {
     return (
@@ -181,6 +183,13 @@ const Advancedexamples = () => {
                         <AppStoreCard />
                     </section>
 
+                    <section>
+                        <h3>Bottom Nav</h3>
+                        <p>Smooth card animation inspired from
+                            <Link href={'https://x.com/60fpsdesign/status/1807304714561921061'}> here
+                            </Link></p>
+                        <BottomNav />
+                    </section>
 
                 </div>
             </div>

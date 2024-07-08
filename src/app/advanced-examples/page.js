@@ -33,6 +33,8 @@ import AppStoreCard from './components/AppStoreCard/AppStoreCard'
 import BottomNav from './components/BottomNav/BottomNav'
 import Link from 'next/link'
 
+import MusicPlayerCard from '../advanced-examples/components/MusicPlayerCard/MusicPlayerCard'
+
 const Advancedexamples = () => {
     return (
         <div className={styles.contentWrap}>
@@ -181,6 +183,11 @@ const Advancedexamples = () => {
                     <section>
                         <h3>App store card layout</h3>
                         <AppStoreCard />
+                    </section>
+
+                    <section>
+                        <h3>Music player smooth layout change</h3>
+                        <MusicPlayerCard />
                     </section>
 
                     <section>

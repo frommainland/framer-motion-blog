@@ -1,0 +1,432 @@
+.wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    border: 1px solid var(--color-surface-200);
+    border-radius: 2em;
+    margin-top: 2em;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+
+    .playerContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: .625em;
+        background-color: var(--color-surface-200);
+        width: 366px;
+        overflow: hidden;
+
+        .cover {
+            width: 50px;
+            aspect-ratio: 1;
+            line-height: 0;
+            overflow: hidden;
+        }
+
+        .info {
+            display: flex;
+            flex-direction: column;
+            font-family: var(--font-roobert);
+            flex: 1;
+            padding-left: 1em;
+
+            .song {
+                color: var(--color-text-100);
+                font-size: var(--fontSize-0);
+            }
+
+            .singer {
+                color: var(--color-text-200);
+                font-size: var(--fontSize--1);
+            }
+        }
+
+        .controls {
+            display: flex;
+            align-items: center;
+            gap: 1em;
+            padding-right: .5em;
+
+            .playWrap {
+                width: 2.5em;
+                aspect-ratio: 1;
+                background-color: var(--color-text-200);
+                border-radius: 50%;
+                display: grid;
+                place-content: center;
+                cursor: pointer;
+            }
+
+            .control {
+                line-height: 0;
+                cursor: pointer;
+
+                svg:hover {
+                    stroke: var(--color-text-200);
+                    fill: var(--color-text-200);
+                }
+            }
+        }
+    }
+
+    .playerContainer2 {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: .625em;
+        background-color: var(--color-surface-200);
+        width: 366px;
+        gap: 1em;
+        overflow: hidden;
+
+        .cover {
+            width: 150px;
+            aspect-ratio: 1;
+            line-height: 0;
+
+            img {
+                border-radius: .75em;
+            }
+        }
+
+        .infoWrap {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex: 1;
+            height: 100%;
+            padding: .25em 0;
+
+            .info {
+                display: flex;
+                flex-direction: column;
+                font-family: var(--font-roobert);
+                text-align: center;
+
+                .song {
+                    color: var(--color-text-100);
+                    font-size: var(--fontSize-0);
+                }
+
+                .singer {
+                    color: var(--color-text-200);
+                    font-size: var(--fontSize--1);
+                }
+            }
+
+            .controls {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 1em;
+                padding: 0 2em;
+
+                .playWrap {
+                    width: 2.5em;
+                    aspect-ratio: 1;
+                    background-color: var(--color-text-200);
+                    border-radius: 50%;
+                    display: grid;
+                    place-content: center;
+                    cursor: pointer;
+                }
+
+                .control {
+                    line-height: 0;
+                    cursor: pointer;
+
+                    svg:hover {
+                        stroke: var(--color-text-200);
+                        fill: var(--color-text-200);
+                    }
+                }
+            }
+
+            .progress {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                gap: .5em;
+
+                span {
+                    font-family: var(--font-roobert);
+                    font-size: var(--fontSize--2);
+                    color: var(--color-text-300);
+                }
+
+                .inputWrap {
+                    flex: 1;
+                    height: 4px;
+                    display: grid;
+
+                    .bar {
+                        width: 100%;
+                        height: 4px;
+                        background-color: var(--color-accent-yellow);
+                        z-index: 10;
+                        position: relative;
+                        grid-area: 1/1;
+                        pointer-events: none;
+                        border-radius: 1em;
+
+                        .thumb {
+                            background-color: var(--color-text-100);
+                            border-radius: 0.5rem;
+                            height: 10px;
+                            width: 10px;
+                            position: absolute;
+                            top: -50%;
+                            left: 100%;
+                            transform: translateX(-50%)
+                        }
+                    }
+
+                    input[type="range"] {
+                        -webkit-appearance: none;
+                        appearance: none;
+                        background: transparent;
+                        cursor: pointer;
+                        width: 100%;
+                        grid-area: 1/1
+                    }
+
+                    /* Removes default focus */
+                    input[type="range"]:focus {
+                        outline: none;
+                    }
+
+                    /******** Chrome, Safari, Opera and Edge Chromium styles ********/
+                    /* slider track */
+
+                    input[type="range"]::-webkit-slider-runnable-track {
+                        background-color: var(--color-surface-300);
+                        border-radius: 0.5rem;
+                        height: 4px;
+                    }
+
+                    /* slider thumb */
+                    input[type="range"]::-webkit-slider-thumb {
+                        -webkit-appearance: none;
+                        /* Override default look */
+                        appearance: none;
+                        margin-top: -3px;
+                        /* Centers thumb on the track */
+                        // background-color: var(--color-text-100);
+                        border-radius: 0.5rem;
+                        height: 10px;
+                        width: 10px;
+                    }
+
+
+                    /*********** Firefox styles ***********/
+                    /* slider track */
+                    input[type="range"]::-moz-range-track {
+                        background-color: var(--color-surface-300);
+                        border-radius: 0.5rem;
+                        height: 4px;
+                    }
+
+                    /* slider thumb */
+                    input[type="range"]::-moz-range-thumb {
+                        background-color: var(--color-text-100);
+                        border: none;
+                        /*Removes extra border that FF applies*/
+                        border-radius: 0.5rem;
+                        height: 10px;
+                        width: 10px;
+                    }
+                }
+            }
+        }
+
+    }
+
+    .playerContainer3 {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2em;
+        background-color: var(--color-surface-200);
+        width: 366px;
+        gap: 1.75em;
+        overflow: hidden;
+
+        .cover {
+            width: 200px;
+            aspect-ratio: 1;
+            line-height: 0;
+            overflow: hidden;
+        }
+
+        .infoWrap {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex: 1;
+            gap: 1.5em;
+            width: 100%;
+
+            .info {
+
+                display: flex;
+                flex-direction: column;
+                font-family: var(--font-roobert);
+                text-align: center;
+
+                .song {
+                    color: var(--color-text-100);
+                    font-size: var(--fontSize-p);
+                }
+
+                .singer {
+                    color: var(--color-text-200);
+                    font-size: var(--fontSize-0);
+                }
+            }
+
+            .controls {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                .playWrap {
+                    width: 2.5em;
+                    aspect-ratio: 1;
+                    background-color: var(--color-text-200);
+                    border-radius: 50%;
+                    display: grid;
+                    place-content: center;
+                    cursor: pointer;
+                }
+
+                .control {
+                    line-height: 0;
+                    cursor: pointer;
+
+                    svg:hover {
+                        stroke: var(--color-text-200);
+                        fill: var(--color-text-200);
+                    }
+                }
+
+                .control[data='data-RotateCcw'] svg:hover {
+                    color: var(--color-text-200);
+                    fill: none;
+                }
+            }
+
+            .progress {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                gap: .5em;
+
+                span {
+                    font-family: var(--font-roobert);
+                    font-size: var(--fontSize--2);
+                    color: var(--color-text-300);
+                    width: 34px;
+                    text-align: center;
+                }
+
+                /*********** Baseline, reset styles ***********/
+                .inputWrap {
+                    flex: 1;
+                    height: 4px;
+                    display: grid;
+
+                    .bar {
+                        width: 100%;
+                        height: 4px;
+                        background-color: var(--color-accent-yellow);
+                        z-index: 10;
+                        position: relative;
+                        grid-area: 1/1;
+                        pointer-events: none;
+                        border-radius: 1em;
+
+                        .thumb {
+                            background-color: var(--color-text-100);
+                            border-radius: 0.5rem;
+                            height: 10px;
+                            width: 10px;
+                            position: absolute;
+                            top: -50%;
+                            left: 100%;
+                            transform: translateX(-50%)
+                        }
+                    }
+
+                    input[type="range"] {
+                        -webkit-appearance: none;
+                        appearance: none;
+                        background: transparent;
+                        cursor: pointer;
+                        width: 100%;
+                        grid-area: 1/1
+                    }
+
+                    /* Removes default focus */
+                    input[type="range"]:focus {
+                        outline: none;
+                    }
+
+                    /******** Chrome, Safari, Opera and Edge Chromium styles ********/
+                    /* slider track */
+
+                    input[type="range"]::-webkit-slider-runnable-track {
+                        background-color: var(--color-surface-300);
+                        border-radius: 0.5rem;
+                        height: 4px;
+                    }
+
+                    /* slider thumb */
+                    input[type="range"]::-webkit-slider-thumb {
+                        -webkit-appearance: none;
+                        /* Override default look */
+                        appearance: none;
+                        margin-top: -3px;
+                        /* Centers thumb on the track */
+                        // background-color: var(--color-text-100);
+                        border-radius: 0.5rem;
+                        height: 10px;
+                        width: 10px;
+                    }
+
+
+                    /*********** Firefox styles ***********/
+                    /* slider track */
+                    input[type="range"]::-moz-range-track {
+                        background-color: var(--color-surface-300);
+                        border-radius: 0.5rem;
+                        height: 4px;
+                    }
+
+                    /* slider thumb */
+                    input[type="range"]::-moz-range-thumb {
+                        background-color: var(--color-text-100);
+                        border: none;
+                        /*Removes extra border that FF applies*/
+                        border-radius: 0.5rem;
+                        height: 10px;
+                        width: 10px;
+                    }
+                }
+
+
+            }
+        }
+
+    }
+}

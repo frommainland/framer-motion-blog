@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './changelog.module.scss'
 
+
 const ChangeLog = () => {
 
     return (
@@ -10,7 +11,6 @@ const ChangeLog = () => {
                     <h1>Changelog</h1>
                     {/* newer start here */}
                     {/* <BasicCounter /> */}
-
                     <section>
                         <h2>Card examples</h2>
                         <p className={styles.date}>July 01, 2024</p>

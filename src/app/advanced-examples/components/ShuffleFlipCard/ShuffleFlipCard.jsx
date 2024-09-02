@@ -34,15 +34,7 @@ const ShuffleFlipCard = () => {
 	}, [])
 
 	const CARDSIZE = { width: 120, height: 170 }
-	// const CardImages = [
-	// 	'JMT',
-	// 	'Lucas_Zanotto',
-	// 	'Rami_Niemi',
-	// 	'Tim_Lahan',
-	// 	'Xoana_Herrera',
-	// ]
 	const CardImages = ['JMT', 'Lucas', 'Rami', 'Tim', 'Xoana']
-	const CARDNUM = 5
 
 	// show cards stack together, 1/2 card covers the previous card, the last card show 100%
 	// total stacked card width
@@ -52,6 +44,12 @@ const ShuffleFlipCard = () => {
 	// the rest of the card will be placed at the right of the first card by half of the card width
 
 	const [removeClicked, setRemoveClicked] = React.useState(false)
+
+	const [activeIndex, setActiveIndex] = React.useState(null)
+
+	const handleIndex = (index) => {
+		setActiveIndex(index)
+	}
 
 	return (
 		<motion.div ref={dragcontrol} className={styles.wrap}>
@@ -98,11 +96,13 @@ const ShuffleFlipCard = () => {
 					<>
 						{CardImages.map((item, i) => (
 							<Card
-								key={i}
+								key={item}
 								containerSize={containerSize}
 								containerPos={containerPos}
 								cardSize={CARDSIZE}
 								initialX={firstCardX + (CARDSIZE.width / 2) * i}
+                                handleIndex={handleIndex}
+                                activeIndex={activeIndex}
 								index={i}
 								cardNum={CardImages.length}
 								item={item}

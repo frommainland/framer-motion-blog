@@ -21,6 +21,8 @@ const Card = ({
 	index,
 	cardNum,
 	item,
+	handleIndex,
+	activeIndex,
 }) => {
 	const [isClicked, setIsClicked] = React.useState(false)
 	const [isDragging, setIsDragging] = React.useState(false)
@@ -74,6 +76,7 @@ const Card = ({
 		if (!isDragging) {
 			setIsClicked(!isClicked)
 			cycleCardFace()
+			handleIndex(index)
 		}
 	}
 
@@ -91,7 +94,9 @@ const Card = ({
 					style={{
 						x,
 						y,
-						zIndex: isClicked ? 100 : index,
+						// zIndex: isClicked ? 100 : index,
+						// zIndex: isClicked ? 100 : cardIndex,
+						zIndex: activeIndex === index ? 100 : 1,
 						width: cardSize.width,
 						height: cardSize.height,
 					}}
@@ -157,4 +162,5 @@ const Card = ({
 		</>
 	)
 }
+
 export default Card

@@ -1,133 +1,160 @@
 'use client'
+import { bouncy, smooth } from '@/helper/easing'
 import styles from './ShuffleFlipCard.module.scss'
-import {
-	motion,
-	useMotionValue,
-	useTransform,
-	useMotionValueEvent,
-} from 'framer-motion'
+import { motion, useMotionValue, useCycle } from 'framer-motion'
 import React from 'react'
+import Image from 'next/image'
 
-const Card = React.forwardRef(function (props, ref) {
+const getRandomInt = (max) => {
+	return Math.floor(Math.random() * (max + 1))
+}
+
+function rando(min, max) {
+	return Math.random() * (max - min + 1) + min
+}
+
+const Card = ({
+	containerSize,
+	containerPos,
+	cardSize,
+	initialX,
+	index,
+	cardNum,
+	item,
+}) => {
 	const [isClicked, setIsClicked] = React.useState(false)
 	const [isDragging, setIsDragging] = React.useState(false)
 
-	// get ref container size and initial rect left and top
+	const [initialPos, setInitialPos] = React.useState(null)
 
-	const [containerSize, setContainerSize] = React.useState({
-		width: 0,
-		height: 0,
-	})
-
-	const [initialPosContainer, setInitialPosContainer] = React.useState({
-		x: 0,
-		y: 0,
-	})
+	const [rotateDeg, setRotateDegree] = React.useState(null)
 
 	React.useEffect(() => {
-		const containerRect = ref.current.getBoundingClientRect()
-		setInitialPosContainer({
-			x: Math.floor(containerRect.x),
-			y: Math.floor(containerRect.y),
-		})
-		setContainerSize({
-			width: containerRect.width,
-			height: containerRect.height,
-		})
+		const rotate = rando(-10, 10)
+		setRotateDegree(rotate)
 	}, [])
 
-	// generate random pos down below container
-	const getRandomInt = (max) => {
-		return Math.floor(Math.random() * (max + 1))
-	}
-
-	const [initialPos, setInitialPos] = React.useState({ x: 0, y: 0 })
-
-    console.log(initialPos)
 	React.useEffect(() => {
-		const initialPosition = {
+		const random = {
 			x: getRandomInt(containerSize.width),
 			y: containerSize.height,
 		}
-		setInitialPos(initialPosition)
-	}, [])
+		setInitialPos(random)
+	}, [containerSize])
 
-	const boxRef = React.useRef(null)
+	// find the card top left point when card is at the center of the container
+	const cardTopLeft = {
+		x: containerSize.width / 2 - cardSize.width / 2,
+		y: containerSize.height / 2 - cardSize.height / 2,
+	}
+
+	const [cardFace, cycleCardFace] = useCycle('front', 'back')
+
+	// random card y height
+	const [cardY, setCardY] = React.useState(null)
+	React.useEffect(() => {
+		let cardYNum =
+			containerSize.height / 2 - cardSize.height / 2 + rando(-30, 30)
+		setCardY(cardYNum)
+	}, [containerSize, cardSize])
+
+	// get last drag stop positions
+	const [lastClickPosX, setLastClickPosX] = React.useState(null)
+	const [lastClickPosY, setLastClickPosY] = React.useState(null)
 
 	React.useEffect(() => {
-		const rect = boxRef.current.getBoundingClientRect()
-		setInitialPos({
-			x: Math.floor(rect.x),
-			y: Math.floor(rect.y),
-		})
-	}, [])
+		setLastClickPosX(initialX)
+		setLastClickPosY(cardY)
+	}, [initialX, cardY])
 
 	const x = useMotionValue(0)
 	const y = useMotionValue(0)
 
-	const [realDragX, setRealDragX] = React.useState(0)
-	const [realDragY, setRealDragY] = React.useState(0)
-
-	useMotionValueEvent(x, 'change', (v) => setRealDragX(Math.round(v)))
-	useMotionValueEvent(y, 'change', (v) => setRealDragY(Math.round(v)))
-
-	let xToParent = initialPos.x - initialPosContainer.x + realDragX
-	let yToParent = initialPos.y - initialPosContainer.y + realDragY
-
-	const [lastPos, setLastPos] = React.useState({
-		x: initialPos.x,
-		y: initialPos.y,
-	})
-
 	const handleClick = (e) => {
 		if (!isDragging) {
 			setIsClicked(!isClicked)
+			cycleCardFace()
 		}
 	}
 
-	const handleDragEnd = (event, info) => {
+	const handleDragEnd = () => {
 		setIsDragging(false)
-		setLastPos({ x: xToParent, y: yToParent - 700 })
+		setLastClickPosX(x.get())
+		setLastClickPosY(y.get())
 	}
 
 	return (
-		<motion.div
-			ref={boxRef}
-			drag
-			dragMomentum={false}
-			onDragStart={() => setIsDragging(true)}
-			onDragEnd={handleDragEnd}
-			onClick={handleClick}
-			className={styles.scene}
-			style={{
-				x,
-				y,
-				borderRadius: 20,
-			}}
-			initial={{ y: initialPos.y, x: initialPos.x }}
-			// animate={{
-			// 	scale: isClicked ? 2 : 1,
-			// 	borderRadius: 20,
-			// 	x: isClicked ? 330 : lastPos.x,
-			// 	y: isClicked ? 330 : lastPos.y,
-			// }}
-			transition={{ duration: 1, ease: 'circInOut' }}
-		>
-			<motion.div
-				className={styles.card}
-				animate={{ rotateY: isClicked ? 180 : 0 }}
-				transition={{ duration: 0.75 }}
-			>
-				<div
-					className={`${styles.cardFace} ${styles.cardFace__front}`}
-				></div>
-				<div className={`${styles.cardFace} ${styles.cardFace__back}`}>
-					1
-				</div>
-			</motion.div>
-		</motion.div>
+		<>
+			{initialPos && (
+				<motion.div
+					className={styles.scene}
+					style={{
+						x,
+						y,
+						zIndex: isClicked ? 100 : index,
+						width: cardSize.width,
+						height: cardSize.height,
+					}}
+					drag={cardFace === 'front' ? true : false}
+					dragMomentum={false}
+					initial={{
+						x: initialX,
+						y: containerSize.height + 20,
+						rotate: rotateDeg,
+					}}
+					animate={{
+						x: isClicked ? cardTopLeft.x : lastClickPosX,
+						y: isClicked ? cardTopLeft.y : lastClickPosY,
+						scale: isClicked ? 2 : 1,
+						rotate: isClicked ? 0 : rotateDeg,
+						transition: {
+							duration: 0.7,
+							ease: bouncy,
+							delay: 0.1 * index,
+						},
+					}}
+					exit={{
+						x: initialX,
+						y: containerSize.height + 20,
+						rotate: rotateDeg,
+						transition: {
+							duration: 0.35,
+							ease: 'backOut',
+							delay: 0.05 * Math.abs(index - (cardNum - 1)),
+						},
+					}}
+					onClick={handleClick}
+					onDragStart={() => setIsDragging(true)}
+					onDragEnd={handleDragEnd}
+				>
+					<motion.div
+						className={styles.card}
+						animate={{ rotateY: isClicked ? 180 : 0 }}
+						transition={{ duration: 0.35, ease: 'easeInOut' }}
+					>
+						<div
+							className={`${styles.cardFace} ${styles.cardFace__front}`}
+						>
+							{item}
+						</div>
+						<div
+							className={`${styles.cardFace} ${styles.cardFace__back}`}
+						>
+							<Image
+								src={`/ShuffleFlipCard/${item}.jpg`}
+								sizes="340px"
+								fill
+								style={{ objectFit: 'cover' }}
+								alt={`${item}'s work`}
+							/>
+						</div>
+					</motion.div>
+				</motion.div>
+			)}
+			{isClicked && (
+				<div className={styles.overlay} onClick={handleClick}></div>
+			)}
+		</>
 	)
-})
+}
 export default Card
-
-Card.displayName = 'Card'
